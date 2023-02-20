@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# European online border
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+European online border is a brand new technology for crossing european borders with other non-european countries in several seconds. This application has three main pages:  
 
-## Available Scripts
 
-In the project directory, you can run:
+## Four main features
 
-### `npm start`
+ - Completing a form for crossing border
+ 
+ - Viewing a history of your travels
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ - Editing your personal information in "My account" page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ - Admin Page
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Desciption
+What is the main purpose of using this app? The answer is simple.
+First step you should do, it is to register/login. In addition, You will have a possibility to login via Google account
+After accessing your page, you will see three main pages:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- My Account
+- New Travel
+- Travel History
+- Admin Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In "My Account" you will have your personal information, which you have provided during registration. There you will be able to edit it, for example email or password
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In "New Travel" you will see a form, through which you can complete it for getting permission to cross border.
+There you can set a specific time of border crossing.
+Furthermore, you can specify the way of crossing a border(by car or by walk or etc.). Nevertheless, so that you can get permission to cross the border, your request will have to be confirmed by an online customs officer or the so-called admin. After confirmation by the admin, you will receive a PDF file with a qr code that you will need to scan at the border turnstile. One second, and you in the other country :)
 
-### `npm run eject`
+In "Travel History" you will see all travels, which you have accomplished with our application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+As well there will be an Admin Page. There Admin will see all registered users. Main feature of Admin Page is confirming border crossing for users
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Authors
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [@kiril-vandzsurak](https://github.com/kiril-vandzsurak)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/kiril-vandzsurak/portfolio_page)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kiril-vandzsurak-537725217/)
