@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Phudu:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
 
 .background {
-  background: rgb(140, 217, 153);
+  background: rgb(204, 228, 208);
   background: linear-gradient(
-    -144deg,
-    rgba(140, 217, 153, 1) 24%,
+    -39deg,
+    rgba(204, 228, 208, 1) 32%,
     rgba(255, 255, 255, 1) 43%,
     rgba(255, 255, 255, 1) 53%,
-    rgba(140, 217, 153, 1) 74%
+    rgba(204, 228, 208, 1) 65%
   );
   position: absolute;
   left: 0;
@@ -19,7 +19,7 @@
 
 .upperNavbar {
   width: 100%;
-  height: 123px;
+  height: 85px;
 }
 
 .rowDirection {
@@ -31,7 +31,7 @@
 }
 
 .labelName {
-  font-size: 40px;
+  font-size: 33px;
   margin-inline: 10px;
   font-family: "Phudu", cursive;
 }
@@ -57,7 +57,58 @@
   margin-right: 30px;
 }
 
-button {
+.buttonsRow button {
   font-family: "Raleway", sans-serif;
   font-size: 19px;
+}
+
+.rowBottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.mainTextStyling {
+  text-align: center;
+  position: relative;
+  top: 99px;
+  right: 149px;
+}
+
+h5,
+h2 {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+h5 {
+  color: rgb(0, 200, 198);
+  font-size: 29px;
+}
+
+h2 {
+  font-size: 55px;
+  color: rgb(60, 60, 60);
+  margin-top: 7px;
+}
+
+p {
+  color: rgb(60, 60, 60);
+  font-size: 35px;
+  font-family: "Raleway", sans-serif;
+}
+
+.mainTextStyling button {
+  height: 66px;
+  width: 262px;
+  font-family: "Raleway", sans-serif;
+  border: none;
+  border-radius: 50px;
+  background: rgb(0, 241, 145);
+  background: linear-gradient(
+    126deg,
+    rgba(0, 241, 145, 1) 27%,
+    rgba(0, 200, 198, 1) 75%
+  );
+  font-size: 20px;
 }
