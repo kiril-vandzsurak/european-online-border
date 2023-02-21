@@ -5,6 +5,18 @@ import Col from "react-bootstrap/Col";
 const WelcomePage = () => {
   return (
     <div className="background">
+      <div className="circles">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div className="upperNavbar">
         <Container className="containerWelcome">
           <Row className="rowDirection">
@@ -48,6 +60,8 @@ const WelcomePage = () => {
                   display: "block",
                   height: "660px",
                   width: "749px",
+                  position: "relative",
+                  zIndex: "1",
                 }}
                 src={window.location.origin + "/welcome-lady1.png"}
                 alt="img"

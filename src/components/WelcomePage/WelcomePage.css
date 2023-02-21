@@ -1,6 +1,105 @@
 @import url("https://fonts.googleapis.com/css2?family=Phudu:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
 
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 1;
+    border-radius: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    border-radius: 50%;
+    transform: translateY(-1000px) rotate(720deg);
+  }
+}
+
+.circles div {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(75, 215, 159, 0.5);
+  bottom: -150px;
+  animation: animate 25s linear infinite;
+}
+
+.circles div:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+.circles div:nth-child(2) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+.circles div:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+.circles div:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+.circles div:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+.circles div:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+.circles div:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+.circles div:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+.circles div:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 45s;
+}
+.circles div:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
 .background {
   background: rgb(204, 228, 208);
   background: linear-gradient(
@@ -60,6 +159,7 @@
 .buttonsRow button {
   font-family: "Raleway", sans-serif;
   font-size: 19px;
+  cursor: pointer;
 }
 
 .rowBottom {
@@ -72,6 +172,7 @@
   position: relative;
   top: 99px;
   right: 149px;
+  z-index: 1;
 }
 
 h5,
@@ -111,4 +212,37 @@ p {
     rgba(0, 200, 198, 1) 75%
   );
   font-size: 20px;
+  cursor: pointer;
+  /* animation-name: example;
+  animation-duration: 5s; */
 }
+
+/* @keyframes example {
+  from {
+    background: rgb(0, 241, 145);
+    background: linear-gradient(
+      126deg,
+      rgba(0, 241, 145, 1) 27%,
+      rgba(0, 200, 198, 1) 75%
+    );
+  }
+  to {
+    background: rgb(0, 241, 145);
+    background: linear-gradient(
+      -126deg,
+      rgba(0, 241, 145, 1) 27%,
+      rgba(0, 200, 198, 1) 75%
+    );
+  }
+} */
+
+.mainTextStyling button:hover {
+  border: 2px black solid;
+}
+
+.buttonsRow button:hover {
+  border: 2px black solid;
+}
+
+/* background: rgb(0,241,145);
+background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%); */
