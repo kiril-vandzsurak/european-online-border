@@ -44,25 +44,23 @@ const WelcomePage = () => {
                 alt="img"
               />
             </Col>
+            <Col>
+              <button className="smallInfo">
+                <span>i</span>
+              </button>
+            </Col>
           </Row>
           <Row className="buttonsRow">
-            <button className="buttonAppearance">Information</button>
-            <button className="buttonAppearance">Login</button>
+            <button>Information</button>
+            <button>Login</button>
           </Row>
         </Container>
       </div>
       <div>
         <Container>
           <Row className="rowBottom">
-            <Col>
+            <Col className="womanImg">
               <img
-                style={{
-                  display: "block",
-                  height: "660px",
-                  width: "749px",
-                  position: "relative",
-                  zIndex: "1",
-                }}
                 src={window.location.origin + "/welcome-lady1.png"}
                 alt="img"
               />
