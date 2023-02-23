@@ -67,13 +67,20 @@ const WelcomePage = () => {
             </Col>
             <Col>
               <div className="mainTextStyling">
-                <h5>Vandzsurak Production</h5>
-                <h2>Welcome to online border!</h2>
-                <p>
-                  Here you have a great possibility to cross an <br /> European
-                  border without big queues in <br /> several seconds!
-                </p>
-                <button>Register</button>
+                <div className="downInfo">
+                  <h5>Vandzsurak Production</h5>
+                  <h2>Welcome to online border!</h2>
+                  <p>
+                    Here you have a great possibility to cross an <br />{" "}
+                    European border without big queues in <br /> several
+                    seconds!
+                  </p>
+                </div>
+                <button className="pcVersion">Register</button>
+                <div className="mobileButtons">
+                  <button className="mobileVersion">Register</button>
+                  <button className="mobileVersion">Login</button>
+                </div>
               </div>
             </Col>
           </Row>
