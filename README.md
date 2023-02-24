@@ -1,6 +1,6 @@
 # European online border
 
-European online border is a brand new technology for crossing european borders with other non-european countries in several seconds. This application has three main pages:  
+European online border is a brand new technology for crossing european borders with other non-european countries in several seconds. This application has three main features:  
 
 
 ## Four main features
