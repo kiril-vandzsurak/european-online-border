@@ -2,11 +2,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
+import styles from "./WelcomePage.module.css";
 
 const WelcomePage = () => {
   return (
-    <div className="background">
-      <div className="circles">
+    <div className={styles.background}>
+      <div className={styles.circles}>
         <div></div>
         <div></div>
         <div></div>
@@ -18,9 +19,9 @@ const WelcomePage = () => {
         <div></div>
         <div></div>
       </div>
-      <div className="upperNavbar">
-        <Container className="containerWelcome">
-          <Row className="rowDirection">
+      <div className={styles.upperNavbar}>
+        <Container className={styles.containerWelcome}>
+          <Row className={styles.rowDirection}>
             <Col>
               <img
                 style={{
@@ -32,7 +33,7 @@ const WelcomePage = () => {
                 alt="img"
               />
             </Col>
-            <Col className="labelName">EUROPEAN BORDER CONTROL</Col>
+            <Col className={styles.labelName}>EUROPEAN BORDER CONTROL</Col>
             <Col>
               <img
                 style={{
@@ -46,12 +47,12 @@ const WelcomePage = () => {
               />
             </Col>
             <Col>
-              <button className="smallInfo">
+              <button className={styles.smallInfo}>
                 <span>i</span>
               </button>
             </Col>
           </Row>
-          <Row className="buttonsRow">
+          <Row className={styles.buttonsRow}>
             <button>Information</button>
             <button>Login</button>
           </Row>
@@ -59,16 +60,16 @@ const WelcomePage = () => {
       </div>
       <div>
         <Container>
-          <Row className="rowBottom">
-            <Col className="womanImg">
+          <Row className={styles.rowBottom}>
+            <Col className={styles.womanImg}>
               <img
                 src={window.location.origin + "/welcome-lady1.png"}
                 alt="img"
               />
             </Col>
             <Col>
-              <div className="mainTextStyling">
-                <div className="downInfo">
+              <div className={styles.mainTextStyling}>
+                <div className={styles.downInfo}>
                   <h5>Vandzsurak Production</h5>
                   <h2>Welcome to online border!</h2>
                   <p>
@@ -78,13 +79,13 @@ const WelcomePage = () => {
                   </p>
                 </div>
                 <Link to="/register" relative="path">
-                  <button className="pcVersion">Register</button>
+                  <button className={styles.pcVersion}>Register</button>
                 </Link>
-                <div className="mobileButtons">
+                <div className={styles.mobileButtons}>
                   <Link to="/register" relative="path">
-                    <button className="mobileVersion">Register</button>
+                    <button className={styles.mobileVersion}>Register</button>
                   </Link>
-                  <button className="mobileVersion">Login</button>
+                  <button className={styles.mobileVersion}>Login</button>
                 </div>
               </div>
             </Col>
