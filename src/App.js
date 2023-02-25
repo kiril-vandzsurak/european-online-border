@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./components/WelcomePage/WelcomePage.css";
+import "./components/RegisterPage/RegisterPage.css";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 import RegisterPage from "./components/RegisterPage/RegisterPage";
 
