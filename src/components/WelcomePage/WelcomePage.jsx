@@ -1,13 +1,11 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
-import styles from "./WelcomePage.module.css";
 
 const WelcomePage = () => {
   return (
-    <div className={styles.background}>
-      <div className={styles.circles}>
+    <div className="background">
+      <div className="circles">
         <div></div>
         <div></div>
         <div></div>
@@ -19,61 +17,57 @@ const WelcomePage = () => {
         <div></div>
         <div></div>
       </div>
-      <div className={styles.upperNavbar}>
-        <Container fluid className="d-flex justify-content-between">
-          <Row>
-            <Col className={styles.rowDirection}>
-              <div>
-                <img
-                  style={{
-                    display: "block",
-                    width: "58px",
-                    height: "58px",
-                  }}
-                  src={window.location.origin + "/european-union.png"}
-                  alt="img"
-                />
-              </div>
-              <div className={styles.labelName}>EUROPEAN BORDER CONTROL</div>
-              <div>
-                <img
-                  style={{
-                    display: "block",
-                    width: "50px",
-                    height: "50px",
-                    marginTop: "3px",
-                  }}
-                  src={window.location.origin + "/biometry.png"}
-                  alt="img"
-                />
-              </div>
+      <div className="upperNavbar">
+        <Container className="containerWelcome">
+          <Row className="rowDirection">
+            <Col>
+              <img
+                style={{
+                  display: "block",
+                  width: "58px",
+                  height: "58px",
+                }}
+                src={window.location.origin + "/european-union.png"}
+                alt="img"
+              />
+            </Col>
+            <Col className="labelName">EUROPEAN BORDER CONTROL</Col>
+            <Col>
+              <img
+                style={{
+                  display: "block",
+                  width: "50px",
+                  height: "50px",
+                  marginTop: "3px",
+                }}
+                src={window.location.origin + "/biometry.png"}
+                alt="img"
+              />
             </Col>
             <Col>
-              <button className={styles.smallInfo}>
+              <button className="smallInfo">
                 <span>i</span>
               </button>
             </Col>
           </Row>
-          <Row>
-            <div className="d-flex align-items-center mr-5">
-              <button className={styles.upperButtons}>Information</button>
-              <button className={styles.upperButtons}>Login</button>
-            </div>
+          <Row className="buttonsRow">
+            <button>Information</button>
+            <button>Login</button>
           </Row>
         </Container>
       </div>
       <div>
-        <Container fluid>
-          <Row className={styles.rowBottom}>
-            <Col className={styles.womanImg}>
+        <Container>
+          <Row className="rowBottom">
+            <Col className="womanImg">
               <img
                 src={window.location.origin + "/welcome-lady1.png"}
                 alt="img"
               />
             </Col>
-            <Col className="test">
-              <div className={styles.mainTextStyling}>
-                <div className={styles.downInfo}>
+            <Col>
+              <div className="mainTextStyling">
+                <div className="downInfo">
                   <h5>Vandzsurak Production</h5>
                   <h2>Welcome to online border!</h2>
                   <p>
@@ -82,14 +76,10 @@ const WelcomePage = () => {
                     seconds!
                   </p>
                 </div>
-                <Link to="/register" relative="path">
-                  <button className={styles.pcVersion}>Register</button>
-                </Link>
-                <div className={styles.mobileButtons}>
-                  <Link to="/register" relative="path">
-                    <button className={styles.mobileVersion}>Register</button>
-                  </Link>
-                  <button className={styles.mobileVersion}>Login</button>
+                <button className="pcVersion">Register</button>
+                <div className="mobileButtons">
+                  <button className="mobileVersion">Register</button>
+                  <button className="mobileVersion">Login</button>
                 </div>
               </div>
             </Col>
