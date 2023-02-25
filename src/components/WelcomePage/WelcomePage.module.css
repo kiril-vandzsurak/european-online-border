@@ -135,19 +135,18 @@
   font-family: "Phudu", cursive;
 }
 
-.containerWelcome {
+/* .containerWelcome {
   flex-direction: row;
   display: flex;
-  justify-content: space-between;
-}
+} */
 
-.buttonsRow {
+/* .buttonsRow {
   align-items: center;
   display: flex;
-  margin-right: 30px;
-}
+  margin-right: 20px;
+} */
 
-.buttonsRow button {
+.upperButtons {
   height: 40px;
   width: 170px;
   border: 1px grey solid;
@@ -188,6 +187,7 @@ h2 {
   font-family: "Raleway", sans-serif;
   margin: 0;
   letter-spacing: 1px;
+  font-weight: 900;
 }
 
 h5 {
@@ -196,7 +196,7 @@ h5 {
 }
 
 h2 {
-  font-size: 55px;
+  font-size: 50px;
   color: rgb(60, 60, 60);
   margin-top: 7px;
 }
@@ -285,6 +285,10 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
 
 .mobileButtons {
   display: none;
+}
+
+.test {
+  color: red;
 }
 
 /* Extra Small */
@@ -482,6 +486,12 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
   .labelName {
     font-size: 30px;
     width: 364px;
+  }
+}
+
+@media only screen and (min-width: 993px) and (max-width: 1023px) {
+  .test {
+    width: 30px;
   }
 }
 

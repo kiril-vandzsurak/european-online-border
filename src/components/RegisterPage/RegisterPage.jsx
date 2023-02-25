@@ -14,7 +14,7 @@ const RegisterPage = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 100);
   }, []);
 
   return (
@@ -76,13 +76,15 @@ const RegisterPage = () => {
                   </div>
                 </div>
               </Col>
+            </Row>
+            <Row>
               <Col>
                 <h3>Create an account</h3>
               </Col>
-            </Row>
-            <Row>
-              <Col></Col>
-              <Col></Col>
+              <div>
+                <Col></Col>
+                <Col></Col>
+              </div>
             </Row>
           </Container>
         </div>

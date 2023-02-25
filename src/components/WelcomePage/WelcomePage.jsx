@@ -20,31 +20,33 @@ const WelcomePage = () => {
         <div></div>
       </div>
       <div className={styles.upperNavbar}>
-        <Container className={styles.containerWelcome}>
-          <Row className={styles.rowDirection}>
-            <Col>
-              <img
-                style={{
-                  display: "block",
-                  width: "58px",
-                  height: "58px",
-                }}
-                src={window.location.origin + "/european-union.png"}
-                alt="img"
-              />
-            </Col>
-            <Col className={styles.labelName}>EUROPEAN BORDER CONTROL</Col>
-            <Col>
-              <img
-                style={{
-                  display: "block",
-                  width: "50px",
-                  height: "50px",
-                  marginTop: "3px",
-                }}
-                src={window.location.origin + "/biometry.png"}
-                alt="img"
-              />
+        <Container fluid className="d-flex justify-content-between">
+          <Row>
+            <Col className={styles.rowDirection}>
+              <div>
+                <img
+                  style={{
+                    display: "block",
+                    width: "58px",
+                    height: "58px",
+                  }}
+                  src={window.location.origin + "/european-union.png"}
+                  alt="img"
+                />
+              </div>
+              <div className={styles.labelName}>EUROPEAN BORDER CONTROL</div>
+              <div>
+                <img
+                  style={{
+                    display: "block",
+                    width: "50px",
+                    height: "50px",
+                    marginTop: "3px",
+                  }}
+                  src={window.location.origin + "/biometry.png"}
+                  alt="img"
+                />
+              </div>
             </Col>
             <Col>
               <button className={styles.smallInfo}>
@@ -52,14 +54,16 @@ const WelcomePage = () => {
               </button>
             </Col>
           </Row>
-          <Row className={styles.buttonsRow}>
-            <button>Information</button>
-            <button>Login</button>
+          <Row>
+            <div className="d-flex align-items-center mr-5">
+              <button className={styles.upperButtons}>Information</button>
+              <button className={styles.upperButtons}>Login</button>
+            </div>
           </Row>
         </Container>
       </div>
       <div>
-        <Container>
+        <Container fluid>
           <Row className={styles.rowBottom}>
             <Col className={styles.womanImg}>
               <img
@@ -67,7 +71,7 @@ const WelcomePage = () => {
                 alt="img"
               />
             </Col>
-            <Col>
+            <Col className="test">
               <div className={styles.mainTextStyling}>
                 <div className={styles.downInfo}>
                   <h5>Vandzsurak Production</h5>
