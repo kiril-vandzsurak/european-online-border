@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Link } from "react-router-dom";
 
 const WelcomePage = () => {
   return (
@@ -76,9 +77,13 @@ const WelcomePage = () => {
                     seconds!
                   </p>
                 </div>
-                <button className="pcVersion">Register</button>
+                <Link to="/register" relative="path">
+                  <button className="pcVersion">Register</button>
+                </Link>
                 <div className="mobileButtons">
-                  <button className="mobileVersion">Register</button>
+                  <Link to="/register" relative="path">
+                    <button className="mobileVersion">Register</button>
+                  </Link>
                   <button className="mobileVersion">Login</button>
                 </div>
               </div>
