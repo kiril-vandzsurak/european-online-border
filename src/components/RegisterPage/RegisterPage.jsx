@@ -6,9 +6,14 @@ import Col from "react-bootstrap/Col";
 import RingLoader from "react-spinners/RingLoader";
 import { Link } from "react-router-dom";
 import styles from "./RegisterPage.module.css";
+import Modal from "react-bootstrap/Modal";
 
 const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     setIsLoading(true);
@@ -77,14 +82,56 @@ const RegisterPage = () => {
                 </div>
               </Col>
             </Row>
+          </Container>
+          <Container>
             <Row>
               <Col>
                 <h3>Create an account</h3>
               </Col>
-              <div>
-                <Col></Col>
-                <Col></Col>
-              </div>
+            </Row>
+            <Row>
+              <form>
+                <Col>
+                  <label for="fname">First name:</label>
+                  <input type="text" id="fname" name="fname" />
+                  <label for="lname">Last name:</label>
+                  <input type="text" id="lname" name="lname" />
+                  <input type="submit" value="Submit" />
+                  <label for="fname">First name:</label>
+                  <input type="text" id="fname" name="fname" />
+                  <label for="lname">Last name:</label>
+                  <input type="text" id="lname" name="lname" />
+                  <input type="submit" value="Submit" />
+                </Col>
+                <Col>
+                  <label for="fname">First name:</label>
+                  <input type="text" id="fname" name="fname" />
+                  <label for="lname">Last name:</label>
+                  <input type="text" id="lname" name="lname" />
+                  <input type="submit" value="Submit" />
+                  <label for="fname">First name:</label>
+                  <input type="text" id="fname" name="fname" />
+                  <label for="lname">Last name:</label>
+                  <input type="text" id="lname" name="lname" />
+                  <input type="submit" value="Submit" />
+                </Col>
+              </form>
+            </Row>
+            <Row>
+              <button onClick={handleShow}>Launch demo modal</button>
+
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  Woohoo, you're reading this text in a modal!
+                </Modal.Body>
+                <Modal.Footer>
+                  <button onClick={handleClose}>Close</button>
+                  <button onClick={handleClose}>Save Changes</button>
+                </Modal.Footer>
+              </Modal>
             </Row>
           </Container>
         </div>
