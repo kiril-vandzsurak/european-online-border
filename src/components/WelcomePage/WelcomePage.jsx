@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./WelcomePage.css";
+import { Modal } from "bootstrap";
 
 const WelcomePage = () => {
   return (
@@ -111,7 +112,7 @@ const WelcomePage = () => {
                     Register
                   </button>
                 </Link>
-                <Link to="/register" relative="path">
+                <Link to="/login" relative="path">
                   <button className="downButtonsWelcome mobileLoginButton">
                     Login
                   </button>
