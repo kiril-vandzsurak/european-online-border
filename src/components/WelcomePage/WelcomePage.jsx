@@ -1,6 +1,9 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import "./WelcomePage.css";
 
 const WelcomePage = () => {
   return (
@@ -17,11 +20,12 @@ const WelcomePage = () => {
         <div></div>
         <div></div>
       </div>
-      <div className="upperNavbar">
-        <Container className="containerWelcome">
-          <Row className="rowDirection">
-            <Col>
+      <Container style={{ width: "95%" }} fluid>
+        <Row className="mt-3 mobileVersionNav">
+          <Col className="d-flex align-items-center upperNavMobile">
+            <div className="mainLabel">
               <img
+                className="logoSmallEuro"
                 style={{
                   display: "block",
                   width: "58px",
@@ -30,10 +34,9 @@ const WelcomePage = () => {
                 src={window.location.origin + "/european-union.png"}
                 alt="img"
               />
-            </Col>
-            <Col className="labelName">EUROPEAN BORDER CONTROL</Col>
-            <Col>
+              <span className="mainText">EUROPEAN BORDER CONTROL</span>
               <img
+                className="logoSmallBio"
                 style={{
                   display: "block",
                   width: "50px",
@@ -43,49 +46,81 @@ const WelcomePage = () => {
                 src={window.location.origin + "/biometry.png"}
                 alt="img"
               />
-            </Col>
-            <Col>
-              <button className="smallInfo">
-                <span>i</span>
-              </button>
-            </Col>
-          </Row>
-          <Row className="buttonsRow">
-            <button>Information</button>
-            <button>Login</button>
-          </Row>
-        </Container>
-      </div>
-      <div>
-        <Container>
-          <Row className="rowBottom">
-            <Col className="womanImg">
-              <img
-                src={window.location.origin + "/welcome-lady1.png"}
-                alt="img"
-              />
-            </Col>
-            <Col>
-              <div className="mainTextStyling">
-                <div className="downInfo">
-                  <h5>Vandzsurak Production</h5>
-                  <h2>Welcome to online border!</h2>
-                  <p>
-                    Here you have a great possibility to cross an <br />{" "}
-                    European border without big queues in <br /> several
-                    seconds!
-                  </p>
-                </div>
-                <button className="pcVersion">Register</button>
-                <div className="mobileButtons">
-                  <button className="mobileVersion">Register</button>
-                  <button className="mobileVersion">Login</button>
-                </div>
+            </div>
+            <Button
+              style={{
+                display: "none",
+                borderRadius: "50%",
+                border: "5px #606060 solid",
+              }}
+              variant="outline-dark"
+              className="smallInfo"
+            >
+              <span>i</span>
+            </Button>
+          </Col>
+          <Col className="btnCol">
+            <div className="navButtons">
+              <Button
+                style={{
+                  fontSize: "20px",
+                  width: "150px",
+                  borderRadius: "50px",
+                  height: "46px",
+                  marginRight: "20px",
+                }}
+                variant="outline-dark"
+              >
+                Information
+              </Button>
+              <Button
+                style={{
+                  fontSize: "20px",
+                  width: "150px",
+                  borderRadius: "50px",
+                  height: "46px",
+                }}
+                variant="outline-dark"
+              >
+                Login
+              </Button>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="colWidth centerMobileWelcome">
+            <img
+              className="welcomeLady"
+              src={window.location.origin + "/welcome-lady1.png"}
+              alt="img"
+            />
+          </Col>
+          <Col className="colWidth centerMobileWelcome">
+            <div className="mainTextStyling">
+              <div className="downInfo">
+                <h5 className="WelcomeH5">Vandzsurak Production</h5>
+                <h2 className="WelcomeH2">Welcome to online border!</h2>
+                <p className="WelcomeP">
+                  Here you have a great possibility to cross an <br /> European
+                  border without big queues in <br /> several seconds!
+                </p>
               </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+              <div className="mobileDownButtonsWelcome">
+                <Link to="/register" relative="path">
+                  <button className="downButtonsWelcome pcVersion">
+                    Register
+                  </button>
+                </Link>
+                <Link to="/register" relative="path">
+                  <button className="downButtonsWelcome mobileLoginButton">
+                    Login
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
