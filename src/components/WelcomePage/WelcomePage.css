@@ -116,98 +116,54 @@
   top: 0;
 }
 
-.upperNavbar {
-  width: 100%;
-  height: 85px;
-}
-
-.rowDirection {
-  display: flex;
-  flex-direction: row;
-  margin-left: 60px;
-  height: 111px;
-  align-items: center;
-}
-
-.labelName {
+.mainText {
+  display: block;
+  margin-inline: 5px;
   font-size: 33px;
-  margin-inline: 10px;
   font-family: "Phudu", cursive;
 }
 
-.containerWelcome {
-  flex-direction: row;
-  display: flex;
-  justify-content: space-between;
-}
-
-.buttonsRow {
-  align-items: center;
-  display: flex;
-  margin-right: 30px;
-}
-
-.buttonsRow button {
-  height: 40px;
-  width: 170px;
-  border: 1px grey solid;
-  border-radius: 50px;
-  background-color: transparent;
-  margin-inline: 10px;
-  font-family: "Raleway", sans-serif;
-  font-size: 19px;
-}
-
-/* .buttonAppearance {
-  height: 40px;
-  width: 170px;
-  border: 1px grey solid;
-  border-radius: 50px;
-  background-color: transparent;
-  margin-inline: 10px;
-  font-family: "Raleway", sans-serif;
-  font-size: 19px;
-  cursor: pointer;
-} */
-
-.rowBottom {
-  display: flex;
-  flex-direction: row;
+.welcomeLady {
+  width: 749px;
+  height: 663px;
+  position: relative;
+  z-index: 1;
 }
 
 .mainTextStyling {
   text-align: center;
   position: relative;
   top: 99px;
-  right: 149px;
+  right: 90px;
   z-index: 1;
 }
 
-h5,
-h2 {
+.WelcomeH5 {
   font-family: "Raleway", sans-serif;
   margin: 0;
   letter-spacing: 1px;
-}
-
-h5 {
   color: rgb(0, 200, 198);
-  font-size: 29px;
+  font-size: 27px;
+  font-weight: 900;
 }
 
-h2 {
-  font-size: 55px;
+.WelcomeH2 {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: 45px;
   color: rgb(60, 60, 60);
   margin-top: 7px;
+  font-weight: 900;
 }
 
-p {
+.WelcomeP {
   color: rgb(60, 60, 60);
-  font-size: 35px;
+  font-size: 31px;
   font-family: "Raleway", sans-serif;
 }
 
-.mainTextStyling button {
+.downButtonsWelcome {
   height: 66px;
   width: 262px;
   font-family: "Raleway", sans-serif;
@@ -221,58 +177,33 @@ p {
   );
   font-size: 20px;
   cursor: pointer;
-  /* animation-name: example;
-  animation-duration: 5s; */
+  margin-top: 17px;
 }
 
-.womanImg > img {
+.downButtonsWelcome:hover {
+  border: 2px black solid;
+}
+
+.mainLabel {
+  display: flex;
+  align-items: center;
+}
+
+.navButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.btnCol {
   display: block;
-  width: 749px;
-  height: 657px;
-  margin-top: 3px;
-  position: relative;
-  z-index: 1;
 }
-
-/* @keyframes example {
-  from {
-    background: rgb(0, 241, 145);
-    background: linear-gradient(
-      126deg,
-      rgba(0, 241, 145, 1) 27%,
-      rgba(0, 200, 198, 1) 75%
-    );
-  }
-  to {
-    background: rgb(0, 241, 145);
-    background: linear-gradient(
-      -126deg,
-      rgba(0, 241, 145, 1) 27%,
-      rgba(0, 200, 198, 1) 75%
-    );
-  }
-} */
-
-.mainTextStyling button:hover {
-  border: 2px black solid;
-}
-
-.buttonAppearance:hover {
-  border: 2px black solid;
-}
-
-/* background: rgb(0,241,145);
-background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%); */
 
 .smallInfo {
-  border-radius: 50%;
   margin-left: 20px;
-  border: 5px #606060 solid;
   width: 70px;
   height: 70px;
   text-align: center;
-  background-color: transparent;
-  display: none;
 }
 
 .smallInfo span {
@@ -281,29 +212,44 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
   display: block;
   font-family: "Raleway", sans-serif;
   font-weight: 900;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.mobileButtons {
+.mobileLoginButton {
   display: none;
 }
 
-/* Extra Small */
-@media only screen and (max-width: 576px) {
-  .labelName {
-    font-size: 23px;
-  }
+/* response mt-2 d-flex justify-content-end */
 
-  .rowDirection {
-    margin-left: 0px;
-  }
-
-  .buttonsRow {
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 576px) {
+  .navButtons {
     display: none;
   }
-  .containerWelcome {
+
+  .btnCol {
+    display: none;
+  }
+
+  .upperNavMobile {
     justify-content: center;
+  }
+  .smallInfo {
+    display: block !important;
+    height: 42px;
+    width: 42px;
+  }
+
+  .smallInfo > span {
+    font-size: 27px;
+  }
+
+  .mobileVersionNav {
     border: 6px #87af8e solid;
     border-radius: 20px;
+    height: 100px;
     background-color: #ecf4ee;
     z-index: 1;
     position: relative;
@@ -311,20 +257,10 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     -moz-box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
     box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
   }
-  .smallInfo {
-    display: block;
-  }
 
-  .womanImg > img {
-    width: 335px;
-    height: 316px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 34px;
-  }
-
-  .rowBottom {
-    flex-direction: column;
+  .centerMobileWelcome {
+    display: flex;
+    justify-content: center;
   }
 
   .mainTextStyling {
@@ -332,18 +268,13 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     right: 0px;
   }
 
-  .pcVersion {
-    display: none;
-  }
-
-  .mobileButtons {
-    display: flex;
-    flex-direction: column;
+  .background {
+    height: 874px;
   }
 
   .downInfo {
-    width: 90%;
-    height: 208px;
+    width: 307px;
+    height: 244px;
     margin-inline: auto;
     border: 6px #87af8e solid;
     border-radius: 20px;
@@ -355,49 +286,77 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
   }
 
-  h2 {
-    font-size: 22px;
-    margin-top: 17px;
-  }
-
-  h5 {
-    margin-top: 26px;
+  .WelcomeH5 {
+    margin-top: 38px;
     font-size: 21px;
   }
 
-  p {
-    font-size: 16px;
-  }
-
-  .background {
-    height: 915px;
-  }
-
-  .mainTextStyling button {
-    margin-inline: auto;
-    width: 344px;
-    height: 82px;
-    font-size: 29px;
-  }
-
-  .mobileVersion {
-    margin-top: 32px;
-  }
-}
-
-/* Small <-> Medium */
-@media only screen and (min-width: 576px) and (max-width: 768px) {
-  .labelName {
+  .WelcomeH2 {
     font-size: 22px;
   }
 
-  .buttonsRow {
+  .WelcomeP {
+    font-size: 14px;
+  }
+
+  .downButtonsWelcome {
+    height: 69px;
+    width: 294px;
+    font-size: 31px;
+    margin-top: 37px;
+  }
+
+  .mobileDownButtonsWelcome {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileLoginButton {
+    display: inline-block;
+  }
+
+  .mainText {
+    font-size: 14px;
+    font-weight: 900;
+    width: 115px !important;
+  }
+
+  .logoSmallEuro {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .logoSmallBio {
+    width: 43px !important;
+    height: 43px !important;
+  }
+
+  .welcomeLady {
+    width: 268px;
+    height: 258px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .navButtons {
     display: none;
   }
-  .containerWelcome {
+
+  .btnCol {
+    display: none;
+  }
+
+  .upperNavMobile {
     justify-content: center;
+  }
+  .smallInfo {
+    display: block !important;
+  }
+
+  .mobileVersionNav {
     border: 6px #87af8e solid;
     border-radius: 20px;
+    height: 100px;
     background-color: #ecf4ee;
     z-index: 1;
     position: relative;
@@ -405,20 +364,10 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     -moz-box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
     box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
   }
-  .smallInfo {
-    display: block;
-  }
 
-  .womanImg > img {
-    width: 542px;
-    height: 471px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 34px;
-  }
-
-  .rowBottom {
-    flex-direction: column;
+  .centerMobileWelcome {
+    display: flex;
+    justify-content: center;
   }
 
   .mainTextStyling {
@@ -426,18 +375,13 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     right: 0px;
   }
 
-  .pcVersion {
-    display: none;
-  }
-
-  .mobileButtons {
-    display: flex;
-    flex-direction: column;
+  .background {
+    height: 1257px;
   }
 
   .downInfo {
-    width: 90%;
-    height: 304px;
+    width: 534px;
+    height: 325px;
     margin-inline: auto;
     border: 6px #87af8e solid;
     border-radius: 20px;
@@ -449,51 +393,78 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
   }
 
-  h2 {
-    font-size: 35px;
-    margin-top: 19px;
+  .WelcomeH5 {
+    margin-top: 38px;
+    font-size: 21px;
   }
 
-  h5 {
-    margin-top: 50px;
+  .WelcomeH2 {
+    font-size: 38px;
   }
 
-  p {
+  .WelcomeP {
     font-size: 23px;
   }
 
-  .background {
-    height: 1196px;
+  .downButtonsWelcome {
+    height: 94px;
+    width: 346px;
+    font-size: 31px;
+    margin-top: 37px;
   }
 
-  .mainTextStyling button {
-    margin-inline: auto;
-    width: 384px;
-    height: 81px;
-    font-size: 30px;
+  .mobileDownButtonsWelcome {
+    display: flex;
+    flex-direction: column;
   }
 
-  .mobileVersion {
-    margin-top: 49px;
+  .mobileLoginButton {
+    display: inline-block;
+  }
+
+  .mainText {
+    font-size: 18px;
+    font-weight: 900;
+    width: 221px !important;
+  }
+
+  .logoSmallEuro {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .logoSmallBio {
+    width: 43px !important;
+    height: 43px !important;
+  }
+
+  .welcomeLady {
+    width: 559px;
+    height: 501px;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 888px) {
-  .labelName {
-    font-size: 30px;
-    width: 364px;
-  }
-}
-
-/* Medium <-> Large */
+/* Small devices (landscape phones, less than 768px) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  .buttonsRow {
+  .navButtons {
     display: none;
   }
-  .containerWelcome {
+
+  .btnCol {
+    display: none;
+  }
+
+  .upperNavMobile {
     justify-content: center;
+  }
+  .smallInfo {
+    display: block !important;
+  }
+
+  .mobileVersionNav {
     border: 6px #87af8e solid;
     border-radius: 20px;
+    height: 100px;
     background-color: #ecf4ee;
     z-index: 1;
     position: relative;
@@ -501,20 +472,10 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     -moz-box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
     box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
   }
-  .smallInfo {
-    display: block;
-  }
 
-  .womanImg > img {
-    width: 728px;
-    height: 650px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 34px;
-  }
-
-  .rowBottom {
-    flex-direction: column;
+  .centerMobileWelcome {
+    display: flex;
+    justify-content: center;
   }
 
   .mainTextStyling {
@@ -522,18 +483,13 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     right: 0px;
   }
 
-  .pcVersion {
-    display: none;
-  }
-
-  .mobileButtons {
-    display: flex;
-    flex-direction: column;
+  .background {
+    height: 1396px;
   }
 
   .downInfo {
-    width: 90%;
-    height: 344px;
+    width: 737px;
+    height: 325px;
     margin-inline: auto;
     border: 6px #87af8e solid;
     border-radius: 20px;
@@ -545,63 +501,74 @@ background: linear-gradient(307deg, rgba(0,241,145,1) 27%, rgba(0,200,198,1) 75%
     box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
   }
 
-  h2 {
-    font-size: 42px;
-    margin-top: 19px;
+  .WelcomeH5 {
+    margin-top: 38px;
   }
 
-  h5 {
-    margin-top: 56px;
+  .downButtonsWelcome {
+    height: 94px;
+    width: 346px;
+    font-size: 31px;
+    margin-top: 37px;
   }
 
-  p {
-    font-size: 28px;
+  .mobileDownButtonsWelcome {
+    display: flex;
+    flex-direction: column;
   }
 
-  .background {
-    height: 1410px;
-  }
-
-  .mainTextStyling button {
-    margin-inline: auto;
-    width: 500px;
-    height: 100px;
-    font-size: 41px;
-  }
-
-  .mobileVersion {
-    margin-top: 32px;
+  .mobileLoginButton {
+    display: inline-block;
   }
 }
 
-/* Large <-> Extra Large */
+/* response */
+
+/* Medium devices (tablets, less than 992px) */
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .mainTextStyling {
-    right: 82px;
+    right: 0px;
+    top: 193px;
   }
-  h5 {
+  .WelcomeH5 {
     font-size: 20px;
   }
-  h2 {
-    font-size: 46px;
+  .WelcomeH2 {
+    font-size: 38px;
   }
-  p {
-    font-size: 25px;
-  }
-
-  .womanImg > img {
-    height: 656px;
-    width: 713px;
+  .WelcomeP {
+    font-size: 21px;
   }
 
-  .labelName {
+  .welcomeLady {
+    height: 663px;
+    width: 725px;
+    position: relative;
+    right: 65px;
+  }
+
+  .mainText {
     width: 265px;
+  }
+
+  .colWidth {
+    width: 50% !important;
   }
 }
 
-/* Extra Large */
-@media only screen and (min-width: 1200px) {
-  .labelName {
+@media (min-width: 1200px) and (max-width: 1285px) {
+  .mainTextStyling {
+    right: -15px;
+  }
+
+  .WelcomeP {
+    font-size: 26px;
+  }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1285px) {
+  .mainText {
     width: 399px;
   }
 }
