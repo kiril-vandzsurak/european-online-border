@@ -541,7 +541,7 @@
   }
 
   .welcomeLady {
-    height: 663px;
+    height: 630px;
     width: 725px;
     position: relative;
     right: 65px;
@@ -567,8 +567,29 @@
 }
 
 /* Large devices (desktops, less than 1200px) */
-@media (max-width: 1285px) {
+@media (min-width: 1285px) and (min-height: 1009px) {
   .mainText {
     width: 399px;
+  }
+
+  .welcomeLady {
+    width: 937px;
+    height: 927px;
+  }
+
+  .mainTextStyling {
+    top: 165px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1285px) and (min-height: 1009px) {
+  .mainTextStyling {
+    right: -22px;
+    top: 193px;
+  }
+
+  .welcomeLady {
+    height: 894px;
+    width: 836px;
   }
 }
