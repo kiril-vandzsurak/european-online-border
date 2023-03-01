@@ -62,11 +62,13 @@ video {
 
 .marginEmailLogin {
   margin-right: 20px;
+  margin-bottom: 0px !important;
   font-family: "Raleway", sans-serif;
 }
 
 .marginPasswordLogin {
   margin-right: 52px;
+  margin-bottom: 0px !important;
   font-family: "Raleway", sans-serif;
 }
 
@@ -108,4 +110,5 @@ video {
 .downTextLogin {
   display: block;
   width: 488px;
+  opacity: 0.5;
 }
