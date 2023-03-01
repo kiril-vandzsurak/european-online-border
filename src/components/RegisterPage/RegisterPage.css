@@ -16,7 +16,7 @@
   top: 25px;
 }
 
-.background {
+.backgroundRegister {
   background: rgb(204, 228, 208);
   background: linear-gradient(
     -39deg,
@@ -50,19 +50,14 @@
   align-items: center;
 }
 
-.backButton {
+.backButtonRegister {
   border: none;
   background-color: transparent;
   margin-inline: 54px;
   cursor: pointer;
 }
 
-h3 {
-  font-size: 30px;
-  font-family: "Raleway", sans-serif;
-}
-
-.labelName {
+.labelNameRegister {
   font-size: 33px;
   margin-inline: 10px;
   font-family: "Phudu", cursive;

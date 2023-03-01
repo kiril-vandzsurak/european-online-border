@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import RingLoader from "react-spinners/RingLoader";
 import { Link } from "react-router-dom";
-import styles from "./RegisterPage.module.css";
+import "./RegisterPage.css";
 
 const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,21 +22,21 @@ const RegisterPage = () => {
       {isLoading ? (
         <div>
           <RingLoader
-            className={styles.loading}
+            className="loading"
             color="#36d7b7"
             size={200}
             loading={isLoading}
           />
-          <p className={styles.loadingText}>Loading...</p>
+          <p className="loadingText">Loading...</p>
         </div>
       ) : (
-        <div className={styles.background}>
+        <div className="backgroundRegister">
           <Container>
             <Row>
               <Col>
-                <div className={styles.rowDirection}>
+                <div className="rowDirection">
                   <Link to="/" relative="path">
-                    <button className={styles.backButton}>
+                    <button className="backButtonRegister">
                       <img
                         style={{
                           display: "block",
@@ -59,7 +59,7 @@ const RegisterPage = () => {
                       alt="img"
                     />
                   </div>
-                  <div className={styles.labelName}>
+                  <div className="labelNameRegister">
                     EUROPEAN BORDER CONTROL
                   </div>
                   <div>
