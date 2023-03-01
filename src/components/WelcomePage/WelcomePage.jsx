@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./WelcomePage.css";
-import { Modal } from "bootstrap";
+//import { Modal } from "bootstrap";
 
 const WelcomePage = () => {
   return (
