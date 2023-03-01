@@ -8,3 +8,32 @@ video {
   height: 100%;
   object-fit: cover;
 }
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+}
+
+.rowDirection {
+  display: flex;
+  flex-direction: row;
+  margin-left: 60px;
+  height: 111px;
+  align-items: center;
+}
+
+.backButtonRegister {
+  border: none;
+  background-color: transparent;
+  margin-inline: 54px;
+  cursor: pointer;
+}
+
+.labelNameRegister {
+  font-size: 33px;
+  margin-inline: 10px;
+  font-family: "Phudu", cursive;
+}
