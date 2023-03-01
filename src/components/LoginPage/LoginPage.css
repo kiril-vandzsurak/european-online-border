@@ -92,6 +92,10 @@ video {
   color: black;
 }
 
+.loginBtn:hover {
+  border: 2px black solid !important;
+}
+
 .h1Login {
   margin-top: 56px;
   font-weight: bold;
