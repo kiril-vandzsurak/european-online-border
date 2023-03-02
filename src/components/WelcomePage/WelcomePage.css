@@ -163,6 +163,20 @@
   font-family: "Raleway", sans-serif;
 }
 
+.hoverBtnWelcome {
+  background-color: transparent !important;
+  color: black !important;
+}
+
+.hoverBtnWelcome:hover {
+  background: rgb(0, 241, 145) !important;
+  background: linear-gradient(
+    126deg,
+    rgba(0, 241, 145, 1) 27%,
+    rgba(0, 200, 198, 1) 75%
+  ) !important;
+}
+
 .downButtonsWelcome {
   height: 66px;
   width: 262px;

@@ -144,6 +144,7 @@ const WelcomePage = () => {
                   zIndex: "1",
                 }}
                 variant="outline-dark"
+                className="hoverBtnWelcome"
                 onClick={() => handleShow()}
               >
                 Information
@@ -158,6 +159,7 @@ const WelcomePage = () => {
                     position: "relative",
                     zIndex: "1",
                   }}
+                  className="hoverBtnWelcome"
                   variant="outline-dark"
                 >
                   Login
