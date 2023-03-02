@@ -69,6 +69,8 @@ const WelcomePage = () => {
                   borderRadius: "50px",
                   height: "46px",
                   marginRight: "20px",
+                  position: "relative",
+                  zIndex: "1",
                 }}
                 variant="outline-dark"
               >
@@ -80,6 +82,8 @@ const WelcomePage = () => {
                   width: "150px",
                   borderRadius: "50px",
                   height: "46px",
+                  position: "relative",
+                  zIndex: "1",
                 }}
                 variant="outline-dark"
               >
