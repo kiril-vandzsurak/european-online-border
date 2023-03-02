@@ -4,11 +4,26 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./WelcomePage.css";
-//import { Modal } from "bootstrap";
+import { useState } from "react";
+import { Modal } from "react-bootstrap";
 
 const WelcomePage = () => {
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+
+  function handleShow() {
+    setFullscreen(true);
+    setShow(true);
+  }
+
   return (
     <div className="background">
+      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Modal body content</Modal.Body>
+      </Modal>
       <div className="circles">
         <div></div>
         <div></div>
@@ -73,6 +88,7 @@ const WelcomePage = () => {
                   zIndex: "1",
                 }}
                 variant="outline-dark"
+                onClick={() => handleShow()}
               >
                 Information
               </Button>
