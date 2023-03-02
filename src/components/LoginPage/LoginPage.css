@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+
+.backgroundLogin {
+  width: 100%;
+  height: 100vh;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(30%);
+}
+
+.contentLogin {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+}
+
+.rowDirectionLogin {
+  display: flex;
+  flex-direction: row;
+  margin-right: 75px;
+  height: 111px;
+  align-items: center;
+}
+
+.backButtonLogin {
+  border: none;
+  background-color: transparent;
+  margin-inline: 54px;
+  cursor: pointer;
+}
+
+.labelNameLogin {
+  font-size: 33px;
+  margin-inline: 10px;
+  font-family: "Phudu", cursive;
+  color: white;
+}
+
+.formLogin {
+  width: 750px;
+  height: 600px;
+  background-color: #ffffff;
+  border: 6px #87af8e solid;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
+  box-shadow: 0px 4px 21px 3px rgba(66, 68, 90, 1);
+}
+
+.inputLogin {
+  border: 1px black solid !important;
+  width: 400px !important;
+  height: 52px !important;
+  border-radius: 50px !important;
+}
+
+.marginEmailLogin {
+  margin-right: 20px;
+  margin-bottom: 0px !important;
+  font-family: "Raleway", sans-serif;
+}
+
+.marginPasswordLogin {
+  margin-right: 52px;
+  margin-bottom: 0px !important;
+  font-family: "Raleway", sans-serif;
+}
+
+.loginBtn {
+  height: 66px;
+  width: 350px;
+  font-family: "Raleway", sans-serif !important;
+  border: none !important;
+  border-radius: 25px !important;
+  background: rgb(0, 241, 145);
+  background: linear-gradient(
+    126deg,
+    rgba(0, 241, 145, 1) 27%,
+    rgba(0, 200, 198, 1) 75%
+  );
+  font-size: 20px !important;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.loginBtn > span {
+  color: black;
+}
+
+.loginBtn:hover {
+  border: 2px black solid !important;
+}
+
+.h1Login {
+  margin-top: 56px;
+  font-weight: bold;
+}
+
+.inputMarginsLogin {
+  margin-top: 48px;
+}
+
+.downTextLogin {
+  display: block;
+  width: 488px;
+  opacity: 0.5;
+}
