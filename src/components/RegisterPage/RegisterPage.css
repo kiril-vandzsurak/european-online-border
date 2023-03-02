@@ -45,7 +45,6 @@
 .rowDirection {
   display: flex;
   flex-direction: row;
-  margin-left: 60px;
   height: 111px;
   align-items: center;
 }
@@ -61,4 +60,64 @@
   font-size: 33px;
   margin-inline: 10px;
   font-family: "Phudu", cursive;
+}
+
+.inputLookRegister {
+  width: 300px !important;
+  height: 54px !important;
+  border-radius: 30px !important;
+}
+
+.h1Register {
+  margin-left: 232px;
+  width: 400px !important;
+}
+
+.ladyRegister {
+  width: 600px;
+  height: 621px;
+  position: absolute;
+  top: 124px;
+  right: 0;
+  z-index: 1;
+}
+
+.inputFlexRegister {
+  display: flex;
+  align-items: baseline;
+  margin-top: 50px;
+}
+
+.confirmRegisterButton {
+  height: 66px;
+  width: 262px;
+  font-family: "Raleway", sans-serif !important;
+  border: none !important;
+  border-radius: 50px !important;
+  background: rgb(0, 241, 145);
+  background: linear-gradient(
+    126deg,
+    rgba(0, 241, 145, 1) 27%,
+    rgba(0, 200, 198, 1) 75%
+  );
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 35px;
+  margin-left: 300px;
+}
+
+.confirmRegisterButton > span {
+  color: black;
+}
+
+.confirmRegisterButton:hover {
+  border: 2px black solid !important;
+}
+
+.downTextRegister {
+  display: block;
+  width: 375px;
+  opacity: 0.5;
+  margin-left: 245px;
+  margin-top: 39px;
 }
