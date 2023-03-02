@@ -2,12 +2,28 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import "./WelcomePage.css";
+import { useState } from "react";
+import { Modal } from "react-bootstrap";
 
 const WelcomePage = () => {
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+
+  function handleShow() {
+    setFullscreen(true);
+    setShow(true);
+  }
+
   return (
     <div className="background">
+      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Modal body content</Modal.Body>
+      </Modal>
       <div className="circles">
         <div></div>
         <div></div>
@@ -68,8 +84,11 @@ const WelcomePage = () => {
                   borderRadius: "50px",
                   height: "46px",
                   marginRight: "20px",
+                  position: "relative",
+                  zIndex: "1",
                 }}
                 variant="outline-dark"
+                onClick={() => handleShow()}
               >
                 Information
               </Button>
@@ -79,6 +98,8 @@ const WelcomePage = () => {
                   width: "150px",
                   borderRadius: "50px",
                   height: "46px",
+                  position: "relative",
+                  zIndex: "1",
                 }}
                 variant="outline-dark"
               >
@@ -111,7 +132,7 @@ const WelcomePage = () => {
                     Register
                   </button>
                 </Link>
-                <Link to="/register" relative="path">
+                <Link to="/login" relative="path">
                   <button className="downButtonsWelcome mobileLoginButton">
                     Login
                   </button>
