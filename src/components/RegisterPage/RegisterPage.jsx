@@ -188,7 +188,7 @@ const RegisterPage = () => {
             <div>
               <img
                 className="ladyRegister"
-                src={window.location.origin + "/welcome-lady1.png"}
+                src={window.location.origin + "/register-lady.png"}
                 alt="img"
               />
             </div>
