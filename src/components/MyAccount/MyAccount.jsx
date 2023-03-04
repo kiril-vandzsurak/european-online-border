@@ -124,7 +124,7 @@ const MyAccount = () => {
                     style={{
                       width: "600px",
                       height: "238px",
-                      backgroundColor: "white",
+                      backgroundColor: "rgb(233 255 236)",
                       borderRadius: "25px",
                       marginTop: "30px",
                       marginBottom: "30px",
@@ -137,7 +137,7 @@ const MyAccount = () => {
                     style={{
                       width: "600px",
                       height: "238px",
-                      backgroundColor: "white",
+                      backgroundColor: "rgb(233 255 236)",
                       borderRadius: "25px",
                     }}
                     className="shadowInfoAccount"
