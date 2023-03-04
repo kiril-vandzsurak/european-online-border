@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+
+.menuButtons {
+  width: 100% !important;
+  height: 62px !important;
+  margin-top: 10px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: black !important;
+  font-family: "Raleway", sans-serif !important;
+}
+
+.menuButtons:hover {
+  font-size: 20px;
+  background-color: #c8ffd1 !important;
+}
+
+.menuButtons > img:hover {
+  width: 300px;
+}
+
+.buttonName {
+  margin-left: 10px;
+}
