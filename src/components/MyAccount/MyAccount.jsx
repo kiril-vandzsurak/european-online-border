@@ -1,10 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import "./MyAccount.css";
+import { useState } from "react";
 
 const MyAccount = () => {
+  const [test, setTest] = useState("test");
+
   return (
     <div>
       <Container fluid>
@@ -16,6 +19,7 @@ const MyAccount = () => {
                 height: "100vh",
                 backgroundColor: "#f8fff9",
                 borderRadius: "20px",
+                paddingTop: "14px",
               }}
             >
               <Button className="menuButtons">
@@ -27,7 +31,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/travelHistory.png"}
+                    src={window.location.origin + "/newTravel.png"}
                     alt="img"
                   />
                   <span className="buttonName">New Travel</span>
@@ -57,7 +61,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/travelHistory.png"}
+                    src={window.location.origin + "/information.png"}
                     alt="img"
                   />
                   <span className="buttonName">Information</span>
@@ -72,7 +76,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/travelHistory.png"}
+                    src={window.location.origin + "/logout.png"}
                     alt="img"
                   />
                   <span className="buttonName">Logout</span>
@@ -80,7 +84,75 @@ const MyAccount = () => {
               </Button>
             </div>
           </Col>
-          <Col lg={10}></Col>
+          <Col lg={10} className="mainPageBackground">
+            <Container>
+              <Row>
+                <div className="mainLabel justify-content-center mt-3">
+                  <img
+                    className="logoSmallEuro"
+                    style={{
+                      display: "block",
+                      width: "58px",
+                      height: "58px",
+                    }}
+                    src={window.location.origin + "/european-union.png"}
+                    alt="img"
+                  />
+                  <span className="mainText">EUROPEAN BORDER CONTROL</span>
+                  <img
+                    className="logoSmallBio"
+                    style={{
+                      display: "block",
+                      width: "50px",
+                      height: "50px",
+                      marginTop: "3px",
+                    }}
+                    src={window.location.origin + "/biometry.png"}
+                    alt="img"
+                  />
+                </div>
+              </Row>
+              <Row>
+                <p className="accountWelcomeText">
+                  We are glad to welcome you <span>USER</span> in your personal
+                  account
+                </p>
+              </Row>
+              <Row>
+                <Col>
+                  <div
+                    style={{
+                      width: "600px",
+                      height: "238px",
+                      backgroundColor: "white",
+                      borderRadius: "25px",
+                      marginTop: "30px",
+                      marginBottom: "30px",
+                    }}
+                    className="shadowInfoAccount"
+                  >
+                    <p>{test}</p>
+                  </div>
+                  <div
+                    style={{
+                      width: "600px",
+                      height: "238px",
+                      backgroundColor: "white",
+                      borderRadius: "25px",
+                    }}
+                    className="shadowInfoAccount"
+                  ></div>
+                </Col>
+                <Col>
+                  <img
+                    className="accountLady"
+                    src={window.location.origin + "/account-lady.png"}
+                    alt="img"
+                  />
+                </Col>
+              </Row>
+            </Container>
+          </Col>
         </Row>
       </Container>
     </div>
