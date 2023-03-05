@@ -4,12 +4,108 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "./MyAccount.css";
 import { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 
 const MyAccount = () => {
-  const [test, setTest] = useState("test");
+  const [showPersonal, setShowPersonal] = useState(false);
+  const [showPassport, setShowPassport] = useState(false);
+  const [date, setDate] = useState(new Date());
+
+  const handleClosePersonal = () => setShowPersonal(false);
+  const handleShowPersonal = () => setShowPersonal(true);
+  const handleClosePassport = () => setShowPassport(false);
+  const handleShowPassport = () => setShowPassport(true);
 
   return (
     <div>
+      <Modal
+        show={showPersonal}
+        onHide={handleClosePersonal}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Change Personal data</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Name" />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Surname</Form.Label>
+              <Form.Control type="text" placeholder="Surname" />
+            </Form.Group>
+
+            <Form.Group controlId="duedate">
+              <Form.Label style={{ marginRight: "33px" }}>
+                Birth Date
+              </Form.Label>
+              <Form.Control
+                type="date"
+                name="duedate"
+                placeholder="Due date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClosePersonal}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClosePersonal}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={showPassport}
+        onHide={handleClosePassport}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Change Passport data</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Citizenship</Form.Label>
+              <Form.Control type="text" placeholder="Citizenship" />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Passport number</Form.Label>
+              <Form.Control type="text" placeholder="Passport number" />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Disabled select menu</Form.Label>
+              <Form.Select>
+                <option>Poland</option>
+                <option>Germany</option>
+                <option>Spain</option>
+                <option>Croatia</option>
+              </Form.Select>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClosePassport}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClosePassport}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <Container fluid>
         <Row>
           <Col lg={2} style={{ padding: "0" }}>
@@ -17,7 +113,7 @@ const MyAccount = () => {
               style={{
                 width: "100%",
                 height: "100vh",
-                backgroundColor: "#f8fff9",
+                backgroundColor: "#00ee93",
                 borderRadius: "20px",
                 paddingTop: "14px",
               }}
@@ -131,7 +227,38 @@ const MyAccount = () => {
                     }}
                     className="shadowInfoAccount"
                   >
-                    <p>{test}</p>
+                    <div className="infoBlockName">
+                      <h4 className="h4AccountBlockName">
+                        Personal Information
+                      </h4>
+                      <Button className="editBtn">
+                        <img
+                          style={{
+                            display: "block",
+                            width: "40px",
+                            height: "40px",
+                            marginTop: "3px",
+                          }}
+                          onClick={handleShowPersonal}
+                          src={window.location.origin + "/editInfo.png"}
+                          alt="img"
+                        />
+                      </Button>
+                    </div>
+                    <div>
+                      <div className="infoBlocksData ">
+                        <span>Name</span>
+                        <span className="infoWidth">name</span>
+                      </div>
+                      <div className="infoBlocksData ">
+                        <span>Surname</span>
+                        <span className="infoWidth">surname</span>
+                      </div>
+                      <div className="infoBlocksData ">
+                        <span>Date of birth</span>
+                        <span className="infoWidth">date</span>
+                      </div>
+                    </div>
                   </div>
                   <div
                     style={{
@@ -141,7 +268,40 @@ const MyAccount = () => {
                       borderRadius: "25px",
                     }}
                     className="shadowInfoAccount"
-                  ></div>
+                  >
+                    <div className="infoBlockName">
+                      <h4 className="h4AccountBlockName">Passport details</h4>
+                      <Button className="editBtn">
+                        <img
+                          style={{
+                            display: "block",
+                            width: "40px",
+                            height: "40px",
+                            marginTop: "3px",
+                          }}
+                          onClick={handleShowPassport}
+                          src={window.location.origin + "/editInfo.png"}
+                          alt="img"
+                        />
+                      </Button>
+                    </div>
+                    <div>
+                      <div className="infoBlocksData">
+                        <span>Citizenship</span>
+                        <span className="infoWidthPassport">citizenship</span>
+                      </div>
+                      <div className="infoBlocksData">
+                        <span>Passport</span>
+                        <span className="infoWidthPassport">passport</span>
+                      </div>
+                      <div className="infoBlocksData">
+                        <span>Passport photo</span>
+                        <span className="infoWidthPassport">
+                          passport photo
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </Col>
                 <Col>
                   <img

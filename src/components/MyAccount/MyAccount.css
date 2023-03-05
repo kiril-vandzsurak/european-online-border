@@ -12,7 +12,7 @@
 
 .menuButtons:hover {
   font-size: 20px;
-  background-color: #c8ffd1 !important;
+  background-color: #f8fff9 !important;
 }
 
 .menuButtons > img:hover {
@@ -76,4 +76,55 @@
   -webkit-box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
   box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
+}
+
+.infoBlockName {
+  display: flex;
+}
+
+.h4AccountBlockName {
+  display: block;
+  margin-inline: auto;
+  margin-top: 20px;
+}
+
+.editBtn {
+  background: none !important;
+  border: none !important;
+}
+
+/* .infoBlockData {
+  display: flex;
+  justify-content: space-between;
+  width: 302px;
+  margin-inline: auto;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.infoBlockLeftAndRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoBlockLeftAndRight > span {
+  margin-bottom: 15px;
+} */
+
+.infoBlocksData {
+  display: flex;
+  justify-content: space-between;
+  width: 391px;
+  margin-inline: auto;
+  font-size: 20px;
+  margin-top: 15px;
+  border-bottom: 1px black solid;
+}
+
+.infoWidth {
+  width: 128px;
+}
+
+.infoWidthPassport {
+  width: 150px;
 }
