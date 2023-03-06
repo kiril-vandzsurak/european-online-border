@@ -6,16 +6,30 @@ import "./MyAccount.css";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { useDispatch } from "react-redux";
+import { editPersonalInfo } from "../../redux/actions";
+import { useSelector } from "react-redux";
 
 const MyAccount = () => {
   const [showPersonal, setShowPersonal] = useState(false);
   const [showPassport, setShowPassport] = useState(false);
-  const [date, setDate] = useState(new Date());
+  const [userName, setUserName] = useState("");
+  const [userSurname, setUserSurname] = useState("");
+  const [userBirthdate, setUserBirthdate] = useState(new Date());
 
   const handleClosePersonal = () => setShowPersonal(false);
   const handleShowPersonal = () => setShowPersonal(true);
   const handleClosePassport = () => setShowPassport(false);
   const handleShowPassport = () => setShowPassport(true);
+
+  const dispatch = useDispatch();
+  // const editedUserName = useSelector((state) => state.searchQuerry.name);
+  // const editedUserSurname = useSelector((state) => state.searchQuerry.surname);
+  // const editedUserBirthDate = useSelector(
+  //   (state) => state.searchQuerry.birthDate
+  // );
+
+  //console.log(editedUserName);
 
   return (
     <div>
@@ -32,12 +46,20 @@ const MyAccount = () => {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Name" />
+              <Form.Control
+                type="text"
+                placeholder="Name"
+                onChange={(e) => setUserName(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Surname</Form.Label>
-              <Form.Control type="text" placeholder="Surname" />
+              <Form.Control
+                type="text"
+                placeholder="Surname"
+                onChange={(e) => setUserSurname(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId="duedate">
@@ -48,8 +70,7 @@ const MyAccount = () => {
                 type="date"
                 name="duedate"
                 placeholder="Due date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) => setUserBirthdate(e.target.value)}
               />
             </Form.Group>
           </Form>
@@ -58,7 +79,12 @@ const MyAccount = () => {
           <Button variant="secondary" onClick={handleClosePersonal}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClosePersonal}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              dispatch(editPersonalInfo(userName, userSurname, userBirthdate));
+            }}
+          >
             Save Changes
           </Button>
         </Modal.Footer>
@@ -248,15 +274,15 @@ const MyAccount = () => {
                     <div>
                       <div className="infoBlocksData ">
                         <span>Name</span>
-                        <span className="infoWidth">name</span>
+                        <span className="infoWidth">{}</span>
                       </div>
                       <div className="infoBlocksData ">
                         <span>Surname</span>
-                        <span className="infoWidth">surname</span>
+                        <span className="infoWidth">{}</span>
                       </div>
                       <div className="infoBlocksData ">
                         <span>Date of birth</span>
-                        <span className="infoWidth">date</span>
+                        <span className="infoWidth">{}</span>
                       </div>
                     </div>
                   </div>
@@ -291,7 +317,7 @@ const MyAccount = () => {
                         <span className="infoWidthPassport">citizenship</span>
                       </div>
                       <div className="infoBlocksData">
-                        <span>Passport</span>
+                        <span>Passport Num.</span>
                         <span className="infoWidthPassport">passport</span>
                       </div>
                       <div className="infoBlocksData">
