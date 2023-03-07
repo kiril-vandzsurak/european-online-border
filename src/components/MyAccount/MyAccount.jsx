@@ -23,13 +23,11 @@ const MyAccount = () => {
   const handleShowPassport = () => setShowPassport(true);
 
   const dispatch = useDispatch();
-  // const editedUserName = useSelector((state) => state.searchQuerry.name);
-  // const editedUserSurname = useSelector((state) => state.searchQuerry.surname);
-  // const editedUserBirthDate = useSelector(
-  //   (state) => state.searchQuerry.birthDate
-  // );
-
-  //console.log(editedUserName);
+  const editedUserName = useSelector((state) => state.personalInfo.testname);
+  const editedUserSurname = useSelector((state) => state.personalInfo.surname);
+  const editedUserBirthDate = useSelector(
+    (state) => state.personalInfo.birthDate
+  );
 
   return (
     <div>
@@ -274,15 +272,15 @@ const MyAccount = () => {
                     <div>
                       <div className="infoBlocksData ">
                         <span>Name</span>
-                        <span className="infoWidth">{}</span>
+                        <span className="infoWidth">{editedUserName}</span>
                       </div>
                       <div className="infoBlocksData ">
                         <span>Surname</span>
-                        <span className="infoWidth">{}</span>
+                        <span className="infoWidth">{editedUserSurname}</span>
                       </div>
                       <div className="infoBlocksData ">
                         <span>Date of birth</span>
-                        <span className="infoWidth">{}</span>
+                        <span className="infoWidth">{editedUserBirthDate}</span>
                       </div>
                     </div>
                   </div>
