@@ -7,7 +7,7 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
-import { editPersonalInfo } from "../../redux/actions";
+import { editPersonalInfo, editPassportInfo } from "../../redux/actions";
 import { useSelector } from "react-redux";
 
 const MyAccount = () => {
@@ -16,6 +16,9 @@ const MyAccount = () => {
   const [userName, setUserName] = useState("");
   const [userSurname, setUserSurname] = useState("");
   const [userBirthdate, setUserBirthdate] = useState(new Date());
+  const [userCitizenship, setUserCitizenship] = useState("");
+  const [userPassportNum, setUserPassportNum] = useState("");
+  const [userPassportPhoto, setUserPassportPhoto] = useState(null);
 
   const handleClosePersonal = () => setShowPersonal(false);
   const handleShowPersonal = () => setShowPersonal(true);
@@ -23,10 +26,19 @@ const MyAccount = () => {
   const handleShowPassport = () => setShowPassport(true);
 
   const dispatch = useDispatch();
-  const editedUserName = useSelector((state) => state.personalInfo.testname);
+  const editedUserName = useSelector((state) => state.personalInfo.name);
   const editedUserSurname = useSelector((state) => state.personalInfo.surname);
   const editedUserBirthDate = useSelector(
     (state) => state.personalInfo.birthDate
+  );
+  const editedUserCitizenship = useSelector(
+    (state) => state.passportInfo.citizenship
+  );
+  const editedUserPassportNum = useSelector(
+    (state) => state.passportInfo.passportNum
+  );
+  const editedUserPassportPhoto = useSelector(
+    (state) => state.passportInfo.passportPhoto
   );
 
   return (
@@ -99,24 +111,32 @@ const MyAccount = () => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Citizenship</Form.Label>
-              <Form.Control type="text" placeholder="Citizenship" />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Passport number</Form.Label>
-              <Form.Control type="text" placeholder="Passport number" />
-            </Form.Group>
-
             <Form.Group className="mb-3">
-              <Form.Label>Disabled select menu</Form.Label>
-              <Form.Select>
+              <Form.Label>Citizenship</Form.Label>
+              <Form.Select onChange={(e) => setUserCitizenship(e.target.value)}>
                 <option>Poland</option>
                 <option>Germany</option>
                 <option>Spain</option>
                 <option>Croatia</option>
               </Form.Select>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Passport number</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Passport number"
+                onChange={(e) => setUserPassportNum(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Passport Photo</Form.Label>
+              <Form.Control
+                type="file"
+                accept=".jpg,.jpeg,.png"
+                onChange={(e) => setUserPassportPhoto(e.target.files[0])}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -124,7 +144,17 @@ const MyAccount = () => {
           <Button variant="secondary" onClick={handleClosePassport}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClosePassport}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              const formData = new FormData();
+              formData.append("file", userPassportPhoto);
+
+              dispatch(
+                editPassportInfo(userCitizenship, userPassportNum, formData)
+              );
+            }}
+          >
             Save Changes
           </Button>
         </Modal.Footer>
@@ -312,16 +342,20 @@ const MyAccount = () => {
                     <div>
                       <div className="infoBlocksData">
                         <span>Citizenship</span>
-                        <span className="infoWidthPassport">citizenship</span>
+                        <span className="infoWidthPassport">
+                          {editedUserCitizenship}
+                        </span>
                       </div>
                       <div className="infoBlocksData">
                         <span>Passport Num.</span>
-                        <span className="infoWidthPassport">passport</span>
+                        <span className="infoWidthPassport">
+                          {editedUserPassportNum}
+                        </span>
                       </div>
                       <div className="infoBlocksData">
                         <span>Passport photo</span>
                         <span className="infoWidthPassport">
-                          passport photo
+                          {editedUserPassportPhoto}
                         </span>
                       </div>
                     </div>
