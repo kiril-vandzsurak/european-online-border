@@ -1,7 +1,7 @@
 import { EDIT_PERSONAL_INFO } from "../actions";
 
 const initialState = {
-  testname: "name",
+  name: "name",
   surname: "surname",
   birthDate: new Date(),
 };
@@ -10,7 +10,7 @@ const personalInfoReducer = (state = initialState, action) => {
   switch (action.type) {
     case EDIT_PERSONAL_INFO:
       return {
-        testname: action.payload.name,
+        name: action.payload.name,
         surname: action.payload.surname,
         birthDate: action.payload.birthDate,
       };

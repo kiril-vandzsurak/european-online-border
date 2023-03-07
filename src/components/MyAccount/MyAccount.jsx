@@ -148,7 +148,9 @@ const MyAccount = () => {
             variant="primary"
             onClick={() => {
               const formData = new FormData();
-              formData.append("file", userPassportPhoto);
+              if (userPassportPhoto) {
+                formData.append("file", userPassportPhoto);
+              }
 
               dispatch(
                 editPassportInfo(userCitizenship, userPassportNum, formData)
@@ -354,9 +356,7 @@ const MyAccount = () => {
                       </div>
                       <div className="infoBlocksData">
                         <span>Passport photo</span>
-                        <span className="infoWidthPassport">
-                          {editedUserPassportPhoto}
-                        </span>
+                        <span className="infoWidthPassport">{}</span>
                       </div>
                     </div>
                   </div>
