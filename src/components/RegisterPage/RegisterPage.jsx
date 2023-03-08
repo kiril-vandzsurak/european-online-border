@@ -30,27 +30,6 @@ const RegisterPage = () => {
       return;
     }
 
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:3001/users/register",
-    //     {
-    //       registerName,
-    //       registerSurname,
-    //       registerBirthDate,
-    //       registerEmail,
-    //       registerPassword,
-    //     }
-    //   );
-    //   console.log("RESPONSE: ", response);
-    //   const token = response.data.accessToken;
-    //   localStorage.setItem("token", JSON.stringify(token));
-    //   const user = jwt_decode(token);
-    //   console.log("USER: ", user);
-    //   navigate("/myAccount");
-    // } catch (error) {
-    //   console.error(error);
-    // }
-
     const data = {
       name: registerName,
       surname: registerSurname,
@@ -68,7 +47,10 @@ const RegisterPage = () => {
     })
       .then((response) => {
         console.log("RESPONSE: ", response);
-        const token = response.data?.accessToken;
+        return response.json(); // <-- parse the response as JSON
+      })
+      .then((data) => {
+        const token = data.accessToken; // <-- retrieve the access token from the parsed data
         localStorage.setItem("token", JSON.stringify(token));
         const user = jwt_decode(token);
         console.log("USER: ", user);
