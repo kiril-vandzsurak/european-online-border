@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+
+.menuButtons {
+  width: 100% !important;
+  height: 62px !important;
+  margin-top: 10px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: black !important;
+  font-family: "Raleway", sans-serif !important;
+}
+
+.menuButtons:hover {
+  font-size: 20px;
+  background-color: #f8fff9 !important;
+}
+
+.menuButtons > img:hover {
+  width: 300px;
+}
+
+.buttonName {
+  margin-left: 10px;
+}
+
+.mainPageBackground {
+  background: rgb(204, 228, 208);
+  background: linear-gradient(
+    -39deg,
+    rgba(204, 228, 208, 1) 32%,
+    rgba(255, 255, 255, 1) 43%,
+    rgba(255, 255, 255, 1) 53%,
+    rgba(204, 228, 208, 1) 65%
+  );
+}
+
+.accountWelcomeText {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px !important;
+  font-size: 27px;
+  font-family: "Raleway", sans-serif;
+}
+
+.accountWelcomeText > span {
+  margin-inline: 10px;
+  font-weight: 900;
+  /* color: rgb(0, 241, 145);
+  color: linear-gradient(
+    126deg,
+    rgba(0, 241, 145, 1) 27%,
+    rgba(0, 200, 198, 1) 75%
+  ); */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 241, 145, 1),
+    rgba(0, 200, 198, 1)
+  );
+  -webkit-background-image: -webkit-linear-gradient(
+    to right,
+    rgba(0, 241, 145, 1),
+    rgba(0, 200, 198, 1)
+  );
+}
+
+.accountLady {
+  width: 520px;
+  height: 575px;
+  margin-left: 60px;
+}
+
+.shadowInfoAccount {
+  -webkit-box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
+}
+
+.infoBlockName {
+  display: flex;
+}
+
+.h4AccountBlockName {
+  display: block;
+  margin-inline: auto;
+  margin-top: 20px;
+}
+
+.editBtn {
+  background: none !important;
+  border: none !important;
+}
+
+/* .infoBlockData {
+  display: flex;
+  justify-content: space-between;
+  width: 302px;
+  margin-inline: auto;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.infoBlockLeftAndRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoBlockLeftAndRight > span {
+  margin-bottom: 15px;
+} */
+
+.infoBlocksData {
+  display: flex;
+  justify-content: space-between;
+  width: 391px;
+  margin-inline: auto;
+  font-size: 20px;
+  margin-top: 15px;
+  border-bottom: 1px black solid;
+}
+
+.infoWidth {
+  width: 128px;
+}
+
+.infoWidthPassport {
+  width: 150px;
+}
