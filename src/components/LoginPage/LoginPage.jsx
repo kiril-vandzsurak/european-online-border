@@ -3,11 +3,39 @@ import "./LoginPage.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useState } from "react";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // add state for error message
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    console.log("Begins!");
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3001/users/login", {
+        email,
+        password,
+      });
+      console.log(response);
+      const token = response.data.accessToken;
+      localStorage.setItem("token", JSON.stringify(token)); // added JSON.stringify()
+      const user = jwt_decode(token);
+      console.log(user);
+      console.log("1");
+      navigate("/myAccount"); // removed ".push()"
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("Invalid email or password"); // set error message state
+    }
+  };
   return (
     <div className="backgroundLogin">
       <video src={videoBg} autoPlay loop muted />
@@ -60,7 +88,10 @@ const LoginPage = () => {
             <Col className="d-flex justify-content-center">
               <div className="formLogin d-flex flex-column align-items-center">
                 <h1 className="h1Login">Sign in</h1>
-                <Form>
+                {errorMessage && ( // render error message if it exists
+                  <div className="text-danger mb-3">{errorMessage}</div>
+                )}
+                <Form onSubmit={handleSubmit}>
                   <Form.Group
                     className="mb-3 d-flex flex-row align-items-center inputMarginsLogin"
                     controlId="formBasicEmail"
@@ -72,6 +103,7 @@ const LoginPage = () => {
                       className="inputLogin"
                       type="email"
                       placeholder="Enter email"
+                      onChange={(event) => setEmail(event.target.value)}
                     />
                   </Form.Group>
 
@@ -86,12 +118,13 @@ const LoginPage = () => {
                       className="inputLogin"
                       type="password"
                       placeholder="Password"
+                      onChange={(event) => setPassword(event.target.value)}
                     />
                   </Form.Group>
+                  <Button className="loginBtn" type="submit">
+                    <span>Login</span>
+                  </Button>
                 </Form>
-                <Button className="loginBtn" type="submit">
-                  <span>Login</span>
-                </Button>
                 <p className="downTextLogin">
                   We're committed to your privacy. Our form uses the information
                   you provide to us to let you access your personal account. You

@@ -4,14 +4,80 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import RingLoader from "react-spinners/RingLoader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [date, setDate] = useState(new Date());
+  const [registerName, setRegisterName] = useState("");
+  const [registerSurname, setRegisterSurname] = useState("");
+  const [registerBirthDate, setRegisterBirthDate] = useState(new Date());
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (registerPassword !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:3001/users/register",
+    //     {
+    //       registerName,
+    //       registerSurname,
+    //       registerBirthDate,
+    //       registerEmail,
+    //       registerPassword,
+    //     }
+    //   );
+    //   console.log("RESPONSE: ", response);
+    //   const token = response.data.accessToken;
+    //   localStorage.setItem("token", JSON.stringify(token));
+    //   const user = jwt_decode(token);
+    //   console.log("USER: ", user);
+    //   navigate("/myAccount");
+    // } catch (error) {
+    //   console.error(error);
+    // }
+
+    const data = {
+      name: registerName,
+      surname: registerSurname,
+      email: registerEmail,
+      password: registerPassword,
+      birthDate: registerBirthDate,
+    };
+
+    fetch("http://localhost:3001/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        console.log("RESPONSE: ", response);
+        const token = response.data?.accessToken;
+        localStorage.setItem("token", JSON.stringify(token));
+        const user = jwt_decode(token);
+        console.log("USER: ", user);
+        navigate("/myAccount");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -85,7 +151,7 @@ const RegisterPage = () => {
             </Row>
             <Row>
               <Col style={{ maxWidth: "30%" }}>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <Form.Group
                     className="mb-3 inputFlexRegister"
                     controlId="formBasicEmail"
@@ -97,6 +163,7 @@ const RegisterPage = () => {
                       className="inputLookRegister"
                       type="name"
                       placeholder="Enter your Name"
+                      onChange={(event) => setRegisterName(event.target.value)}
                     />
                   </Form.Group>
                   <Form.Group
@@ -110,6 +177,9 @@ const RegisterPage = () => {
                       className="inputLookRegister"
                       type="name"
                       placeholder="Enter your Surname"
+                      onChange={(event) =>
+                        setRegisterSurname(event.target.value)
+                      }
                     />
                   </Form.Group>
                   <Form.Group className="inputFlexRegister" controlId="duedate">
@@ -121,8 +191,8 @@ const RegisterPage = () => {
                       type="date"
                       name="duedate"
                       placeholder="Due date"
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
+                      value={registerBirthDate}
+                      onChange={(e) => setRegisterBirthDate(e.target.value)}
                     />
                   </Form.Group>
                 </Form>
@@ -140,6 +210,7 @@ const RegisterPage = () => {
                       className="inputLookRegister"
                       type="email"
                       placeholder="Enter email"
+                      onChange={(event) => setRegisterEmail(event.target.value)}
                     />
                   </Form.Group>
                   <Form.Group
@@ -153,6 +224,9 @@ const RegisterPage = () => {
                       className="inputLookRegister"
                       type="password"
                       placeholder="Password"
+                      onChange={(event) =>
+                        setRegisterPassword(event.target.value)
+                      }
                     />
                   </Form.Group>
                   <Form.Group
@@ -166,17 +240,20 @@ const RegisterPage = () => {
                       className="inputLookRegister"
                       type="password"
                       placeholder="Password"
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                   </Form.Group>
+                  <Button
+                    type="button"
+                    onClick={handleSubmit}
+                    className="confirmRegisterButton"
+                  >
+                    <span>Confirm registration</span>
+                  </Button>
                 </Form>
               </Col>
             </Row>
             <Row className="d-flex- flex-column">
-              <Col>
-                <Button className="confirmRegisterButton">
-                  <span>Confirm registration</span>
-                </Button>
-              </Col>
               <Col>
                 <p className="downTextRegister">
                   We're committed to your privacy. Our form uses the information
