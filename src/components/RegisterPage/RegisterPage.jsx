@@ -47,10 +47,10 @@ const RegisterPage = () => {
     })
       .then((response) => {
         console.log("RESPONSE: ", response);
-        return response.json(); // <-- parse the response as JSON
+        return response.json();
       })
       .then((data) => {
-        const token = data.accessToken; // <-- retrieve the access token from the parsed data
+        const token = data.accessToken;
         localStorage.setItem("token", JSON.stringify(token));
         const user = jwt_decode(token);
         console.log("USER: ", user);
