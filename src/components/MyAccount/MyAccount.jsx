@@ -7,8 +7,14 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
-import { editPersonalInfo, editPassportInfo } from "../../redux/actions";
+import {
+  personalInfo,
+  passportInfo,
+  editPersonalInfo,
+  editPassportInfo,
+} from "../../redux/actions";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const MyAccount = () => {
   const [showPersonal, setShowPersonal] = useState(false);
@@ -16,7 +22,7 @@ const MyAccount = () => {
   const [userName, setUserName] = useState("");
   const [userSurname, setUserSurname] = useState("");
   const [userBirthdate, setUserBirthdate] = useState(new Date());
-  const [userCitizenship, setUserCitizenship] = useState("");
+  const [userNationality, setUserNationality] = useState("");
   const [userPassportNum, setUserPassportNum] = useState("");
   const [userPassportPhoto, setUserPassportPhoto] = useState(null);
 
@@ -26,13 +32,19 @@ const MyAccount = () => {
   const handleShowPassport = () => setShowPassport(true);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(personalInfo());
+    dispatch(passportInfo());
+  }, [dispatch]);
+
   const editedUserName = useSelector((state) => state.personalInfo.name);
   const editedUserSurname = useSelector((state) => state.personalInfo.surname);
   const editedUserBirthDate = useSelector(
     (state) => state.personalInfo.birthDate
   );
-  const editedUserCitizenship = useSelector(
-    (state) => state.passportInfo.citizenship
+  const editedUserNationality = useSelector(
+    (state) => state.passportInfo.nationality
   );
   const editedUserPassportNum = useSelector(
     (state) => state.passportInfo.passportNum
@@ -112,8 +124,8 @@ const MyAccount = () => {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
-              <Form.Label>Citizenship</Form.Label>
-              <Form.Select onChange={(e) => setUserCitizenship(e.target.value)}>
+              <Form.Label>Nationality</Form.Label>
+              <Form.Select onChange={(e) => setUserNationality(e.target.value)}>
                 <option>Poland</option>
                 <option>Germany</option>
                 <option>Spain</option>
@@ -153,7 +165,7 @@ const MyAccount = () => {
               }
 
               dispatch(
-                editPassportInfo(userCitizenship, userPassportNum, formData)
+                editPassportInfo(userNationality, userPassportNum, formData)
               );
             }}
           >
@@ -266,8 +278,8 @@ const MyAccount = () => {
               </Row>
               <Row>
                 <p className="accountWelcomeText">
-                  We are glad to welcome you <span>USER</span> in your personal
-                  account
+                  We are glad to welcome you <span>{editedUserName}</span> in
+                  your personal account
                 </p>
               </Row>
               <Row>
@@ -343,9 +355,9 @@ const MyAccount = () => {
                     </div>
                     <div>
                       <div className="infoBlocksData">
-                        <span>Citizenship</span>
+                        <span>Nationality</span>
                         <span className="infoWidthPassport">
-                          {editedUserCitizenship}
+                          {editedUserNationality}
                         </span>
                       </div>
                       <div className="infoBlocksData">
@@ -356,7 +368,9 @@ const MyAccount = () => {
                       </div>
                       <div className="infoBlocksData">
                         <span>Passport photo</span>
-                        <span className="infoWidthPassport">{}</span>
+                        <span className="infoWidthPassport">
+                          {editedUserPassportPhoto}
+                        </span>
                       </div>
                     </div>
                   </div>

@@ -26,7 +26,7 @@ const LoginPage = () => {
       });
       console.log(response);
       const token = response.data.accessToken;
-      localStorage.setItem("token", JSON.stringify(token)); // added JSON.stringify()
+      localStorage.setItem("token", token); // added JSON.stringify()
       const user = jwt_decode(token);
       console.log(user);
       console.log("1");
