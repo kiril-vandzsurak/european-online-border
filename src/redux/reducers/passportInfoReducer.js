@@ -3,7 +3,7 @@ import { EDIT_PASSPORT_INFO, UPLOAD_IMAGE_SUCCESS } from "../actions";
 const initialState = {
   nationality: "",
   passportNum: "",
-  passportPhoto: null,
+  passportPhoto: "",
 };
 
 const passportInfoReducer = (state = initialState, action) => {
@@ -18,7 +18,7 @@ const passportInfoReducer = (state = initialState, action) => {
     case UPLOAD_IMAGE_SUCCESS:
       return {
         ...state,
-        passportPhoto: action.payload.passportPhoto,
+        passportPhoto: action.payload,
       };
 
     default:

@@ -68,7 +68,7 @@ const MyAccount = () => {
     (state) => state.passportInfo.passportNum
   );
   const editedUserPassportPhoto = useSelector(
-    (state) => state.passportInfo.passportPhoto
+    (state) => state.passportInfo.passportPhoto.fileName
   );
 
   return (
@@ -403,7 +403,9 @@ const MyAccount = () => {
                       </div>
                       <div className="infoBlocksData">
                         <span>Passport photo</span>
-                        <span className="infoWidthPassport">{}</span>
+                        <span className="infoWidthPassport">
+                          {editedUserPassportPhoto}
+                        </span>
                       </div>
                     </div>
                   </div>
