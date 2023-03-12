@@ -30,7 +30,7 @@ const LoginPage = () => {
       const user = jwt_decode(token);
       console.log(user);
       console.log("1");
-      navigate("/myAccount"); // removed ".push()"
+      navigate(`/myAccount/${user._id}`); // removed ".push()"
     } catch (error) {
       console.error(error);
       setErrorMessage("Invalid email or password"); // set error message state

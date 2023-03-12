@@ -11,7 +11,7 @@ function App() {
         <Route element={<WelcomePage />} path="/" />
         <Route element={<LoginPage />} path="/login" />
         <Route element={<RegisterPage />} path="/register" />
-        <Route element={<MyAccount />} path="/myAccount" />
+        <Route element={<MyAccount />} path="/myAccount/:userId" />
       </Routes>
     </BrowserRouter>
   );

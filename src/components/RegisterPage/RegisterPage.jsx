@@ -54,7 +54,7 @@ const RegisterPage = () => {
         localStorage.setItem("token", token);
         const user = jwt_decode(token);
         console.log("USER: ", user);
-        navigate("/myAccount");
+        navigate(`/myAccount/${user._id}`);
       })
       .catch((error) => {
         console.error(error);

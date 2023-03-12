@@ -12,9 +12,11 @@ import {
   passportInfo,
   editPersonalInfo,
   editPassportInfo,
+  uploadPassportPhoto,
 } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const MyAccount = () => {
   const [showPersonal, setShowPersonal] = useState(false);
@@ -32,6 +34,22 @@ const MyAccount = () => {
   const handleShowPassport = () => setShowPassport(true);
 
   const dispatch = useDispatch();
+  const { userId } = useParams();
+
+  const handleFileChange = (event) => {
+    setUserPassportPhoto(event.target.files[0]);
+  };
+
+  const handleSubmitPhoto = (event) => {
+    event.preventDefault();
+    if (!userPassportPhoto) {
+      alert("Please select an image to upload");
+      return;
+    }
+
+    dispatch(uploadPassportPhoto(userId, userPassportPhoto));
+    setUserPassportPhoto(null);
+  };
 
   useEffect(() => {
     dispatch(personalInfo());
@@ -122,14 +140,37 @@ const MyAccount = () => {
           <Modal.Title>Change Passport data</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={handleSubmitPhoto}>
             <Form.Group className="mb-3">
               <Form.Label>Nationality</Form.Label>
               <Form.Select onChange={(e) => setUserNationality(e.target.value)}>
-                <option>Poland</option>
+                <option>Austria</option>
+                <option>Belgium</option>
+                <option>Bulgary</option>
+                <option>Hungary</option>
                 <option>Germany</option>
+                <option>Greece</option>
+                <option>Denmark</option>
+                <option>Ireland</option>
                 <option>Spain</option>
+                <option>Italy</option>
+                <option>Cyprus</option>
+                <option>Latvia</option>
+                <option>Lithuania</option>
+                <option>Luxembourg</option>
+                <option>Malta</option>
+                <option>Netherlands</option>
+                <option>Poland</option>
+                <option>Portugal</option>
+                <option>Romania</option>
+                <option>Slovakia</option>
+                <option>Slovenia</option>
+                <option>Finland</option>
+                <option>France</option>
                 <option>Croatia</option>
+                <option>Czech Republic</option>
+                <option>Sweden</option>
+                <option>Estonia</option>
               </Form.Select>
             </Form.Group>
 
@@ -147,9 +188,10 @@ const MyAccount = () => {
               <Form.Control
                 type="file"
                 accept=".jpg,.jpeg,.png"
-                onChange={(e) => setUserPassportPhoto(e.target.files[0])}
+                onChange={handleFileChange}
               />
             </Form.Group>
+            <Button type="submit">save photo</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -159,14 +201,7 @@ const MyAccount = () => {
           <Button
             variant="primary"
             onClick={() => {
-              const formData = new FormData();
-              if (userPassportPhoto) {
-                formData.append("file", userPassportPhoto);
-              }
-
-              dispatch(
-                editPassportInfo(userNationality, userPassportNum, formData)
-              );
+              dispatch(editPassportInfo(userNationality, userPassportNum));
             }}
           >
             Save Changes
@@ -368,9 +403,7 @@ const MyAccount = () => {
                       </div>
                       <div className="infoBlocksData">
                         <span>Passport photo</span>
-                        <span className="infoWidthPassport">
-                          {editedUserPassportPhoto}
-                        </span>
+                        <span className="infoWidthPassport">{}</span>
                       </div>
                     </div>
                   </div>
