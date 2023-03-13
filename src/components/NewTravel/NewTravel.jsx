@@ -9,6 +9,15 @@ import { useState } from "react";
 
 const NewTravel = () => {
   const [selectedOption, setSelectedOption] = useState("By car");
+  const [countryTo, setCountryTo] = useState("")
+  const [wayOfCrossing, setWayOfCrossing] = useState("")
+  const [carNumber, setCarNumber] = useState("")
+  const [carProducer, setCarProducer] = useState("")
+  const [drivingLicenseNum, setDrivingLicenseNum] = useState("")
+  const [carInsuranceNum, setCarInsuranceNum] = useState("")
+  const [carRegistrationNum, setCarRegistrationNum] = useState("")
+  const [dateOfCrossing, setDateOfCrossing] = useState(new Date())
+  const [timeOfCrossing, setTimeOfCrossing] = useState("")
 
   const navigate = useNavigate();
   const { userId } = useParams();
@@ -20,6 +29,27 @@ const NewTravel = () => {
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data={
+        countryTo:
+    }
+    try {
+      const response = await fetch("/fulfilNewForm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log(data); // do something with the response data
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
