@@ -9,15 +9,15 @@ import { useState } from "react";
 
 const NewTravel = () => {
   const [selectedOption, setSelectedOption] = useState("By car");
-  const [countryTo, setCountryTo] = useState("")
-  const [wayOfCrossing, setWayOfCrossing] = useState("")
-  const [carNumber, setCarNumber] = useState("")
-  const [carProducer, setCarProducer] = useState("")
-  const [drivingLicenseNum, setDrivingLicenseNum] = useState("")
-  const [carInsuranceNum, setCarInsuranceNum] = useState("")
-  const [carRegistrationNum, setCarRegistrationNum] = useState("")
-  const [dateOfCrossing, setDateOfCrossing] = useState(new Date())
-  const [timeOfCrossing, setTimeOfCrossing] = useState("")
+  const [countryTo, setCountryTo] = useState("");
+  const [wayOfCrossing, setWayOfCrossing] = useState("");
+  const [carNumber, setCarNumber] = useState("");
+  const [carProducer, setCarProducer] = useState("");
+  const [drivingLicenseNum, setDrivingLicenseNum] = useState("");
+  const [carInsuranceNum, setCarInsuranceNum] = useState("");
+  const [carRegistrationNum, setCarRegistrationNum] = useState("");
+  const [dateOfCrossing, setDateOfCrossing] = useState(new Date());
+  const [timeOfCrossing, setTimeOfCrossing] = useState("");
 
   const navigate = useNavigate();
   const { userId } = useParams();
@@ -33,9 +33,9 @@ const NewTravel = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data={
-        countryTo:
-    }
+    // const data={
+    //     countryTo:
+    // }
     try {
       const response = await fetch("/fulfilNewForm", {
         method: "POST",
@@ -43,7 +43,7 @@ const NewTravel = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(),
       });
       const data = await response.json();
       console.log(data); // do something with the response data
@@ -243,6 +243,14 @@ const NewTravel = () => {
                       placeholder="Car registration number"
                       disabled={selectedOption === "By walk"}
                     />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="date" placeholder="Enter email" />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="time" placeholder="Enter email" />
                   </Form.Group>
                 </Form>
               </Row>
