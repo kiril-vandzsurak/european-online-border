@@ -17,6 +17,7 @@ import {
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MyAccount = () => {
   const [showPersonal, setShowPersonal] = useState(false);
@@ -34,10 +35,16 @@ const MyAccount = () => {
   const handleShowPassport = () => setShowPassport(true);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { userId } = useParams();
 
   const handleFileChange = (event) => {
     setUserPassportPhoto(event.target.files[0]);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   const handleSubmitPhoto = (event) => {
@@ -221,7 +228,32 @@ const MyAccount = () => {
                 paddingTop: "14px",
               }}
             >
-              <Button className="menuButtons">
+              <Button
+                className="menuButtons"
+                onClick={() => {
+                  navigate(`/myAccount/${userId}`);
+                }}
+              >
+                <div className="d-flex align-items-center">
+                  <img
+                    style={{
+                      display: "block",
+                      width: "50px",
+                      height: "50px",
+                      marginTop: "3px",
+                    }}
+                    src={window.location.origin + "/travelHistory.png"}
+                    alt="img"
+                  />
+                  <span className="buttonName">My Account</span>
+                </div>
+              </Button>
+              <Button
+                className="menuButtons"
+                onClick={() => {
+                  navigate(`/newTravel/${userId}`);
+                }}
+              >
                 <div className="d-flex align-items-center">
                   <img
                     style={{
@@ -236,7 +268,12 @@ const MyAccount = () => {
                   <span className="buttonName">New Travel</span>
                 </div>
               </Button>
-              <Button className="menuButtons">
+              <Button
+                className="menuButtons"
+                onClick={() => {
+                  navigate(`/travelHistory/${userId}`);
+                }}
+              >
                 <div className="d-flex align-items-center">
                   <img
                     style={{
@@ -266,7 +303,7 @@ const MyAccount = () => {
                   <span className="buttonName">Information</span>
                 </div>
               </Button>
-              <Button className="menuButtons">
+              <Button className="menuButtons" onClick={handleLogout}>
                 <div className="d-flex align-items-center">
                   <img
                     style={{

@@ -111,69 +111,6 @@ export const editPassportInfo = (nationality, passportNum, passportPhoto) => {
   };
 };
 
-// const formData = new FormData();
-// if (userPassportPhoto) {
-//   formData.append("file", userPassportPhoto);
-// }
-
-// export const uploadPassportPhoto = async (userId, passportPhoto) => {
-//   return async (dispatch) => {
-//     try {
-//       const formData = new FormData();
-//       formData.append("passportPhoto", passportPhoto);
-//       const response = await fetch(
-//         `http://localhost:3001/users/me/${userId}/photo`,
-//         {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${localStorage.getItem("token")}`,
-//           },
-//           body: formData,
-//         }
-//       );
-//       if (!response.ok) {
-//         throw new Error("Failed to upload passport photo");
-//       }
-//       const user = await response.json();
-//       dispatch({
-//         type: EDIT_PASSPORT_PHOTO,
-//         payload: { passportPhoto: user.passportPhoto },
-//       });
-//       return "Passport photo uploaded successfully!";
-//     } catch (error) {
-//       console.error(error);
-//       throw new Error("Failed to upload passport photo");
-//     }
-//   };
-// };
-
-// export const uploadPassportPhoto = (userId, imageData) => {
-//   return async (dispatch) => {
-//     try {
-//       const formData = new FormData();
-//       formData.append("passportPhoto", imageData);
-
-//       const response = await fetch(
-//         `http://localhost:3001/users/me/${userId}/photo`,
-//         {
-//           method: "POST",
-//           body: formData,
-//         }
-//       );
-
-//       const passportPhoto = await response.text();
-//       console.log(passportPhoto);
-//       dispatch({
-//         type: UPLOAD_IMAGE_SUCCESS,
-//         payload: passportPhoto,
-//       });
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   };
-// };
-
 export const uploadPassportPhoto = (userId, imageData) => {
   return async (dispatch) => {
     try {

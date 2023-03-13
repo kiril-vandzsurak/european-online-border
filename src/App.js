@@ -3,6 +3,8 @@ import WelcomePage from "./components/WelcomePage/WelcomePage.jsx";
 import LoginPage from "./components/LoginPage/LoginPage.jsx";
 import RegisterPage from "./components/RegisterPage/RegisterPage.jsx";
 import MyAccount from "./components/MyAccount/MyAccount.jsx";
+import NewTravel from "./components/NewTravel/NewTravel.jsx";
+import TravelHistory from "./components/TravelHistory/TravelHistory.jsx";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route element={<LoginPage />} path="/login" />
         <Route element={<RegisterPage />} path="/register" />
         <Route element={<MyAccount />} path="/myAccount/:userId" />
+        <Route element={<NewTravel />} path="/newTravel/:userId" />
+        <Route element={<TravelHistory />} path="/travelHistory/:userId" />
       </Routes>
     </BrowserRouter>
   );
