@@ -180,18 +180,16 @@ const TravelHistory = () => {
               <Row>
                 <Col className="d-flex flex-column">
                   <span>Date</span>
-
                   {forms.map((item) => (
-                    <div className="d-flex flex-column">
-                      {item.dateOfCrossing}
+                    <div key={item._id} className="d-flex flex-column">
+                      {new Date(item.dateOfCrossing).toISOString().slice(0, 10)}
                     </div>
                   ))}
                 </Col>
                 <Col className="d-flex flex-column">
                   <span>Time</span>
-
                   {forms.map((item) => (
-                    <div className="d-flex flex-column">
+                    <div key={item._id} className="d-flex flex-column">
                       {item.timeOfCrossing}
                     </div>
                   ))}
@@ -200,21 +198,29 @@ const TravelHistory = () => {
                   <span>Destination</span>
 
                   {forms.map((item) => (
-                    <div className="d-flex flex-column">{item.countryTo}</div>
+                    <div key={item._id} className="d-flex flex-column">
+                      {item.countryTo}
+                    </div>
                   ))}
                 </Col>
                 <Col className="d-flex flex-column">
                   <span>Way of Crossing</span>
 
                   {forms.map((item) => (
-                    <div className="d-flex flex-column">
+                    <div key={item._id} className="d-flex flex-column">
                       {item.wayOfCrossing}
                     </div>
                   ))}
                 </Col>
                 <Col className="d-flex flex-column">
                   <span>Status</span>
-                  <div className="d-flex flex-column">{status}</div>
+                  <div className="d-flex flex-column">
+                    {forms.map((item) => (
+                      <div key={item._id} className="d-flex flex-column">
+                        {status}
+                      </div>
+                    ))}
+                  </div>
                 </Col>
               </Row>
             </Container>

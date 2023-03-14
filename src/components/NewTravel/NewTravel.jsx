@@ -26,6 +26,10 @@ const NewTravel = () => {
     navigate("/");
   };
 
+  const handleDateChange = (e) => {
+    setDateOfCrossing(new Date(e.target.value));
+  };
+
   const handleOptionChange = (event) => {
     setWayOfCrossing(event.target.value);
   };
@@ -281,17 +285,16 @@ const NewTravel = () => {
                     <Form.Label>Date of crossing</Form.Label>
                     <Form.Control
                       type="date"
-                      placeholder="Enter email"
-                      onChange={(e) => {
-                        setDateOfCrossing(e.target.value);
-                      }}
+                      name="date"
+                      min={new Date().toISOString().slice(0, 10)}
+                      value={dateOfCrossing.toISOString().slice(0, 10)}
+                      onChange={handleDateChange}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Time of crossing</Form.Label>
                     <Form.Control
                       type="time"
-                      placeholder="Enter email"
                       onChange={(e) => {
                         setTimeOfCrossing(e.target.value);
                       }}
