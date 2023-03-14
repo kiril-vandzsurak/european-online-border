@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
+import { Alert } from "react-bootstrap";
 
 const NewTravel = () => {
   const [wayOfCrossing, setWayOfCrossing] = useState("By car");
@@ -17,6 +18,8 @@ const NewTravel = () => {
   const [carRegistrationNum, setCarRegistrationNum] = useState("");
   const [dateOfCrossing, setDateOfCrossing] = useState(new Date());
   const [timeOfCrossing, setTimeOfCrossing] = useState("");
+  const [status, setStatus] = useState("Under Consideration");
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const navigate = useNavigate();
   const { userId } = useParams();
@@ -36,6 +39,13 @@ const NewTravel = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!countryTo || !wayOfCrossing || !dateOfCrossing || !timeOfCrossing) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    setFormSubmitted(true);
+
     const data = {
       wayOfCrossing,
       countryTo,
@@ -46,6 +56,7 @@ const NewTravel = () => {
       carRegistrationNum,
       dateOfCrossing,
       timeOfCrossing,
+      status,
       userId,
     };
 
@@ -188,7 +199,9 @@ const NewTravel = () => {
                     src={window.location.origin + "/european-union.png"}
                     alt="img"
                   />
-                  <span className="mainText">EUROPEAN BORDER CONTROL</span>
+                  <span className="mainText">
+                    EUROPEAN BORDER CONTROL Admin
+                  </span>
                   <img
                     className="logoSmallBio"
                     style={{
@@ -203,6 +216,15 @@ const NewTravel = () => {
                 </div>
               </Row>
               <Row>
+                {formSubmitted && (
+                  <Alert
+                    variant="success"
+                    onClose={() => setFormSubmitted(false)}
+                    dismissible
+                  >
+                    Form successfully submitted!
+                  </Alert>
+                )}
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Visiting country</Form.Label>

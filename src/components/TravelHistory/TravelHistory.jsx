@@ -15,7 +15,6 @@ const TravelHistory = () => {
   // const [destination, setDestination] = useState("");
   // const [wayOfCrossing, setWayOfCrossing] = useState("");
   const [forms, setForms] = useState([]);
-  const [status, setStatus] = useState("Under Consideration");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -217,7 +216,7 @@ const TravelHistory = () => {
                   <div className="d-flex flex-column">
                     {forms.map((item) => (
                       <div key={item._id} className="d-flex flex-column">
-                        {status}
+                        {item.status}
                       </div>
                     ))}
                   </div>
