@@ -4,15 +4,44 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const TravelHistory = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
+  // const [dateOfTravel, setDateOfTravel] = useState(new Date());
+  // const [timeOfTravel, setTimeOfTravel] = useState("");
+  // const [destination, setDestination] = useState("");
+  // const [wayOfCrossing, setWayOfCrossing] = useState("");
+  const [forms, setForms] = useState([]);
+  const [status, setStatus] = useState("Under Consideration");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/");
   };
+
+  const fetchTravels = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3001/travelForm/userTravels/${userId}/travels`,
+        {
+          headers: {
+            Authorization: `Bearer ` + localStorage.getItem("token"),
+          },
+        }
+      );
+      const data = await response.json();
+      setForms(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTravels();
+  }, []);
 
   return (
     <div>
@@ -147,6 +176,46 @@ const TravelHistory = () => {
                     alt="img"
                   />
                 </div>
+              </Row>
+              <Row>
+                <Col className="d-flex flex-column">
+                  <span>Date</span>
+
+                  {forms.map((item) => (
+                    <div className="d-flex flex-column">
+                      {item.dateOfCrossing}
+                    </div>
+                  ))}
+                </Col>
+                <Col className="d-flex flex-column">
+                  <span>Time</span>
+
+                  {forms.map((item) => (
+                    <div className="d-flex flex-column">
+                      {item.timeOfCrossing}
+                    </div>
+                  ))}
+                </Col>
+                <Col className="d-flex flex-column">
+                  <span>Destination</span>
+
+                  {forms.map((item) => (
+                    <div className="d-flex flex-column">{item.countryTo}</div>
+                  ))}
+                </Col>
+                <Col className="d-flex flex-column">
+                  <span>Way of Crossing</span>
+
+                  {forms.map((item) => (
+                    <div className="d-flex flex-column">
+                      {item.wayOfCrossing}
+                    </div>
+                  ))}
+                </Col>
+                <Col className="d-flex flex-column">
+                  <span>Status</span>
+                  <div className="d-flex flex-column">{status}</div>
+                </Col>
               </Row>
             </Container>
           </Col>

@@ -8,9 +8,8 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
 const NewTravel = () => {
-  const [selectedOption, setSelectedOption] = useState("By car");
+  const [wayOfCrossing, setWayOfCrossing] = useState("By car");
   const [countryTo, setCountryTo] = useState("");
-  const [wayOfCrossing, setWayOfCrossing] = useState("");
   const [carNumber, setCarNumber] = useState("");
   const [carProducer, setCarProducer] = useState("");
   const [drivingLicenseNum, setDrivingLicenseNum] = useState("");
@@ -28,25 +27,38 @@ const NewTravel = () => {
   };
 
   const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+    setWayOfCrossing(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // const data={
-    //     countryTo:
-    // }
+    const data = {
+      wayOfCrossing,
+      countryTo,
+      carNumber,
+      carProducer,
+      drivingLicenseNum,
+      carInsuranceNum,
+      carRegistrationNum,
+      dateOfCrossing,
+      timeOfCrossing,
+      userId,
+    };
+
     try {
-      const response = await fetch("/fulfilNewForm", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(),
-      });
-      const data = await response.json();
-      console.log(data); // do something with the response data
+      const response = await fetch(
+        "http://localhost:3001/travelForm/fulfilNewForm",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const responseData = await response.json();
+      console.log(responseData);
     } catch (error) {
       console.error(error);
     }
@@ -187,10 +199,16 @@ const NewTravel = () => {
                 </div>
               </Row>
               <Row>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Visiting country</Form.Label>
-                    <Form.Control type="text" placeholder="Country" />
+                    <Form.Control
+                      type="text"
+                      placeholder="Country"
+                      onChange={(e) => {
+                        setCountryTo(e.target.value);
+                      }}
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Way of crossing</Form.Label>
@@ -206,7 +224,10 @@ const NewTravel = () => {
                     <Form.Control
                       type="text"
                       placeholder="Car number"
-                      disabled={selectedOption === "By walk"}
+                      disabled={wayOfCrossing === "By walk"}
+                      onChange={(e) => {
+                        setCarNumber(e.target.value);
+                      }}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="carProducer">
@@ -214,7 +235,10 @@ const NewTravel = () => {
                     <Form.Control
                       type="text"
                       placeholder="Car producer"
-                      disabled={selectedOption === "By walk"}
+                      disabled={wayOfCrossing === "By walk"}
+                      onChange={(e) => {
+                        setCarProducer(e.target.value);
+                      }}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="drivingLicenseNumber">
@@ -222,7 +246,10 @@ const NewTravel = () => {
                     <Form.Control
                       type="text"
                       placeholder="Driving license number"
-                      disabled={selectedOption === "By walk"}
+                      disabled={wayOfCrossing === "By walk"}
+                      onChange={(e) => {
+                        setDrivingLicenseNum(e.target.value);
+                      }}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="carInsuranceNumber">
@@ -230,7 +257,10 @@ const NewTravel = () => {
                     <Form.Control
                       type="text"
                       placeholder="Car insurance number"
-                      disabled={selectedOption === "By walk"}
+                      disabled={wayOfCrossing === "By walk"}
+                      onChange={(e) => {
+                        setCarInsuranceNum(e.target.value);
+                      }}
                     />
                   </Form.Group>
                   <Form.Group
@@ -241,17 +271,33 @@ const NewTravel = () => {
                     <Form.Control
                       type="text"
                       placeholder="Car registration number"
-                      disabled={selectedOption === "By walk"}
+                      disabled={wayOfCrossing === "By walk"}
+                      onChange={(e) => {
+                        setCarRegistrationNum(e.target.value);
+                      }}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="date" placeholder="Enter email" />
+                    <Form.Label>Date of crossing</Form.Label>
+                    <Form.Control
+                      type="date"
+                      placeholder="Enter email"
+                      onChange={(e) => {
+                        setDateOfCrossing(e.target.value);
+                      }}
+                    />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="time" placeholder="Enter email" />
+                    <Form.Label>Time of crossing</Form.Label>
+                    <Form.Control
+                      type="time"
+                      placeholder="Enter email"
+                      onChange={(e) => {
+                        setTimeOfCrossing(e.target.value);
+                      }}
+                    />
                   </Form.Group>
+                  <Button type="submit">Submit</Button>
                 </Form>
               </Row>
             </Container>
