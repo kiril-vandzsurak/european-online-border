@@ -42,7 +42,7 @@ const AdminPage = () => {
       const updatedTravel = await response.json();
       setTravels((prevTravels) =>
         prevTravels.filter((travel) => travel._id !== travelId)
-      ); // remove the updated travel from the state array
+      );
       return updatedTravel;
     } catch (error) {
       console.error(error);
