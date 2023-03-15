@@ -1,6 +1,7 @@
 export const EDIT_PERSONAL_INFO = "EDIT_PERSONAL_INFO";
 export const EDIT_PASSPORT_INFO = "EDIT_PASSPORT_INFO";
 export const UPLOAD_IMAGE_SUCCESS = "UPLOAD_IMAGE_SUCCESS";
+export const UPLOAD_USER_ID = "UPLOAD_USER_ID";
 
 export const personalInfo = () => {
   return async (dispatch) => {
@@ -139,5 +140,14 @@ export const uploadPassportPhoto = (userId, imageData) => {
     } catch (error) {
       console.error(error);
     }
+  };
+};
+
+export const uploadUserId = (userId) => {
+  return async (dispatch) => {
+    dispatch({
+      type: UPLOAD_USER_ID,
+      payload: userId,
+    });
   };
 };

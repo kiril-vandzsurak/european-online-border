@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PdfFile from "../PdfFile/PfdFile.jsx";
 
 const TravelHistory = () => {
   const navigate = useNavigate();
@@ -217,6 +219,18 @@ const TravelHistory = () => {
                     {forms.map((item) => (
                       <div key={item._id} className="d-flex flex-column">
                         {item.status}
+                        {item.status === "Approved" && (
+                          <PDFDownloadLink
+                            document={<PdfFile />}
+                            fileName="border-pass.pdf"
+                          >
+                            {({ blob, url, loading, error }) =>
+                              loading
+                                ? "Loading document..."
+                                : "Download border pass"
+                            }
+                          </PDFDownloadLink>
+                        )}
                       </div>
                     ))}
                   </div>
