@@ -51,7 +51,12 @@ const PdfFile = () => {
             style={styles.qrcode}
           />
         )}
-        <Text style={styles.text}>Have a good trip!</Text>
+        <Text style={styles.text}>Dear Traveler,</Text>
+        <Text style={styles.text}>
+          On this page you can see your QR-Code which you will have to scan on
+          border to cross it. You will have a possibility to be late maximum for
+          10 minutes from your set time of travel, so try not to be late
+        </Text>
       </Page>
     </Document>
   );

@@ -5,7 +5,6 @@ import {
 } from "@reduxjs/toolkit";
 import personalInfoReducer from "../reducers/personalInfoReducer";
 import passportInfoReducer from "../reducers/passportInfoReducer";
-import userIdReducer from "../reducers/userIdReducer.js";
 import localStorage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
@@ -23,7 +22,6 @@ const persistConfig = {
 const bigReducer = combineReducers({
   personalInfo: personalInfoReducer,
   passportInfo: passportInfoReducer,
-  userIdInfo: userIdReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, bigReducer);

@@ -142,12 +142,3 @@ export const uploadPassportPhoto = (userId, imageData) => {
     }
   };
 };
-
-export const uploadUserId = (userId) => {
-  return async (dispatch) => {
-    dispatch({
-      type: UPLOAD_USER_ID,
-      payload: userId,
-    });
-  };
-};
