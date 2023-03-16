@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
+import { useEffect } from "react";
 
 const NewTravel = () => {
   const [wayOfCrossing, setWayOfCrossing] = useState("By car");
@@ -20,6 +21,7 @@ const NewTravel = () => {
   const [timeOfCrossing, setTimeOfCrossing] = useState("");
   const [status, setStatus] = useState("Under Consideration");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [user, setUser] = useState("");
 
   const navigate = useNavigate();
   const { userId } = useParams();
@@ -78,6 +80,24 @@ const NewTravel = () => {
       console.error(error);
     }
   };
+
+  const fetchUser = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/users/me", {
+        headers: {
+          Authorization: `Bearer ` + localStorage.getItem("token"),
+        },
+      });
+      const user = await response.json();
+      setUser(user);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
 
   return (
     <div>
@@ -225,105 +245,150 @@ const NewTravel = () => {
                     Form successfully submitted!
                   </Alert>
                 )}
-                <Form onSubmit={handleSubmit}>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Visiting country</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Country"
-                      onChange={(e) => {
-                        setCountryTo(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Way of crossing</Form.Label>
-                    <Form.Select onChange={handleOptionChange}>
-                      <option value="By car">By car</option>
-                      <option value="By walk">By walk</option>
-                    </Form.Select>
-                  </Form.Group>
+                {!user.nationality || !user.passportNum ? (
+                  <span>
+                    Before filling up the form, please fill out your passport
+                    data in "My Account"
+                  </span>
+                ) : (
+                  <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>Visiting country</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Country"
+                        onChange={(e) => {
+                          setCountryTo(e.target.value);
+                        }}
+                        disabled={!user.nationality || !user.passportNum}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Way of crossing</Form.Label>
+                      <Form.Select
+                        onChange={handleOptionChange}
+                        disabled={!user.nationality || !user.passportNum}
+                        required
+                      >
+                        <option value="By car">By car</option>
+                        <option value="By walk">By walk</option>
+                      </Form.Select>
+                    </Form.Group>
 
-                  {/* Disable the car-related forms when "By walk" is selected */}
-                  <Form.Group className="mb-3" controlId="carNumber">
-                    <Form.Label>Car number</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Car number"
-                      disabled={wayOfCrossing === "By walk"}
-                      onChange={(e) => {
-                        setCarNumber(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="carProducer">
-                    <Form.Label>Car producer</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Car producer"
-                      disabled={wayOfCrossing === "By walk"}
-                      onChange={(e) => {
-                        setCarProducer(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="drivingLicenseNumber">
-                    <Form.Label>Driving license number</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Driving license number"
-                      disabled={wayOfCrossing === "By walk"}
-                      onChange={(e) => {
-                        setDrivingLicenseNum(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="carInsuranceNumber">
-                    <Form.Label>Car insurance number</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Car insurance number"
-                      disabled={wayOfCrossing === "By walk"}
-                      onChange={(e) => {
-                        setCarInsuranceNum(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group
-                    className="mb-3"
-                    controlId="carRegistrationNumber"
-                  >
-                    <Form.Label>Car registration number</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Car registration number"
-                      disabled={wayOfCrossing === "By walk"}
-                      onChange={(e) => {
-                        setCarRegistrationNum(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Date of crossing</Form.Label>
-                    <Form.Control
-                      type="date"
-                      name="date"
-                      min={new Date().toISOString().slice(0, 10)}
-                      value={dateOfCrossing.toISOString().slice(0, 10)}
-                      onChange={handleDateChange}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Time of crossing</Form.Label>
-                    <Form.Control
-                      type="time"
-                      onChange={(e) => {
-                        setTimeOfCrossing(e.target.value);
-                      }}
-                    />
-                  </Form.Group>
-                  <Button type="submit">Submit</Button>
-                </Form>
+                    {/* Disable the car-related forms when "By walk" is selected */}
+                    <Form.Group className="mb-3" controlId="carNumber">
+                      <Form.Label>Car number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Car number"
+                        disabled={
+                          wayOfCrossing === "By walk" ||
+                          !user.nationality ||
+                          !user.passportNum
+                        }
+                        onChange={(e) => {
+                          setCarNumber(e.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="carProducer">
+                      <Form.Label>Car producer</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Car producer"
+                        disabled={
+                          wayOfCrossing === "By walk" ||
+                          !user.nationality ||
+                          !user.passportNum
+                        }
+                        onChange={(e) => {
+                          setCarProducer(e.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="drivingLicenseNumber"
+                    >
+                      <Form.Label>Driving license number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Driving license number"
+                        disabled={
+                          wayOfCrossing === "By walk" ||
+                          !user.nationality ||
+                          !user.passportNum
+                        }
+                        onChange={(e) => {
+                          setDrivingLicenseNum(e.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="carInsuranceNumber">
+                      <Form.Label>Car insurance number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Car insurance number"
+                        disabled={
+                          wayOfCrossing === "By walk" ||
+                          !user.nationality ||
+                          !user.passportNum
+                        }
+                        onChange={(e) => {
+                          setCarInsuranceNum(e.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3"
+                      controlId="carRegistrationNumber"
+                    >
+                      <Form.Label>Car registration number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Car registration number"
+                        disabled={
+                          wayOfCrossing === "By walk" ||
+                          !user.nationality ||
+                          !user.passportNum
+                        }
+                        onChange={(e) => {
+                          setCarRegistrationNum(e.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>Date of crossing</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="date"
+                        min={new Date().toISOString().slice(0, 10)}
+                        value={dateOfCrossing.toISOString().slice(0, 10)}
+                        onChange={handleDateChange}
+                        disabled={!user.nationality || !user.passportNum}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>Time of crossing</Form.Label>
+                      <Form.Control
+                        type="time"
+                        onChange={(e) => {
+                          setTimeOfCrossing(e.target.value);
+                        }}
+                        disabled={!user.nationality || !user.passportNum}
+                        required
+                      />
+                    </Form.Group>
+                    <Button
+                      type="submit"
+                      disabled={!user.nationality || !user.passportNum}
+                    >
+                      Submit
+                    </Button>
+                  </Form>
+                )}
               </Row>
             </Container>
           </Col>

@@ -75,7 +75,9 @@ const MyAccount = () => {
     (state) => state.passportInfo.passportNum
   );
   const editedUserPassportPhoto = useSelector(
-    (state) => state.passportInfo.passportPhoto.fileName
+    (state) =>
+      state.passportInfo.passportPhoto &&
+      state.passportInfo.passportPhoto.fileName
   );
 
   return (
