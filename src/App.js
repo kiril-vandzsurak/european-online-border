@@ -7,11 +7,8 @@ import NewTravel from "./components/NewTravel/NewTravel.jsx";
 import TravelHistory from "./components/TravelHistory/TravelHistory.jsx";
 import AdminPage from "./components/AdminPage/AdminPage.jsx";
 import PdfFile from "./components/PdfFile/PfdFile.jsx";
-import { useSelector } from "react-redux";
 
 function App() {
-  const userId = useSelector((state) => state.userIdInfo.userId);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -22,7 +19,6 @@ function App() {
         <Route element={<NewTravel />} path="/newTravel/:userId" />
         <Route element={<TravelHistory />} path="/travelHistory/:userId" />
         <Route element={<AdminPage />} path="/adminPage" />
-        <Route element={<PdfFile userId={userId} />} path="/pdfFileGenerator" />
       </Routes>
     </BrowserRouter>
   );
