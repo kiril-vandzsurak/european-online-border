@@ -12,10 +12,6 @@ import PdfFile from "../PdfFile/PfdFile.jsx";
 const TravelHistory = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
-  // const [dateOfTravel, setDateOfTravel] = useState(new Date());
-  // const [timeOfTravel, setTimeOfTravel] = useState("");
-  // const [destination, setDestination] = useState("");
-  // const [wayOfCrossing, setWayOfCrossing] = useState("");
   const [forms, setForms] = useState([]);
 
   const handleLogout = () => {

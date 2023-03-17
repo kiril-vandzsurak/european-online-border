@@ -41,7 +41,9 @@ const AdminPage = () => {
       console.log(newStatus, travelId);
       const updatedTravel = await response.json();
       setTravels((prevTravels) =>
-        prevTravels.filter((travel) => travel._id !== travelId)
+        prevTravels.map((travel) =>
+          travel._id === travelId ? { ...travel, status: newStatus } : travel
+        )
       );
       return updatedTravel;
     } catch (error) {
@@ -89,36 +91,37 @@ const AdminPage = () => {
           <Col>
             <h1>Travel List</h1>
             <ul>
-              {travels.map((travel) => (
-                <li key={travel._id}>
-                  <p>Travel information:</p>
-                  <ul>
-                    {Object.entries(travel).map(([key, value]) => (
-                      <li key={key}>
-                        {key}: {JSON.stringify(value)}
-                      </li>
-                    ))}
-                    {
+              {travels
+                .filter(
+                  (travel) =>
+                    !travel.status || travel.status === "Under Consideration"
+                )
+                .map((travel) => (
+                  <li key={travel._id}>
+                    <p>Travel information:</p>
+                    <ul>
+                      {Object.entries(travel).map(([key, value]) => (
+                        <li key={key}>
+                          {key}: {JSON.stringify(value)}
+                        </li>
+                      ))}
                       <Button
-                        onClick={() => {
-                          updateTravelStatus(travel._id, "Approved");
-                        }}
+                        onClick={() =>
+                          updateTravelStatus(travel._id, "Approved")
+                        }
                       >
                         Approve
-                      </Button>
-                    }{" "}
-                    {
+                      </Button>{" "}
                       <Button
-                        onClick={() => {
-                          updateTravelStatus(travel._id, "Rejected");
-                        }}
+                        onClick={() =>
+                          updateTravelStatus(travel._id, "Rejected")
+                        }
                       >
                         Reject
                       </Button>
-                    }
-                  </ul>
-                </li>
-              ))}
+                    </ul>
+                  </li>
+                ))}
             </ul>
           </Col>
         </Row>

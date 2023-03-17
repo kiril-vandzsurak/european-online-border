@@ -398,7 +398,11 @@ const MyAccount = () => {
                       </div>
                       <div className="infoBlocksData ">
                         <span>Date of birth</span>
-                        <span className="infoWidth">{editedUserBirthDate}</span>
+                        <span className="infoWidth">
+                          {new Date(editedUserBirthDate)
+                            .toISOString()
+                            .slice(0, 10)}
+                        </span>
                       </div>
                     </div>
                   </div>
