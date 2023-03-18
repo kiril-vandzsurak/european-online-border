@@ -18,6 +18,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 
 const MyAccount = () => {
   const [showPersonal, setShowPersonal] = useState(false);
@@ -78,6 +80,16 @@ const MyAccount = () => {
     (state) =>
       state.passportInfo.passportPhoto &&
       state.passportInfo.passportPhoto.fileName
+  );
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Body>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Body>
+    </Popover>
   );
 
   return (
@@ -324,6 +336,19 @@ const MyAccount = () => {
           </Col>
           <Col lg={10} className="mainPageBackground">
             <Container>
+              <OverlayTrigger
+                trigger="click"
+                placement="bottom"
+                overlay={popover}
+              >
+                <Button className="questionPopOver">
+                  <img
+                    className="questionIcon "
+                    src={window.location.origin + "/questionIcon.png"}
+                    alt="img"
+                  />
+                </Button>
+              </OverlayTrigger>
               <Row>
                 <div className="mainLabel justify-content-center mt-3">
                   <img

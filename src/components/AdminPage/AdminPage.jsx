@@ -57,7 +57,7 @@ const AdminPage = () => {
   }, []);
 
   return (
-    <div className="backgroundAdmin">
+    <div>
       <Container fluid style={{ margin: "0px" }}>
         <Row className="topAdmin">
           <div className="mainLabel justify-content-start">
@@ -87,7 +87,7 @@ const AdminPage = () => {
             />
           </div>
         </Row>
-        <Row>
+        <Row className="backgroundAdmin">
           <Col>
             <h1>Travel List</h1>
             <ul>
@@ -98,7 +98,6 @@ const AdminPage = () => {
                 )
                 .map((travel) => (
                   <li key={travel._id}>
-                    <p>Travel information:</p>
                     <ul>
                       {Object.entries(travel).map(([key, value]) => (
                         <li key={key}>

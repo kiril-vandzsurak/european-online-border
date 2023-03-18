@@ -9,6 +9,8 @@ import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useEffect } from "react";
 import "./NewTravel.css";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 
 const NewTravel = () => {
   const [wayOfCrossing, setWayOfCrossing] = useState("By car");
@@ -101,6 +103,16 @@ const NewTravel = () => {
   useEffect(() => {
     fetchUser();
   }, []);
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Body>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Body>
+    </Popover>
+  );
 
   return (
     <div style={{ backgroundColor: "#ECECEA" }}>
@@ -215,6 +227,19 @@ const NewTravel = () => {
           </Col>
           <Col lg={10} className="mainPageBackground">
             <Container>
+              <OverlayTrigger
+                trigger="click"
+                placement="bottom"
+                overlay={popover}
+              >
+                <Button className="questionPopOver">
+                  <img
+                    className="questionIcon "
+                    src={window.location.origin + "/questionIcon.png"}
+                    alt="img"
+                  />
+                </Button>
+              </OverlayTrigger>
               <Row>
                 <div className="mainLabel justify-content-center mt-3">
                   <img

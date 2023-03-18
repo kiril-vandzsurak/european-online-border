@@ -38,12 +38,6 @@
 .accountWelcomeText > span {
   margin-inline: 10px;
   font-weight: 900;
-  /* color: rgb(0, 241, 145);
-  color: linear-gradient(
-    126deg,
-    rgba(0, 241, 145, 1) 27%,
-    rgba(0, 200, 198, 1) 75%
-  ); */
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -86,24 +80,6 @@
   border: none !important;
 }
 
-/* .infoBlockData {
-  display: flex;
-  justify-content: space-between;
-  width: 302px;
-  margin-inline: auto;
-  font-size: 20px;
-  margin-top: 20px;
-}
-
-.infoBlockLeftAndRight {
-  display: flex;
-  flex-direction: column;
-}
-
-.infoBlockLeftAndRight > span {
-  margin-bottom: 15px;
-} */
-
 .infoBlocksData {
   display: flex;
   justify-content: space-between;
@@ -120,4 +96,23 @@
 
 .infoWidthPassport {
   width: 150px;
+}
+
+.questionPopOver {
+  position: absolute;
+  right: 40px;
+  top: 26px;
+  border-radius: 50% !important;
+  height: 30px;
+  width: 30px;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.questionIcon {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

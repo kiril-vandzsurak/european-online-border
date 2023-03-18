@@ -10,6 +10,8 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import PdfFile from "../PdfFile/PfdFile.jsx";
 import "./TravelHistory.css";
 import { Collapse } from "react-bootstrap";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 
 const TravelHistory = () => {
   const navigate = useNavigate();
@@ -53,6 +55,16 @@ const TravelHistory = () => {
   );
   const travelHistory = forms.filter(
     (item) => new Date(item.dateOfCrossing) < today
+  );
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Body>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Body>
+    </Popover>
   );
 
   return (
@@ -164,6 +176,24 @@ const TravelHistory = () => {
           <Col lg={10} className="backgroundTravelHistory">
             <div className="parent-container" style={{ height: "100vh" }}>
               <Container style={{ height: "100%", overflow: "auto" }}>
+                <img
+                  className="pictureBg"
+                  src={window.location.origin + "/historyBg.png"}
+                  alt="img"
+                />
+                <OverlayTrigger
+                  trigger="click"
+                  placement="bottom"
+                  overlay={popover}
+                >
+                  <Button className="questionPopOver">
+                    <img
+                      className="questionIcon "
+                      src={window.location.origin + "/questionIcon.png"}
+                      alt="img"
+                    />
+                  </Button>
+                </OverlayTrigger>
                 <Row>
                   <div className="mainLabel justify-content-center mt-3">
                     <img
@@ -197,8 +227,11 @@ const TravelHistory = () => {
                   </h2>
                 )}
                 {upcomingTravels.length > 0 && (
-                  <Row>
-                    <div className="upcomingBlock">
+                  <Row style={{ position: "relative" }}>
+                    <div
+                      className="upcomingBlock"
+                      style={{ marginTop: "20px" }}
+                    >
                       <h2 className="upcomingName">Upcoming Travels</h2>
                       <div
                         className="listOfTravels d-flex flex-row flex-wrap"
@@ -281,7 +314,7 @@ const TravelHistory = () => {
                 )}
 
                 {travelHistory.length > 0 && (
-                  <Row>
+                  <Row style={{ position: "relative" }}>
                     <div className="upcomingBlock">
                       <h2 className="upcomingName">Travel History</h2>
                       <div
