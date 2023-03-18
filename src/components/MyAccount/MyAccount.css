@@ -24,14 +24,7 @@
 }
 
 .mainPageBackground {
-  background: rgb(204, 228, 208);
-  background: linear-gradient(
-    -39deg,
-    rgba(204, 228, 208, 1) 32%,
-    rgba(255, 255, 255, 1) 43%,
-    rgba(255, 255, 255, 1) 53%,
-    rgba(204, 228, 208, 1) 65%
-  );
+  background: #ececea;
 }
 
 .accountWelcomeText {

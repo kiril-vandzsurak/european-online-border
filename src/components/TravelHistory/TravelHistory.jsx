@@ -49,14 +49,14 @@ const TravelHistory = () => {
 
   const today = new Date();
   const upcomingTravels = forms.filter(
-    (item) => new Date(item.dateOfCrossing) > today
+    (item) => new Date(item.dateOfCrossing) >= today
   );
   const travelHistory = forms.filter(
-    (item) => new Date(item.dateOfCrossing) <= today
+    (item) => new Date(item.dateOfCrossing) < today
   );
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#ECECEA" }}>
       <Container fluid>
         <Row>
           <Col lg={2} style={{ padding: "0" }}>
@@ -161,7 +161,7 @@ const TravelHistory = () => {
               </Button>
             </div>
           </Col>
-          <Col lg={10} className="mainPageBackground">
+          <Col lg={10} className="backgroundTravelHistory">
             <div className="parent-container" style={{ height: "100vh" }}>
               <Container style={{ height: "100%", overflow: "auto" }}>
                 <Row>
@@ -190,6 +190,12 @@ const TravelHistory = () => {
                     />
                   </div>
                 </Row>
+                {upcomingTravels.length === 0 && travelHistory.length === 0 && (
+                  <h2 className="defaultText">
+                    There is no travel forms sent. To see your history - sent a
+                    form
+                  </h2>
+                )}
                 {upcomingTravels.length > 0 && (
                   <Row>
                     <div className="upcomingBlock">

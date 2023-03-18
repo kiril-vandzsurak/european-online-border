@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+
 .upcomingBlock {
   height: 370px;
   width: 956px;
@@ -30,4 +32,14 @@
   padding: 10px;
   border-bottom: 1px black solid;
   margin-bottom: 20px;
+}
+
+.backgroundTravelHistory {
+  background: #ececea;
+}
+
+.defaultText {
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Raleway", sans-serif;
 }

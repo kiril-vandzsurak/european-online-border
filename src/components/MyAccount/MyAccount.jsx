@@ -81,7 +81,7 @@ const MyAccount = () => {
   );
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#ECECEA" }}>
       <Modal
         show={showPersonal}
         onHide={handleClosePersonal}

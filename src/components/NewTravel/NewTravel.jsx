@@ -8,17 +8,19 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useEffect } from "react";
+import "./NewTravel.css";
 
 const NewTravel = () => {
   const [wayOfCrossing, setWayOfCrossing] = useState("By car");
   const [countryTo, setCountryTo] = useState("");
-  const [carNumber, setCarNumber] = useState("");
-  const [carProducer, setCarProducer] = useState("");
+  const [carBrand, setCarBrand] = useState("");
+  const [carModel, setCarModel] = useState("");
   const [drivingLicenseNum, setDrivingLicenseNum] = useState("");
   const [carInsuranceNum, setCarInsuranceNum] = useState("");
-  const [carRegistrationNum, setCarRegistrationNum] = useState("");
+  const [carVinCode, setCarVinCode] = useState("");
   const [dateOfCrossing, setDateOfCrossing] = useState(new Date());
   const [timeOfCrossing, setTimeOfCrossing] = useState("");
+  const [carLicensePlate, setCarLicensePlate] = useState("");
   const [status, setStatus] = useState("Under Consideration");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [user, setUser] = useState("");
@@ -51,11 +53,12 @@ const NewTravel = () => {
     const data = {
       wayOfCrossing,
       countryTo,
-      carNumber,
-      carProducer,
+      carBrand,
+      carModel,
       drivingLicenseNum,
       carInsuranceNum,
-      carRegistrationNum,
+      carVinCode,
+      carLicensePlate,
       dateOfCrossing,
       timeOfCrossing,
       status,
@@ -100,8 +103,13 @@ const NewTravel = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#ECECEA" }}>
       <Container fluid>
+        <img
+          className="imgBackgroudTravel"
+          src={window.location.origin + "/travelHistoryImg.png"}
+          alt="img"
+        />
         <Row>
           <Col lg={2} style={{ padding: "0" }}>
             <div
@@ -219,9 +227,7 @@ const NewTravel = () => {
                     src={window.location.origin + "/european-union.png"}
                     alt="img"
                   />
-                  <span className="mainText">
-                    EUROPEAN BORDER CONTROL Admin
-                  </span>
+                  <span className="mainText">EUROPEAN BORDER CONTROL</span>
                   <img
                     className="logoSmallBio"
                     style={{
@@ -236,13 +242,14 @@ const NewTravel = () => {
                 </div>
               </Row>
               <Row>
+                <h4 className="h4NewTravel">Fill out form for New Travel</h4>
                 {formSubmitted && (
                   <Alert
                     variant="success"
                     onClose={() => setFormSubmitted(false)}
                     dismissible
                   >
-                    Form successfully submitted!
+                    Form successfully sent!
                   </Alert>
                 )}
                 {!user.nationality || !user.passportNum ? (
@@ -251,9 +258,21 @@ const NewTravel = () => {
                     data in "My Account"
                   </span>
                 ) : (
-                  <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Visiting country</Form.Label>
+                  <Form
+                    style={{
+                      width: "620px",
+                      marginInline: "auto",
+                      zIndex: "1",
+                    }}
+                    onSubmit={handleSubmit}
+                  >
+                    <Form.Group
+                      className="mb-3 d-flex justify-content-around"
+                      controlId="formBasicEmail"
+                    >
+                      <Form.Label style={{ width: "300px" }}>
+                        Visiting country
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Country"
@@ -262,14 +281,18 @@ const NewTravel = () => {
                         }}
                         disabled={!user.nationality || !user.passportNum}
                         required
+                        style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Way of crossing</Form.Label>
+                    <Form.Group className="mb-3 d-flex justify-content-around">
+                      <Form.Label style={{ width: "300px" }}>
+                        Way of crossing
+                      </Form.Label>
                       <Form.Select
                         onChange={handleOptionChange}
                         disabled={!user.nationality || !user.passportNum}
                         required
+                        style={{ width: "300px", borderRadius: "20px" }}
                       >
                         <option value="By car">By car</option>
                         <option value="By walk">By walk</option>
@@ -277,41 +300,55 @@ const NewTravel = () => {
                     </Form.Group>
 
                     {/* Disable the car-related forms when "By walk" is selected */}
-                    <Form.Group className="mb-3" controlId="carNumber">
-                      <Form.Label>Car number</Form.Label>
+                    <Form.Group
+                      className="mb-3 d-flex justify-content-around"
+                      controlId="carNumber"
+                    >
+                      <Form.Label style={{ width: "300px" }}>
+                        Car brand
+                      </Form.Label>
                       <Form.Control
                         type="text"
-                        placeholder="Car number"
+                        placeholder="Car brand"
                         disabled={
                           wayOfCrossing === "By walk" ||
                           !user.nationality ||
                           !user.passportNum
                         }
                         onChange={(e) => {
-                          setCarNumber(e.target.value);
+                          setCarBrand(e.target.value);
                         }}
-                      />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="carProducer">
-                      <Form.Label>Car producer</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Car producer"
-                        disabled={
-                          wayOfCrossing === "By walk" ||
-                          !user.nationality ||
-                          !user.passportNum
-                        }
-                        onChange={(e) => {
-                          setCarProducer(e.target.value);
-                        }}
+                        style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
                     <Form.Group
-                      className="mb-3"
+                      className="mb-3 d-flex justify-content-around"
+                      controlId="carProducer"
+                    >
+                      <Form.Label style={{ width: "300px" }}>
+                        Car model
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Car model"
+                        disabled={
+                          wayOfCrossing === "By walk" ||
+                          !user.nationality ||
+                          !user.passportNum
+                        }
+                        onChange={(e) => {
+                          setCarModel(e.target.value);
+                        }}
+                        style={{ width: "300px", borderRadius: "20px" }}
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 d-flex justify-content-around"
                       controlId="drivingLicenseNumber"
                     >
-                      <Form.Label>Driving license number</Form.Label>
+                      <Form.Label style={{ width: "300px" }}>
+                        Driving license number
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Driving license number"
@@ -323,10 +360,16 @@ const NewTravel = () => {
                         onChange={(e) => {
                           setDrivingLicenseNum(e.target.value);
                         }}
+                        style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="carInsuranceNumber">
-                      <Form.Label>Car insurance number</Form.Label>
+                    <Form.Group
+                      className="mb-3 d-flex justify-content-around"
+                      controlId="carInsuranceNumber"
+                    >
+                      <Form.Label style={{ width: "300px" }}>
+                        Car insurance number
+                      </Form.Label>
                       <Form.Control
                         type="text"
                         placeholder="Car insurance number"
@@ -338,28 +381,58 @@ const NewTravel = () => {
                         onChange={(e) => {
                           setCarInsuranceNum(e.target.value);
                         }}
+                        style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
                     <Form.Group
-                      className="mb-3"
+                      className="mb-3 d-flex justify-content-around"
                       controlId="carRegistrationNumber"
                     >
-                      <Form.Label>Car registration number</Form.Label>
+                      <Form.Label style={{ width: "300px" }}>
+                        VIN Code
+                      </Form.Label>
                       <Form.Control
                         type="text"
-                        placeholder="Car registration number"
+                        placeholder="VIN Code"
                         disabled={
                           wayOfCrossing === "By walk" ||
                           !user.nationality ||
                           !user.passportNum
                         }
                         onChange={(e) => {
-                          setCarRegistrationNum(e.target.value);
+                          setCarVinCode(e.target.value);
                         }}
+                        style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Date of crossing</Form.Label>
+                    <Form.Group
+                      className="mb-3 d-flex justify-content-around"
+                      controlId="carLicensePlate"
+                    >
+                      <Form.Label style={{ width: "300px" }}>
+                        Car License Plate
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Car License Plate"
+                        disabled={
+                          wayOfCrossing === "By walk" ||
+                          !user.nationality ||
+                          !user.passportNum
+                        }
+                        onChange={(e) => {
+                          setCarLicensePlate(e.target.value);
+                        }}
+                        style={{ width: "300px", borderRadius: "20px" }}
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      className="mb-3 d-flex justify-content-around"
+                      controlId="formBasicEmail"
+                    >
+                      <Form.Label style={{ width: "300px" }}>
+                        Date of crossing
+                      </Form.Label>
                       <Form.Control
                         type="date"
                         name="date"
@@ -368,10 +441,16 @@ const NewTravel = () => {
                         onChange={handleDateChange}
                         disabled={!user.nationality || !user.passportNum}
                         required
+                        style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Time of crossing</Form.Label>
+                    <Form.Group
+                      className="mb-3 d-flex justify-content-around"
+                      controlId="formBasicEmail"
+                    >
+                      <Form.Label style={{ width: "300px" }}>
+                        Time of crossing
+                      </Form.Label>
                       <Form.Control
                         type="time"
                         onChange={(e) => {
@@ -379,9 +458,20 @@ const NewTravel = () => {
                         }}
                         disabled={!user.nationality || !user.passportNum}
                         required
+                        style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
                     <Button
+                      style={{
+                        fontSize: "20px",
+                        width: "290px",
+                        borderRadius: "50px",
+                        height: "60px",
+                        position: "relative",
+                        zIndex: "1",
+                      }}
+                      className="hoverBtnNewTravel"
+                      variant="outline-dark"
                       type="submit"
                       disabled={!user.nationality || !user.passportNum}
                     >
