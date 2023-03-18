@@ -8,11 +8,18 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import PdfFile from "../PdfFile/PfdFile.jsx";
+import "./TravelHistory.css";
+import { Collapse } from "react-bootstrap";
 
 const TravelHistory = () => {
   const navigate = useNavigate();
   const { userId } = useParams();
   const [forms, setForms] = useState([]);
+  const [open, setOpen] = useState(null);
+
+  const handleToggle = (index) => {
+    setOpen(open === index ? null : index);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -39,6 +46,14 @@ const TravelHistory = () => {
   useEffect(() => {
     fetchTravels();
   }, []);
+
+  const today = new Date();
+  const upcomingTravels = forms.filter(
+    (item) => new Date(item.dateOfCrossing) > today
+  );
+  const travelHistory = forms.filter(
+    (item) => new Date(item.dateOfCrossing) <= today
+  );
 
   return (
     <div>
@@ -147,92 +162,178 @@ const TravelHistory = () => {
             </div>
           </Col>
           <Col lg={10} className="mainPageBackground">
-            <Container>
-              <Row>
-                <div className="mainLabel justify-content-center mt-3">
-                  <img
-                    className="logoSmallEuro"
-                    style={{
-                      display: "block",
-                      width: "58px",
-                      height: "58px",
-                    }}
-                    src={window.location.origin + "/european-union.png"}
-                    alt="img"
-                  />
-                  <span className="mainText">EUROPEAN BORDER CONTROL</span>
-                  <img
-                    className="logoSmallBio"
-                    style={{
-                      display: "block",
-                      width: "50px",
-                      height: "50px",
-                      marginTop: "3px",
-                    }}
-                    src={window.location.origin + "/biometry.png"}
-                    alt="img"
-                  />
-                </div>
-              </Row>
-              <Row>
-                <Col className="d-flex flex-column">
-                  <span>Date</span>
-                  {forms.map((item) => (
-                    <div key={item._id} className="d-flex flex-column">
-                      {new Date(item.dateOfCrossing).toISOString().slice(0, 10)}
-                    </div>
-                  ))}
-                </Col>
-                <Col className="d-flex flex-column">
-                  <span>Time</span>
-                  {forms.map((item) => (
-                    <div key={item._id} className="d-flex flex-column">
-                      {item.timeOfCrossing}
-                    </div>
-                  ))}
-                </Col>
-                <Col className="d-flex flex-column">
-                  <span>Destination</span>
-
-                  {forms.map((item) => (
-                    <div key={item._id} className="d-flex flex-column">
-                      {item.countryTo}
-                    </div>
-                  ))}
-                </Col>
-                <Col className="d-flex flex-column">
-                  <span>Way of Crossing</span>
-
-                  {forms.map((item) => (
-                    <div key={item._id} className="d-flex flex-column">
-                      {item.wayOfCrossing}
-                    </div>
-                  ))}
-                </Col>
-                <Col className="d-flex flex-column">
-                  <span>Status</span>
-                  <div className="d-flex flex-column">
-                    {forms.map((item) => (
-                      <div key={item._id} className="d-flex flex-column">
-                        {item.status}
-                        {item.status === "Approved" && (
-                          <PDFDownloadLink
-                            document={<PdfFile />}
-                            fileName="border-pass.pdf"
-                          >
-                            {({ blob, url, loading, error }) =>
-                              loading
-                                ? "Loading document..."
-                                : "Download border pass"
-                            }
-                          </PDFDownloadLink>
-                        )}
-                      </div>
-                    ))}
+            <div className="parent-container" style={{ height: "100vh" }}>
+              <Container style={{ height: "100%", overflow: "auto" }}>
+                <Row>
+                  <div className="mainLabel justify-content-center mt-3">
+                    <img
+                      className="logoSmallEuro"
+                      style={{
+                        display: "block",
+                        width: "58px",
+                        height: "58px",
+                      }}
+                      src={window.location.origin + "/european-union.png"}
+                      alt="img"
+                    />
+                    <span className="mainText">EUROPEAN BORDER CONTROL</span>
+                    <img
+                      className="logoSmallBio"
+                      style={{
+                        display: "block",
+                        width: "50px",
+                        height: "50px",
+                        marginTop: "3px",
+                      }}
+                      src={window.location.origin + "/biometry.png"}
+                      alt="img"
+                    />
                   </div>
-                </Col>
-              </Row>
-            </Container>
+                </Row>
+                {upcomingTravels.length > 0 && (
+                  <Row>
+                    <div className="upcomingBlock">
+                      <h2 className="upcomingName">Upcoming Travels</h2>
+                      <div
+                        className="listOfTravels d-flex flex-row flex-wrap"
+                        style={{ padding: "15px" }}
+                      >
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>Date</span>
+                          {upcomingTravels.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {new Date(item.dateOfCrossing)
+                                .toISOString()
+                                .slice(0, 10)}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>Time</span>
+                          {upcomingTravels.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {item.timeOfCrossing}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>
+                            Destination
+                          </span>
+                          {upcomingTravels.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {item.countryTo}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>
+                            Way of Crossing
+                          </span>
+                          {upcomingTravels.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {item.wayOfCrossing}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>Status</span>
+                          {upcomingTravels.map((item, index) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              <span
+                                style={{ cursor: "pointer" }}
+                                onClick={() => handleToggle(index)}
+                              >
+                                {item.status}
+                              </span>
+                              <Collapse in={open === index}>
+                                <div>
+                                  {item.status === "Under Consideration" && (
+                                    <p>Wait</p>
+                                  )}
+                                  {item.status === "Approved" && (
+                                    <PDFDownloadLink
+                                      document={<PdfFile />}
+                                      fileName="border-pass.pdf"
+                                    >
+                                      {({ blob, url, loading, error }) =>
+                                        loading
+                                          ? "Loading document..."
+                                          : "Download border pass"
+                                      }
+                                    </PDFDownloadLink>
+                                  )}
+                                  {item.status === "Rejected" && <p>Reason</p>}
+                                </div>
+                              </Collapse>
+                            </div>
+                          ))}
+                        </Col>
+                      </div>
+                    </div>
+                  </Row>
+                )}
+
+                {travelHistory.length > 0 && (
+                  <Row>
+                    <div className="upcomingBlock">
+                      <h2 className="upcomingName">Travel History</h2>
+                      <div
+                        className="listOfTravels d-flex flex-row flex-wrap"
+                        style={{ padding: "15px" }}
+                      >
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>Date</span>
+                          {travelHistory.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {new Date(item.dateOfCrossing)
+                                .toISOString()
+                                .slice(0, 10)}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>Time</span>
+                          {travelHistory.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {item.timeOfCrossing}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>
+                            Destination
+                          </span>
+                          {travelHistory.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {item.countryTo}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>
+                            Way of Crossing
+                          </span>
+                          {travelHistory.map((item) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              {item.wayOfCrossing}
+                            </div>
+                          ))}
+                        </Col>
+                        <Col className="d-flex flex-column">
+                          <span style={{ marginBottom: "10px" }}>Status</span>
+                          {travelHistory.map((item, index) => (
+                            <div key={item._id} className="d-flex flex-column">
+                              <span>{item.status}</span>
+                            </div>
+                          ))}
+                        </Col>
+                      </div>
+                    </div>
+                  </Row>
+                )}
+              </Container>
+            </div>
           </Col>
         </Row>
       </Container>

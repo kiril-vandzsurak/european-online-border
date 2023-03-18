@@ -1,0 +1,33 @@
+.upcomingBlock {
+  height: 370px;
+  width: 956px;
+  background-color: rgb(159, 234, 103);
+  border-radius: 20px;
+  margin-inline: auto;
+  margin-bottom: 30px;
+}
+
+.upcomingName {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.travelFormBlock {
+  height: 400px;
+}
+
+.listOfTravels {
+  height: 275px;
+  width: 95%;
+  background-color: white;
+  border-radius: 20px;
+  margin-inline: auto;
+  margin-top: 20px;
+  overflow: auto;
+  text-align: center;
+}
+.listOfTravels > * > div {
+  padding: 10px;
+  border-bottom: 1px black solid;
+  margin-bottom: 20px;
+}
