@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;1,700&display=swap");
+
 .backgroundAdmin {
   background-color: #e4e4e4e8;
   height: 687px;
@@ -11,4 +13,13 @@
 
 .adminName {
   color: red;
+}
+ul,
+li {
+  font-family: "Roboto Mono", monospace;
+}
+
+.h1Admin {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 700;
 }

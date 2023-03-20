@@ -89,7 +89,7 @@ const AdminPage = () => {
         </Row>
         <Row className="backgroundAdmin">
           <Col>
-            <h1>Travel List</h1>
+            <h1 className="h1Admin">Travel List</h1>
             <ul>
               {travels
                 .filter(
@@ -99,12 +99,30 @@ const AdminPage = () => {
                 .map((travel) => (
                   <li key={travel._id}>
                     <ul>
-                      {Object.entries(travel).map(([key, value]) => (
-                        <li key={key}>
-                          {key}: {JSON.stringify(value)}
+                      {Object.entries(travel).map(
+                        ([key, value]) =>
+                          value &&
+                          key !== "passportPhoto" && ( // exclude passportPhoto from JSON.stringify
+                            <li key={key}>
+                              {key}: {JSON.stringify(value)}
+                            </li>
+                          )
+                      )}
+                      {travel.passportPhoto && ( // check if passportPhoto exists
+                        <li key="passportPhoto">
+                          passportPhoto:{" "}
+                          <img
+                            src={`data:${
+                              travel.passportPhoto.contentType
+                            };base64,${travel.passportPhoto.data.toString(
+                              "base64"
+                            )}`}
+                            alt="passportPhoto"
+                          />
                         </li>
-                      ))}
+                      )}
                       <Button
+                        variant="success"
                         onClick={() =>
                           updateTravelStatus(travel._id, "Approved")
                         }
@@ -112,6 +130,7 @@ const AdminPage = () => {
                         Approve
                       </Button>{" "}
                       <Button
+                        variant="danger"
                         onClick={() =>
                           updateTravelStatus(travel._id, "Rejected")
                         }
