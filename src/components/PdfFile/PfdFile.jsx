@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
     fontFamily: "Times-Roman",
   },
   qrcode: {
-    width: 600,
-    height: 600,
-    marginLeft: 220,
+    width: 200,
+    height: 200,
+    marginLeft: 190,
   },
 });
 

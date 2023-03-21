@@ -84,10 +84,19 @@ const MyAccount = () => {
 
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Header as="h3">My Account Info</Popover.Header>
       <Popover.Body>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
+        <p>
+          On this page you can see your personal information and passport
+          details. After registration your passport details will be empty. For
+          fulfilling new forms, you must fulfil empty fields. Without it, you
+          will not be able to apply for new travels
+        </p>
+        <p>
+          To set your passport details, you should press on edit button, which
+          is placed int the top-rigth corner, fulfil your data, and after this,
+          you can go ahead with completing new forms
+        </p>
       </Popover.Body>
     </Popover>
   );

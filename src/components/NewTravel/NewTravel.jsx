@@ -106,10 +106,22 @@ const NewTravel = () => {
 
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Header as="h3">New Travel Info</Popover.Header>
       <Popover.Body>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
+        <p>
+          On this page you can see a form for travels applying. Without passport
+          details fulfilled on the <strong>My Account</strong> page, you will
+          not be able to complete this form. Please be careful when filling out
+          the form, as each of them will be checked by border guards and in case
+          of a typo or incorrectly entered data, your application will be
+          rejected
+        </p>
+        <p>
+          Moreover, you should remember, that this application works only with
+          countries, which are not part of the European Union. In case of
+          providing in the forms countries such as Austria, France etc. your
+          application also will be rejected.
+        </p>
       </Popover.Body>
     </Popover>
   );

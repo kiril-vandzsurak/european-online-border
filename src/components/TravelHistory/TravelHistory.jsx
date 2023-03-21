@@ -59,10 +59,40 @@ const TravelHistory = () => {
 
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Header as="h3">Popover right</Popover.Header>
+      <Popover.Header as="h3">Travel History Info</Popover.Header>
       <Popover.Body>
-        And here's some <strong>amazing</strong> content. It's very engaging.
-        right?
+        <p>
+          On this page you can see history of your travels, specifically,{" "}
+          <strong>Upcoming Travels</strong> and <strong>Travel History</strong>.
+        </p>
+        <p>
+          If you have not applied for any form, you will see a message, which
+          informs you for filling out new travel applications. After applying,
+          on this page will appear block with <strong>Upcoming Travels</strong>.
+          In each form will be a <strong>Status</strong> section, where you will
+          have a possibility to clock on it, and see more details about your
+          application.
+        </p>
+
+        <p>
+          {" "}
+          If status is{" "}
+          <strong style={{ color: "#E6E213" }}>Under Consideration</strong>, you
+          will see a message after clicking on status name, which asks you to
+          wait for the response.
+        </p>
+        <p>
+          {" "}
+          If status is <strong style={{ color: "red" }}>Rejected</strong>, you
+          will see a message after clicking on status name, which tells the
+          reason of rejecting your application (the reason is written by Admin).
+        </p>
+        <p>
+          {" "}
+          If status is <strong style={{ color: "green" }}>Approved</strong>, you
+          will see a link after clicking on status name, where after clicking on
+          that link will download a pdf file with qr-code.
+        </p>
       </Popover.Body>
     </Popover>
   );
