@@ -302,7 +302,12 @@ const MyAccount = () => {
                   <span className="buttonName">Travel History</span>
                 </div>
               </Button>
-              <Button className="menuButtons">
+              <Button
+                className="menuButtons"
+                onClick={() => {
+                  navigate(`/info/${userId}`);
+                }}
+              >
                 <div className="d-flex align-items-center">
                   <img
                     style={{

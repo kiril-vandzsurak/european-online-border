@@ -6,7 +6,7 @@ import MyAccount from "./components/MyAccount/MyAccount.jsx";
 import NewTravel from "./components/NewTravel/NewTravel.jsx";
 import TravelHistory from "./components/TravelHistory/TravelHistory.jsx";
 import AdminPage from "./components/AdminPage/AdminPage.jsx";
-import PdfFile from "./components/PdfFile/PfdFile.jsx";
+import Information from "./components/Information/Information.jsx";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route element={<NewTravel />} path="/newTravel/:userId" />
         <Route element={<TravelHistory />} path="/travelHistory/:userId" />
         <Route element={<AdminPage />} path="/adminPage" />
+        <Route element={<Information />} path="/info/:userId" />
       </Routes>
     </BrowserRouter>
   );

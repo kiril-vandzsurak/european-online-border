@@ -4,9 +4,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import "./AdminPage.css";
+import { Modal } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const AdminPage = () => {
   const [travels, setTravels] = useState([]);
+  const [rejectionReason, setRejectionReason] = useState("");
+  const [show, setShow] = useState(false);
+  const [selectedTravel, setSelectedTravel] = useState("");
+
+  const handleShow = () => setShow(true);
 
   const fetchAllTravels = async () => {
     try {
@@ -21,7 +28,7 @@ const AdminPage = () => {
     }
   };
 
-  const updateTravelStatus = async (travelId, newStatus) => {
+  const updateTravelStatus = async (travelId, newStatus, rejectionReason) => {
     try {
       const response = await fetch(
         `http://localhost:3001/travelForm/travelAdmin/changeStatus/${travelId}`,
@@ -30,7 +37,10 @@ const AdminPage = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ status: newStatus }),
+          body: JSON.stringify({
+            status: newStatus,
+            reasonOfReject: rejectionReason,
+          }),
         }
       );
       if (!response.ok) {
@@ -38,7 +48,6 @@ const AdminPage = () => {
           `Failed to update travel status (${response.status} ${response.statusText})`
         );
       }
-      console.log(newStatus, travelId);
       const updatedTravel = await response.json();
       setTravels((prevTravels) =>
         prevTravels.map((travel) =>
@@ -52,12 +61,51 @@ const AdminPage = () => {
     }
   };
 
+  const handleClose = async () => {
+    try {
+      const updatedTravel = await updateTravelStatus(
+        selectedTravel,
+        "Rejected",
+        rejectionReason
+      );
+      console.log(updatedTravel);
+      setShow(false);
+      setRejectionReason("");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleCloseEmpty = () => setShow(false);
+
   useEffect(() => {
     fetchAllTravels();
   }, []);
 
   return (
     <div>
+      <Modal show={show} onHide={handleCloseEmpty}>
+        <Modal.Header closeButton>
+          <Modal.Title>The reason of rejecting</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="rejectionReason">
+              <Form.Control
+                type="text"
+                placeholder="Enter reason of rejection"
+                value={rejectionReason}
+                onChange={(e) => setRejectionReason(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Send
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Container fluid style={{ margin: "0px" }}>
         <Row className="topAdmin">
           <div className="mainLabel justify-content-start">
@@ -102,24 +150,11 @@ const AdminPage = () => {
                       {Object.entries(travel).map(
                         ([key, value]) =>
                           value &&
-                          key !== "passportPhoto" && ( // exclude passportPhoto from JSON.stringify
+                          key !== "passportPhoto" && (
                             <li key={key}>
                               {key}: {JSON.stringify(value)}
                             </li>
                           )
-                      )}
-                      {travel.passportPhoto && ( // check if passportPhoto exists
-                        <li key="passportPhoto">
-                          passportPhoto:{" "}
-                          <img
-                            src={`data:${
-                              travel.passportPhoto.contentType
-                            };base64,${travel.passportPhoto.data.toString(
-                              "base64"
-                            )}`}
-                            alt="passportPhoto"
-                          />
-                        </li>
                       )}
                       <Button
                         variant="success"
@@ -131,9 +166,10 @@ const AdminPage = () => {
                       </Button>{" "}
                       <Button
                         variant="danger"
-                        onClick={() =>
-                          updateTravelStatus(travel._id, "Rejected")
-                        }
+                        onClick={() => {
+                          setSelectedTravel(travel._id);
+                          handleShow();
+                        }}
                       >
                         Reject
                       </Button>

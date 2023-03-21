@@ -141,7 +141,12 @@ const TravelHistory = () => {
                   <span className="buttonName">Travel History</span>
                 </div>
               </Button>
-              <Button className="menuButtons">
+              <Button
+                className="menuButtons"
+                onClick={() => {
+                  navigate(`/info/${userId}`);
+                }}
+              >
                 <div className="d-flex align-items-center">
                   <img
                     style={{
@@ -227,7 +232,10 @@ const TravelHistory = () => {
                   </h2>
                 )}
                 {upcomingTravels.length > 0 && (
-                  <Row style={{ position: "relative" }}>
+                  <Row
+                    style={{ position: "relative" }}
+                    className="fontStyleTravel"
+                  >
                     <div
                       className="upcomingBlock"
                       style={{ marginTop: "20px" }}
@@ -240,7 +248,10 @@ const TravelHistory = () => {
                         <Col className="d-flex flex-column">
                           <span style={{ marginBottom: "10px" }}>Date</span>
                           {upcomingTravels.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {new Date(item.dateOfCrossing)
                                 .toISOString()
                                 .slice(0, 10)}
@@ -250,7 +261,10 @@ const TravelHistory = () => {
                         <Col className="d-flex flex-column">
                           <span style={{ marginBottom: "10px" }}>Time</span>
                           {upcomingTravels.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {item.timeOfCrossing}
                             </div>
                           ))}
@@ -260,7 +274,10 @@ const TravelHistory = () => {
                             Destination
                           </span>
                           {upcomingTravels.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {item.countryTo}
                             </div>
                           ))}
@@ -270,7 +287,10 @@ const TravelHistory = () => {
                             Way of Crossing
                           </span>
                           {upcomingTravels.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {item.wayOfCrossing}
                             </div>
                           ))}
@@ -278,7 +298,10 @@ const TravelHistory = () => {
                         <Col className="d-flex flex-column">
                           <span style={{ marginBottom: "10px" }}>Status</span>
                           {upcomingTravels.map((item, index) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="status-container d-flex flex-column mt-3"
+                            >
                               <span
                                 style={{ cursor: "pointer" }}
                                 onClick={() => handleToggle(index)}
@@ -286,12 +309,16 @@ const TravelHistory = () => {
                                 {item.status}
                               </span>
                               <Collapse in={open === index}>
-                                <div>
+                                <div className="status-content">
                                   {item.status === "Under Consideration" && (
-                                    <p>Wait</p>
+                                    <p>
+                                      The decision about your form is not ready
+                                      yet
+                                    </p>
                                   )}
                                   {item.status === "Approved" && (
                                     <PDFDownloadLink
+                                      className="pdfLink"
                                       document={<PdfFile />}
                                       fileName="border-pass.pdf"
                                     >
@@ -302,7 +329,9 @@ const TravelHistory = () => {
                                       }
                                     </PDFDownloadLink>
                                   )}
-                                  {item.status === "Rejected" && <p>Reason</p>}
+                                  {item.status === "Rejected" &&
+                                    item.reasonOfReject}
+                                  {console.log(item.reasonOfReject)}
                                 </div>
                               </Collapse>
                             </div>
@@ -314,7 +343,10 @@ const TravelHistory = () => {
                 )}
 
                 {travelHistory.length > 0 && (
-                  <Row style={{ position: "relative" }}>
+                  <Row
+                    style={{ position: "relative" }}
+                    className="fontStyleTravel"
+                  >
                     <div className="upcomingBlock">
                       <h2 className="upcomingName">Travel History</h2>
                       <div
@@ -324,7 +356,10 @@ const TravelHistory = () => {
                         <Col className="d-flex flex-column">
                           <span style={{ marginBottom: "10px" }}>Date</span>
                           {travelHistory.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {new Date(item.dateOfCrossing)
                                 .toISOString()
                                 .slice(0, 10)}
@@ -334,7 +369,10 @@ const TravelHistory = () => {
                         <Col className="d-flex flex-column">
                           <span style={{ marginBottom: "10px" }}>Time</span>
                           {travelHistory.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {item.timeOfCrossing}
                             </div>
                           ))}
@@ -344,7 +382,10 @@ const TravelHistory = () => {
                             Destination
                           </span>
                           {travelHistory.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {item.countryTo}
                             </div>
                           ))}
@@ -354,7 +395,10 @@ const TravelHistory = () => {
                             Way of Crossing
                           </span>
                           {travelHistory.map((item) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               {item.wayOfCrossing}
                             </div>
                           ))}
@@ -362,7 +406,10 @@ const TravelHistory = () => {
                         <Col className="d-flex flex-column">
                           <span style={{ marginBottom: "10px" }}>Status</span>
                           {travelHistory.map((item, index) => (
-                            <div key={item._id} className="d-flex flex-column">
+                            <div
+                              key={item._id}
+                              className="d-flex flex-column mt-3"
+                            >
                               <span>{item.status}</span>
                             </div>
                           ))}
