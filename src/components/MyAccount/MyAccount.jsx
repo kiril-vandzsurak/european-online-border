@@ -247,7 +247,8 @@ const MyAccount = () => {
                 width: "100%",
                 height: "100vh",
                 backgroundColor: "#00ee93",
-                borderRadius: "20px",
+                borderTopRightRadius: "20px",
+                borderBottomRightRadius: "20px",
                 paddingTop: "14px",
               }}
             >
