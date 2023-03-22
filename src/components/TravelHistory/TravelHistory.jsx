@@ -126,7 +126,7 @@ const TravelHistory = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/travelHistory.png"}
+                    src={window.location.origin + "/MyAccount.png"}
                     alt="img"
                   />
                   <span className="buttonName">My Account</span>
@@ -146,7 +146,7 @@ const TravelHistory = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/newTravel.png"}
+                    src={window.location.origin + "/newTravel1.png"}
                     alt="img"
                   />
                   <span className="buttonName">New Travel</span>
@@ -166,7 +166,7 @@ const TravelHistory = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/travelHistory.png"}
+                    src={window.location.origin + "/travelHistory1.png"}
                     alt="img"
                   />
                   <span className="buttonName">Travel History</span>
@@ -186,7 +186,7 @@ const TravelHistory = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/information.png"}
+                    src={window.location.origin + "/info1.png"}
                     alt="img"
                   />
                   <span className="buttonName">Information</span>
@@ -201,7 +201,7 @@ const TravelHistory = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/logout.png"}
+                    src={window.location.origin + "/logout1.png"}
                     alt="img"
                   />
                   <span className="buttonName">Logout</span>

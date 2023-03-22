@@ -266,7 +266,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/travelHistory.png"}
+                    src={window.location.origin + "/MyAccount.png"}
                     alt="img"
                   />
                   <span className="buttonName">My Account</span>
@@ -286,7 +286,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/newTravel.png"}
+                    src={window.location.origin + "/newTravel1.png"}
                     alt="img"
                   />
                   <span className="buttonName">New Travel</span>
@@ -306,7 +306,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/travelHistory.png"}
+                    src={window.location.origin + "/travelHistory1.png"}
                     alt="img"
                   />
                   <span className="buttonName">Travel History</span>
@@ -326,7 +326,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/information.png"}
+                    src={window.location.origin + "/info1.png"}
                     alt="img"
                   />
                   <span className="buttonName">Information</span>
@@ -341,7 +341,7 @@ const MyAccount = () => {
                       height: "50px",
                       marginTop: "3px",
                     }}
-                    src={window.location.origin + "/logout.png"}
+                    src={window.location.origin + "/logout1.png"}
                     alt="img"
                   />
                   <span className="buttonName">Logout</span>
@@ -402,24 +402,29 @@ const MyAccount = () => {
                     style={{
                       width: "600px",
                       height: "238px",
-                      backgroundColor: "rgb(233 255 236)",
+                      backgroundColor: "rgb(233 255 236, 0.1)",
                       borderRadius: "25px",
+                      border: "2px rgb(0, 238, 147) solid",
                       marginTop: "30px",
                       marginBottom: "30px",
                     }}
                     className="shadowInfoAccount"
                   >
                     <div className="infoBlockName">
-                      <h4 className="h4AccountBlockName">
+                      <h4
+                        className="h4AccountBlockName"
+                        style={{ marginRight: "126px" }}
+                      >
                         Personal Information
                       </h4>
                       <Button className="editBtn">
                         <img
                           style={{
                             display: "block",
-                            width: "40px",
-                            height: "40px",
+                            width: "27px",
+                            height: "27px",
                             marginTop: "3px",
+                            marginRight: "15px",
                           }}
                           onClick={handleShowPersonal}
                           src={window.location.origin + "/editInfo.png"}
@@ -450,20 +455,27 @@ const MyAccount = () => {
                     style={{
                       width: "600px",
                       height: "238px",
-                      backgroundColor: "rgb(233 255 236)",
+                      backgroundColor: "rgb(233 255 236, 0.1)",
                       borderRadius: "25px",
+                      border: "2px rgb(0, 238, 147) solid",
                     }}
                     className="shadowInfoAccount"
                   >
                     <div className="infoBlockName">
-                      <h4 className="h4AccountBlockName">Passport details</h4>
+                      <h4
+                        className="h4AccountBlockName"
+                        style={{ marginRight: "158px" }}
+                      >
+                        Passport details
+                      </h4>
                       <Button className="editBtn">
                         <img
                           style={{
                             display: "block",
-                            width: "40px",
-                            height: "40px",
+                            width: "27px",
+                            height: "27px",
                             marginTop: "3px",
+                            marginRight: "15px",
                           }}
                           onClick={handleShowPassport}
                           src={window.location.origin + "/editInfo.png"}
