@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 20,
     textAlign: "center",
-    color: "grey",
+    color: "black",
   },
   text: {
     margin: 12,
@@ -20,6 +20,18 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     marginLeft: 190,
+  },
+  qrHeader: {
+    textAlign: "center",
+  },
+
+  rules: {
+    paddingBottom: 15,
+    borderBottom: "1px black solid",
+    margin: 12,
+    fontSize: 14,
+    textAlign: "justify",
+    fontFamily: "Times-Roman",
   },
 });
 
@@ -51,12 +63,31 @@ const PdfFile = () => {
             style={styles.qrcode}
           />
         )}
+        <Text style={styles.qrHeader}>How to use QR-Code?</Text>
+        <Text style={styles.rules}>
+          There is single simple rule about using qr-code for crossing a border.
+          Firstly, you need to scan a qr-code and a passport on a turnstile
+          scanner and then go through a turnstile. That is all you need to do,
+          for crossing a border. In case of problems with scanning documents,
+          border guards will help you to solve it.
+        </Text>
         <Text style={styles.text}>Dear Traveler,</Text>
         <Text style={styles.text}>
-          On this page you can see your QR-Code which you will have to scan on
-          border to cross it. You will have a possibility to be late maximum for
-          10 minutes from your set time of travel, so try not to be late
+          We would like to inform you, that you should be on the border on time,
+          which you have provided in the travel form. You can be late maximum
+          for 10 minutes, in other case, you will have to cross the border in
+          live queue.
         </Text>
+        <Text style={styles.text}>
+          In addition, do not forget to take your passport, and in case of
+          traveling by car, do not forget about documents such as car insurance
+          and driving license.
+        </Text>
+        <Text style={styles.text}>
+          Thank you for using our application, which helps you to make your
+          travel faster and easier.
+        </Text>
+        <Text style={styles.text}>We wish you a good journey!</Text>
       </Page>
     </Document>
   );
