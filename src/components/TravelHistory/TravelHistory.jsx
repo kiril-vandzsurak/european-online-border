@@ -277,7 +277,7 @@ const TravelHistory = () => {
                         style={{ padding: "15px" }}
                       >
                         <Col className="d-flex flex-column">
-                          <span style={{ marginBottom: "10px" }}>Date</span>
+                          <span style={{ marginBottom: "20px" }}>Date</span>
                           {upcomingTravels.map((item) => (
                             <div
                               key={item._id}
@@ -290,7 +290,7 @@ const TravelHistory = () => {
                           ))}
                         </Col>
                         <Col className="d-flex flex-column">
-                          <span style={{ marginBottom: "10px" }}>Time</span>
+                          <span style={{ marginBottom: "20px" }}>Time</span>
                           {upcomingTravels.map((item) => (
                             <div
                               key={item._id}
@@ -301,7 +301,7 @@ const TravelHistory = () => {
                           ))}
                         </Col>
                         <Col className="d-flex flex-column">
-                          <span style={{ marginBottom: "10px" }}>
+                          <span style={{ marginBottom: "20px" }}>
                             Destination
                           </span>
                           {upcomingTravels.map((item) => (
@@ -314,7 +314,7 @@ const TravelHistory = () => {
                           ))}
                         </Col>
                         <Col className="d-flex flex-column">
-                          <span style={{ marginBottom: "10px" }}>
+                          <span style={{ marginBottom: "20px" }}>
                             Way of Crossing
                           </span>
                           {upcomingTravels.map((item) => (
@@ -327,20 +327,32 @@ const TravelHistory = () => {
                           ))}
                         </Col>
                         <Col className="d-flex flex-column">
-                          <span style={{ marginBottom: "10px" }}>Status</span>
+                          <span style={{ marginBottom: "20px" }}>Status</span>
                           {upcomingTravels.map((item, index) => (
                             <div
                               key={item._id}
-                              className="status-container d-flex flex-column mt-3"
+                              className=" d-flex flex-column mt-2"
+                              style={{ border: "none" }}
                             >
-                              <span
-                                style={{ cursor: "pointer" }}
+                              <Button
+                                style={{
+                                  cursor: "pointer",
+                                  fontSize: "12px",
+                                  backgroundColor:
+                                    item.status === "Under Consideration"
+                                      ? "orange"
+                                      : item.status === "Approved"
+                                      ? "green"
+                                      : item.status === "Rejected"
+                                      ? "red"
+                                      : "inherit",
+                                }}
                                 onClick={() => handleToggle(index)}
                               >
                                 {item.status}
-                              </span>
+                              </Button>
                               <Collapse in={open === index}>
-                                <div className="status-content">
+                                <div>
                                   {item.status === "Under Consideration" && (
                                     <p>
                                       The decision about your form is not ready

@@ -60,13 +60,8 @@
   font-size: 14px;
 }
 
-.status-container {
-  border: 1px solid black;
-  padding: 10px;
-}
-
-.status-content {
-  margin-top: 10px;
+.statusStyling {
+  border-bottom: none;
 }
 
 .pdfLink {
