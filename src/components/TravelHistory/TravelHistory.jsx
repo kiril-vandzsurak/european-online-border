@@ -336,6 +336,7 @@ const TravelHistory = () => {
                             >
                               <Button
                                 style={{
+                                  border: "none",
                                   cursor: "pointer",
                                   fontSize: "12px",
                                   backgroundColor:
