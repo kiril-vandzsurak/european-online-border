@@ -354,14 +354,14 @@ const TravelHistory = () => {
                               <Collapse in={open === index}>
                                 <div>
                                   {item.status === "Under Consideration" && (
-                                    <p>
+                                    <p className="mt-3">
                                       The decision about your form is not ready
                                       yet
                                     </p>
                                   )}
                                   {item.status === "Approved" && (
                                     <PDFDownloadLink
-                                      className="pdfLink"
+                                      className="pdfLink mt-3"
                                       document={<PdfFile />}
                                       fileName="border-pass.pdf"
                                     >
@@ -372,9 +372,11 @@ const TravelHistory = () => {
                                       }
                                     </PDFDownloadLink>
                                   )}
-                                  {item.status === "Rejected" &&
-                                    item.reasonOfReject}
-                                  {console.log(item.reasonOfReject)}
+                                  {item.status === "Rejected" && (
+                                    <div className="mt-3">
+                                      {item.reasonOfReject}
+                                    </div>
+                                  )}
                                 </div>
                               </Collapse>
                             </div>
