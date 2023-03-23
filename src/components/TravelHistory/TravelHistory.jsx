@@ -335,6 +335,7 @@ const TravelHistory = () => {
                               style={{ border: "none" }}
                             >
                               <Button
+                                className="hoverTravelBtn"
                                 style={{
                                   border: "none",
                                   cursor: "pointer",
