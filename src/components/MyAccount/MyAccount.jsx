@@ -71,8 +71,10 @@ const MyAccount = () => {
   const editedUserPassportNum = useSelector(
     (state) => state.passportInfo.passportNum
   );
-  let editedUserPassportPhoto = useSelector(
-    (state) => state.passportInfo.passportPhoto.fileName
+  const editedUserPassportPhoto = useSelector(
+    (state) =>
+      state.passportInfo.passportPhoto &&
+      state.passportInfo.passportPhoto.fileName
   );
   useEffect(() => {
     dispatch(personalInfo());
