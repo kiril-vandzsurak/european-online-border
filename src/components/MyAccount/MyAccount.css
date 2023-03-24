@@ -69,6 +69,13 @@
   display: flex;
 }
 
+.shadowMenu {
+  -webkit-box-shadow: 8px 0px 14px -7px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 0px 14px -7px rgba(66, 68, 90, 1);
+  box-shadow: 8px 0px 14px -7px rgba(66, 68, 90, 1);
+  position: relative;
+}
+
 .h4AccountBlockName {
   display: block;
   margin-inline: auto;

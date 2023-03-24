@@ -82,6 +82,13 @@ const AdminPage = () => {
     fetchAllTravels();
   }, []);
 
+  const byWalkTravels = travels.filter(
+    (travel) => travel.wayOfCrossing === "By Walk"
+  );
+  const byCarTravels = travels.filter(
+    (travel) => travel.wayOfCrossing === "By Car"
+  );
+
   return (
     <div>
       <Modal show={show} onHide={handleCloseEmpty}>
@@ -138,45 +145,137 @@ const AdminPage = () => {
         <Row className="backgroundAdmin">
           <Col>
             <h1 className="h1Admin">Travel List</h1>
-            <ul>
-              {travels
-                .filter(
-                  (travel) =>
-                    !travel.status || travel.status === "Under Consideration"
-                )
-                .map((travel) => (
-                  <li key={travel._id}>
-                    <ul>
-                      {Object.entries(travel).map(
-                        ([key, value]) =>
-                          value &&
-                          key !== "passportPhoto" && (
-                            <li key={key}>
-                              {key}: {JSON.stringify(value)}
-                            </li>
-                          )
-                      )}
-                      <Button
-                        variant="success"
-                        onClick={() =>
-                          updateTravelStatus(travel._id, "Approved")
-                        }
-                      >
-                        Approve
-                      </Button>{" "}
-                      <Button
-                        variant="danger"
-                        onClick={() => {
-                          setSelectedTravel(travel._id);
-                          handleShow();
-                        }}
-                      >
-                        Reject
-                      </Button>
-                    </ul>
-                  </li>
-                ))}
-            </ul>
+            <table style={{ borderCollapse: "collapse", width: "2500px" }}>
+              <thead>
+                <tr>
+                  <th style={{ textAlign: "center" }}>Destination</th>
+                  <th style={{ textAlign: "center" }}>Way Of Crossing</th>
+                  <th style={{ textAlign: "center" }}>Car Brand</th>
+                  <th style={{ textAlign: "center" }}>Car Model</th>
+                  <th style={{ textAlign: "center" }}>Driving License Num.</th>
+                  <th style={{ textAlign: "center" }}>Car Insurance Num.</th>
+                  <th style={{ textAlign: "center" }}>Car License Plate</th>
+                  <th style={{ textAlign: "center" }}>Car VIN Code</th>
+                  <th
+                    style={{
+                      textAlign: "center",
+                      paddingInline: "20px",
+                    }}
+                  >
+                    Travel Purpose
+                  </th>
+                  <th style={{ textAlign: "center" }}>Date</th>
+                  <th
+                    style={{
+                      textAlign: "center",
+                      paddingInline: "20px",
+                    }}
+                  >
+                    Time
+                  </th>
+                  <th
+                    style={{
+                      textAlign: "center",
+                      paddingInline: "20px",
+                    }}
+                  >
+                    User Name
+                  </th>
+                  <th style={{ textAlign: "center" }}>User Surname</th>
+                  <th style={{ textAlign: "center" }}>Birth Date</th>
+                  <th style={{ textAlign: "center" }}>Passport Num.</th>
+                  <th style={{ textAlign: "center" }}>Nationality</th>
+                </tr>
+              </thead>
+              <tbody>
+                {travels
+                  .filter(
+                    (travel) =>
+                      !travel.status || travel.status === "Under Consideration"
+                  )
+                  .map((travel) => (
+                    <tr
+                      key={travel._id}
+                      style={{ borderBottom: "1px solid black" }}
+                    >
+                      <td style={{ textAlign: "center" }}>
+                        {travel.countryTo}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.wayOfCrossing}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.carBrand !== "" ? travel.carBrand : "-"}
+                      </td>
+
+                      <td style={{ textAlign: "center" }}>
+                        {travel.carModel !== "" ? travel.carModel : "-"}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.drivingLicenseNum !== ""
+                          ? travel.drivingLicenseNum
+                          : "-"}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.carInsuranceNum !== ""
+                          ? travel.carInsuranceNum
+                          : "-"}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.carLicensePlate !== ""
+                          ? travel.carLicensePlate
+                          : "-"}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.carVinCode !== "" ? travel.carVinCode : "-"}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.travelPurpose}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.dateOfCrossing}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.timeOfCrossing}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.user.name}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.user.surname}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.user.birthDate}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.user.passportNum}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {travel.user.nationality}
+                      </td>
+                      <td>
+                        <Button
+                          variant="success"
+                          onClick={() =>
+                            updateTravelStatus(travel._id, "Approved")
+                          }
+                        >
+                          Approve
+                        </Button>{" "}
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            setSelectedTravel(travel._id);
+                            handleShow();
+                          }}
+                        >
+                          Reject
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
           </Col>
         </Row>
       </Container>

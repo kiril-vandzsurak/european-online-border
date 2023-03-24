@@ -61,10 +61,11 @@ const Information = () => {
         <Row>
           <Col lg={2} style={{ padding: "0" }}>
             <div
+              className="shadowMenu"
               style={{
                 width: "100%",
                 height: "100vh",
-                backgroundColor: "#00ee93",
+                backgroundColor: "#ECECEA",
                 borderTopRightRadius: "20px",
                 borderBottomRightRadius: "20px",
                 paddingTop: "14px",

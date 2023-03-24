@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import "./NewTravel.css";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import { useRef } from "react";
 
 const NewTravel = () => {
   const [wayOfCrossing, setWayOfCrossing] = useState("By car");
@@ -23,9 +24,11 @@ const NewTravel = () => {
   const [dateOfCrossing, setDateOfCrossing] = useState(new Date());
   const [timeOfCrossing, setTimeOfCrossing] = useState("");
   const [carLicensePlate, setCarLicensePlate] = useState("");
+  const [travelPurpose, setTravelPurpose] = useState("");
   const [status, setStatus] = useState("Under Consideration");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [user, setUser] = useState("");
+  const formRef = useRef(null);
 
   const navigate = useNavigate();
   const { userId } = useParams();
@@ -61,6 +64,7 @@ const NewTravel = () => {
       carInsuranceNum,
       carVinCode,
       carLicensePlate,
+      travelPurpose,
       dateOfCrossing,
       timeOfCrossing,
       status,
@@ -81,6 +85,7 @@ const NewTravel = () => {
       );
       const responseData = await response.json();
       console.log(responseData);
+      formRef.current.reset();
     } catch (error) {
       console.error(error);
     }
@@ -137,10 +142,11 @@ const NewTravel = () => {
         <Row>
           <Col lg={2} style={{ padding: "0" }}>
             <div
+              className="shadowMenu"
               style={{
                 width: "100%",
                 height: "100vh",
-                backgroundColor: "#00ee93",
+                backgroundColor: "#ECECEA",
                 borderTopRightRadius: "20px",
                 borderBottomRightRadius: "20px",
                 paddingTop: "14px",
@@ -285,7 +291,6 @@ const NewTravel = () => {
                 </div>
               </Row>
               <Row>
-                <h4 className="h4NewTravel">Fill out form for New Travel</h4>
                 {formSubmitted && (
                   <Alert
                     variant="success"
@@ -306,7 +311,9 @@ const NewTravel = () => {
                       width: "620px",
                       marginInline: "auto",
                       zIndex: "1",
+                      marginTop: "17px",
                     }}
+                    ref={formRef}
                     className="fonsStyle"
                     onSubmit={handleSubmit}
                   >
@@ -317,16 +324,24 @@ const NewTravel = () => {
                       <Form.Label style={{ width: "300px" }}>
                         Visiting country
                       </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Country"
-                        onChange={(e) => {
-                          setCountryTo(e.target.value);
-                        }}
+                      <Form.Select
+                        onChange={(e) => setCountryTo(e.target.value)}
                         disabled={!user.nationality || !user.passportNum}
                         required
                         style={{ width: "300px", borderRadius: "20px" }}
-                      />
+                      >
+                        <option>Ukraine</option>
+                        <option>Russia</option>
+                        <option>Belarus</option>
+                        <option>Serbia</option>
+                        <option>Turkey</option>
+                        <option>Macedonia</option>
+                        <option>Montenegro</option>
+                        <option>Andora</option>
+                        <option>England</option>
+                        <option>Albania</option>
+                        <option>Moldova</option>
+                      </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3 d-flex justify-content-around">
                       <Form.Label style={{ width: "300px" }}>
@@ -344,132 +359,138 @@ const NewTravel = () => {
                     </Form.Group>
 
                     {/* Disable the car-related forms when "By walk" is selected */}
-                    <Form.Group
-                      className="mb-3 d-flex justify-content-around"
-                      controlId="carNumber"
-                    >
-                      <Form.Label style={{ width: "300px" }}>
-                        Car brand
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Car brand"
-                        disabled={
-                          wayOfCrossing === "By walk" ||
-                          !user.nationality ||
-                          !user.passportNum
-                        }
-                        onChange={(e) => {
-                          setCarBrand(e.target.value);
-                        }}
-                        style={{ width: "300px", borderRadius: "20px" }}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      className="mb-3 d-flex justify-content-around"
-                      controlId="carProducer"
-                    >
-                      <Form.Label style={{ width: "300px" }}>
-                        Car model
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Car model"
-                        disabled={
-                          wayOfCrossing === "By walk" ||
-                          !user.nationality ||
-                          !user.passportNum
-                        }
-                        onChange={(e) => {
-                          setCarModel(e.target.value);
-                        }}
-                        style={{ width: "300px", borderRadius: "20px" }}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      className="mb-3 d-flex justify-content-around"
-                      controlId="drivingLicenseNumber"
-                    >
-                      <Form.Label style={{ width: "300px" }}>
-                        Driving license number
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Driving license number"
-                        disabled={
-                          wayOfCrossing === "By walk" ||
-                          !user.nationality ||
-                          !user.passportNum
-                        }
-                        onChange={(e) => {
-                          setDrivingLicenseNum(e.target.value);
-                        }}
-                        style={{ width: "300px", borderRadius: "20px" }}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      className="mb-3 d-flex justify-content-around"
-                      controlId="carInsuranceNumber"
-                    >
-                      <Form.Label style={{ width: "300px" }}>
-                        Car insurance number
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Car insurance number"
-                        disabled={
-                          wayOfCrossing === "By walk" ||
-                          !user.nationality ||
-                          !user.passportNum
-                        }
-                        onChange={(e) => {
-                          setCarInsuranceNum(e.target.value);
-                        }}
-                        style={{ width: "300px", borderRadius: "20px" }}
-                      />
-                    </Form.Group>
-                    <Form.Group
-                      className="mb-3 d-flex justify-content-around"
-                      controlId="carRegistrationNumber"
-                    >
-                      <Form.Label style={{ width: "300px" }}>
-                        VIN Code
-                      </Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="VIN Code"
-                        disabled={
-                          wayOfCrossing === "By walk" ||
-                          !user.nationality ||
-                          !user.passportNum
-                        }
-                        onChange={(e) => {
-                          setCarVinCode(e.target.value);
-                        }}
-                        style={{ width: "300px", borderRadius: "20px" }}
-                      />
-                    </Form.Group>
+                    {wayOfCrossing !== "By walk" && (
+                      <>
+                        <Form.Group
+                          className="mb-3 d-flex justify-content-around"
+                          controlId="carNumber"
+                        >
+                          <Form.Label style={{ width: "300px" }}>
+                            Car brand
+                          </Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Car brand"
+                            disabled={!user.nationality || !user.passportNum}
+                            onChange={(e) => {
+                              setCarBrand(e.target.value);
+                            }}
+                            required
+                            style={{ width: "300px", borderRadius: "20px" }}
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3 d-flex justify-content-around"
+                          controlId="carProducer"
+                        >
+                          <Form.Label style={{ width: "300px" }}>
+                            Car model
+                          </Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Car model"
+                            disabled={!user.nationality || !user.passportNum}
+                            onChange={(e) => {
+                              setCarModel(e.target.value);
+                            }}
+                            required
+                            style={{ width: "300px", borderRadius: "20px" }}
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3 d-flex justify-content-around"
+                          controlId="drivingLicenseNumber"
+                        >
+                          <Form.Label style={{ width: "300px" }}>
+                            Driving license number
+                          </Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Driving license number"
+                            disabled={!user.nationality || !user.passportNum}
+                            onChange={(e) => {
+                              setDrivingLicenseNum(e.target.value);
+                            }}
+                            required
+                            style={{ width: "300px", borderRadius: "20px" }}
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3 d-flex justify-content-around"
+                          controlId="carInsuranceNumber"
+                        >
+                          <Form.Label style={{ width: "300px" }}>
+                            Car insurance number
+                          </Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Car insurance number"
+                            disabled={!user.nationality || !user.passportNum}
+                            onChange={(e) => {
+                              setCarInsuranceNum(e.target.value);
+                            }}
+                            required
+                            style={{ width: "300px", borderRadius: "20px" }}
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3 d-flex justify-content-around"
+                          controlId="carRegistrationNumber"
+                        >
+                          <Form.Label style={{ width: "300px" }}>
+                            VIN Code
+                          </Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="VIN Code"
+                            disabled={!user.nationality || !user.passportNum}
+                            onChange={(e) => {
+                              setCarVinCode(e.target.value);
+                            }}
+                            required
+                            style={{ width: "300px", borderRadius: "20px" }}
+                          />
+                        </Form.Group>
+                        <Form.Group
+                          className="mb-3 d-flex justify-content-around"
+                          controlId="carLicensePlate"
+                        >
+                          <Form.Label style={{ width: "300px" }}>
+                            Car License Plate
+                          </Form.Label>
+                          <Form.Control
+                            type="text"
+                            placeholder="Car License Plate"
+                            disabled={!user.nationality || !user.passportNum}
+                            onChange={(e) => {
+                              setCarLicensePlate(e.target.value);
+                            }}
+                            required
+                            style={{ width: "300px", borderRadius: "20px" }}
+                          />
+                        </Form.Group>
+                      </>
+                    )}
+
                     <Form.Group
                       className="mb-3 d-flex justify-content-around"
                       controlId="carLicensePlate"
                     >
                       <Form.Label style={{ width: "300px" }}>
-                        Car License Plate
+                        Purpose of travel
                       </Form.Label>
                       <Form.Control
                         type="text"
-                        placeholder="Car License Plate"
-                        disabled={
-                          wayOfCrossing === "By walk" ||
-                          !user.nationality ||
-                          !user.passportNum
-                        }
+                        placeholder="Purpose of travel"
+                        disabled={!user.nationality || !user.passportNum}
                         onChange={(e) => {
-                          setCarLicensePlate(e.target.value);
+                          setTravelPurpose(e.target.value);
                         }}
+                        required
                         style={{ width: "300px", borderRadius: "20px" }}
                       />
                     </Form.Group>
+
                     <Form.Group
                       className="mb-3 d-flex justify-content-around"
                       controlId="formBasicEmail"
