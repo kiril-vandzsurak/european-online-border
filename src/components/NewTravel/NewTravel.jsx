@@ -296,7 +296,7 @@ const NewTravel = () => {
                   </Alert>
                 )}
                 {!user.nationality || !user.passportNum ? (
-                  <span>
+                  <span className="beforeStyleTravelNew">
                     Before filling up the form, please fill out your passport
                     data in "My Account"
                   </span>

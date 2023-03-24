@@ -6,6 +6,12 @@
   margin-bottom: 30px;
 }
 
+.beforeStyleTravelNew {
+  text-align: center;
+  font-size: 30px;
+  font-family: "Raleway", sans-serif;
+}
+
 .hoverBtnNewTravel {
   background: rgb(0, 241, 145) !important;
   background: linear-gradient(
