@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 });
 
 const PdfFile = () => {
-  const url = "https://www.youtube.com"; // Your URL here
+  const url = "test";
   const [qrcodeDataUrl, setQRCodeDataUrl] = useState(null);
 
   useEffect(() => {

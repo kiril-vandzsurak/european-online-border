@@ -291,15 +291,7 @@ const NewTravel = () => {
                 </div>
               </Row>
               <Row>
-                {formSubmitted && (
-                  <Alert
-                    variant="success"
-                    onClose={() => setFormSubmitted(false)}
-                    dismissible
-                  >
-                    Form successfully sent!
-                  </Alert>
-                )}
+                {formSubmitted && alert("Form successfully sent!")}
                 {!user.nationality || !user.passportNum ? (
                   <span className="beforeStyleTravelNew">
                     Before filling up the form, please fill out your passport
