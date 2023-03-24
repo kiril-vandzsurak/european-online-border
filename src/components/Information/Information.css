@@ -1,0 +1,16 @@
+.h2Info {
+  text-align: center;
+  margin-top: 40px !important;
+  margin-bottom: 40px !important;
+}
+
+.collapseSign {
+  margin-right: 20px;
+  font-size: 25px;
+}
+
+.collapseText {
+  text-decoration: none !important;
+  font-size: 20px !important;
+  color: black !important;
+}

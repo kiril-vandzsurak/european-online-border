@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+
+.beforeStyleTravelNew {
+  text-align: center;
+  font-size: 30px;
+  font-family: "Raleway", sans-serif;
+}
+
+.hoverBtnNewTravel {
+  background: rgb(0, 241, 145) !important;
+  background: linear-gradient(
+    126deg,
+    rgba(0, 241, 145, 1) 27%,
+    rgba(0, 200, 198, 1) 75%
+  ) !important;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hoverBtnNewTravel:hover {
+  background-color: transparent !important;
+}
+
+.imgBackgroudTravel {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  height: 318px;
+}
+
+.fonsStyle {
+  font-family: "Raleway", sans-serif;
+}

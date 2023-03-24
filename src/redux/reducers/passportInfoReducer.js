@@ -1,7 +1,7 @@
-import { EDIT_PASSPORT_INFO } from "../actions";
+import { EDIT_PASSPORT_INFO, UPLOAD_IMAGE_SUCCESS } from "../actions";
 
 const initialState = {
-  citizenship: "",
+  nationality: "",
   passportNum: "",
   passportPhoto: null,
 };
@@ -10,9 +10,14 @@ const passportInfoReducer = (state = initialState, action) => {
   switch (action.type) {
     case EDIT_PASSPORT_INFO:
       return {
-        citizenship: action.payload.citizenship,
+        ...state,
+        nationality: action.payload.nationality,
         passportNum: action.payload.passportNum,
-        passportPhoto: action.payload.passportPhoto,
+      };
+
+    case UPLOAD_IMAGE_SUCCESS:
+      return {
+        passportPhoto: action.payload,
       };
 
     default:

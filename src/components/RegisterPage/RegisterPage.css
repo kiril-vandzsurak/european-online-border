@@ -105,6 +105,8 @@
   cursor: pointer;
   margin-top: 35px;
   margin-left: 300px;
+  position: relative;
+  right: 50%;
 }
 
 .confirmRegisterButton > span {
