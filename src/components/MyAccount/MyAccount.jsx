@@ -60,11 +60,6 @@ const MyAccount = () => {
     setUserPassportPhoto(null);
   };
 
-  useEffect(() => {
-    dispatch(personalInfo());
-    dispatch(passportInfo());
-  }, [dispatch]);
-
   const editedUserName = useSelector((state) => state.personalInfo.name);
   const editedUserSurname = useSelector((state) => state.personalInfo.surname);
   const editedUserBirthDate = useSelector(
@@ -76,11 +71,25 @@ const MyAccount = () => {
   const editedUserPassportNum = useSelector(
     (state) => state.passportInfo.passportNum
   );
-  const editedUserPassportPhoto = useSelector(
+  let editedUserPassportPhoto = useSelector(
     (state) =>
-      state.passportInfo.passportPhoto &&
+      // state.passportInfo.passportPhoto &&
       state.passportInfo.passportPhoto.fileName
   );
+  useEffect(() => {
+    dispatch(personalInfo());
+    dispatch(passportInfo());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!editedUserNationality && !editedUserPassportNum) {
+      dispatch({
+        type: "UPLOAD_IMAGE_SUCCESS",
+        payload: "",
+      });
+      return;
+    }
+  }, []);
 
   const popover = (
     <Popover id="popover-basic">

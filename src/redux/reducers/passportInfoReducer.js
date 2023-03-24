@@ -17,7 +17,6 @@ const passportInfoReducer = (state = initialState, action) => {
 
     case UPLOAD_IMAGE_SUCCESS:
       return {
-        ...state,
         passportPhoto: action.payload,
       };
 

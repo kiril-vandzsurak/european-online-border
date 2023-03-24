@@ -130,7 +130,6 @@ export const uploadPassportPhoto = (userId, imageData) => {
       console.log(data);
       const passportPhoto = {
         fileName: data.fileName,
-        data: data.data,
       };
 
       dispatch({
