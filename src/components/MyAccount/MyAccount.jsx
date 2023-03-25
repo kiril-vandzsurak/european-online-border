@@ -60,6 +60,11 @@ const MyAccount = () => {
     setUserPassportPhoto(null);
   };
 
+  useEffect(() => {
+    dispatch(personalInfo());
+    dispatch(passportInfo());
+  }, [dispatch]);
+
   const editedUserName = useSelector((state) => state.personalInfo.name);
   const editedUserSurname = useSelector((state) => state.personalInfo.surname);
   const editedUserBirthDate = useSelector(
@@ -76,11 +81,6 @@ const MyAccount = () => {
       state.passportInfo.passportPhoto &&
       state.passportInfo.passportPhoto.fileName
   );
-  useEffect(() => {
-    dispatch(personalInfo());
-    dispatch(passportInfo());
-  }, [dispatch]);
-
   const popover = (
     <Popover id="popover-basic">
       <Popover.Header as="h3">My Account Info</Popover.Header>

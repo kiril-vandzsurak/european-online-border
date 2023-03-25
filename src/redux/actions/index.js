@@ -115,14 +115,14 @@ export const editPassportInfo = (nationality, passportNum, passportPhoto) => {
 export const uploadPassportPhoto = (userId, imageData) => {
   return async (dispatch) => {
     try {
-      const formData = new FormData();
-      formData.append("passportPhoto", imageData);
+      const photo = new FormData();
+      photo.append("passportPhoto", imageData);
 
       const response = await fetch(
         `http://localhost:3001/users/me/${userId}/photo`,
         {
           method: "POST",
-          body: formData,
+          body: photo,
         }
       );
 
@@ -130,6 +130,7 @@ export const uploadPassportPhoto = (userId, imageData) => {
       console.log(data);
       const passportPhoto = {
         fileName: data.fileName,
+        data: data.data,
       };
 
       dispatch({
