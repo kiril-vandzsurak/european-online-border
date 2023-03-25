@@ -129,7 +129,7 @@ export const uploadPassportPhoto = (userId, imageData) => {
       const data = await response.json();
       console.log(data);
       const passportPhoto = {
-        fileName: data.fileName,
+        imageUrl: data.imageUrl,
       };
 
       dispatch({

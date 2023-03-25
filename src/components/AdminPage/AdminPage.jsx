@@ -253,6 +253,13 @@ const AdminPage = () => {
                       <td style={{ textAlign: "center" }}>
                         {travel.user.nationality}
                       </td>
+                      <td style={{ textAlign: "center" }}>
+                        <img
+                          src={travel.user.passportPhoto}
+                          alt="Passport photo"
+                        />
+                      </td>
+
                       <td>
                         <Button
                           variant="success"
