@@ -7,10 +7,17 @@ import NewTravel from "./components/NewTravel/NewTravel.jsx";
 import TravelHistory from "./components/TravelHistory/TravelHistory.jsx";
 import AdminPage from "./components/AdminPage/AdminPage.jsx";
 import Information from "./components/Information/Information.jsx";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
     <BrowserRouter>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My Title</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+        <meta name="description" content="European Border Control" />
+      </Helmet>
       <Routes>
         <Route element={<WelcomePage />} path="/" />
         <Route element={<LoginPage />} path="/login" />
