@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Phudu:wght@300&display=swap");
+
+.loading {
+  margin-inline: auto;
+  margin-top: 200px;
+}
+
+.loadingText {
+  font-size: 40px;
+  color: #36d7b7;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  left: 50%;
+  transform: translateX(-57px);
+  top: 25px;
+  width: 150px;
+}
+
+.backgroundRegister {
+  background: rgb(204, 228, 208);
+  background: linear-gradient(
+    -39deg,
+    rgba(204, 228, 208, 1) 32%,
+    rgba(255, 255, 255, 1) 43%,
+    rgba(255, 255, 255, 1) 53%,
+    rgba(204, 228, 208, 1) 65%
+  );
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  animation: appear 2s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rowDirection {
+  display: flex;
+  flex-direction: row;
+  height: 111px;
+  align-items: center;
+}
+
+.backButtonRegister {
+  border: none;
+  background-color: transparent;
+  margin-inline: 54px;
+  cursor: pointer;
+}
+
+.labelNameRegister {
+  font-size: 33px;
+  margin-inline: 10px;
+  font-family: "Phudu", cursive;
+}
+
+.inputLookRegister {
+  width: 300px !important;
+  height: 54px !important;
+  border-radius: 30px !important;
+}
+
+.h1Register {
+  margin-left: 232px;
+  width: 400px !important;
+}
+
+.ladyRegister {
+  width: 501px;
+  height: 736px;
+  position: absolute;
+  top: 9px;
+  right: 0;
+  z-index: 1;
+}
+
+.inputFlexRegister {
+  display: flex;
+  align-items: baseline;
+  margin-top: 50px;
+}
+
+.confirmRegisterButton {
+  height: 66px;
+  width: 262px;
+  font-family: "Raleway", sans-serif !important;
+  border: none !important;
+  border-radius: 50px !important;
+  background: rgb(0, 241, 145);
+  background: linear-gradient(
+    126deg,
+    rgba(0, 241, 145, 1) 27%,
+    rgba(0, 200, 198, 1) 75%
+  );
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 35px;
+  margin-left: 300px;
+  position: relative;
+  right: 50%;
+}
+
+.confirmRegisterButton > span {
+  color: black;
+}
+
+.confirmRegisterButton:hover {
+  border: 2px black solid !important;
+}
+
+.downTextRegister {
+  display: block;
+  width: 375px;
+  opacity: 0.5;
+  margin-left: 245px;
+  margin-top: 39px;
+}

@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600;900&display=swap");
+
+.menuButtons {
+  width: 100% !important;
+  height: 62px !important;
+  margin-top: 10px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: black !important;
+  font-family: "Raleway", sans-serif !important;
+}
+
+.menuButtons:hover {
+  font-size: 20px;
+  background-color: #f8fff9 !important;
+}
+
+.menuButtons > img:hover {
+  width: 300px;
+}
+
+.buttonName {
+  margin-left: 10px;
+}
+
+.mainPageBackground {
+  background: #ececea;
+}
+
+.accountWelcomeText {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px !important;
+  font-size: 27px;
+  font-family: "Raleway", sans-serif;
+}
+
+.accountWelcomeText > span {
+  margin-inline: 10px;
+  font-weight: 900;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 241, 145, 1),
+    rgba(0, 200, 198, 1)
+  );
+  -webkit-background-image: -webkit-linear-gradient(
+    to right,
+    rgba(0, 241, 145, 1),
+    rgba(0, 200, 198, 1)
+  );
+}
+
+.accountLady {
+  width: 520px;
+  height: 575px;
+  margin-left: 60px;
+}
+
+.shadowInfoAccount {
+  -webkit-box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 17px -5px rgba(66, 68, 90, 1);
+}
+
+.infoBlockName {
+  display: flex;
+}
+
+.shadowMenu {
+  -webkit-box-shadow: 8px 0px 14px -7px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 0px 14px -7px rgba(66, 68, 90, 1);
+  box-shadow: 8px 0px 14px -7px rgba(66, 68, 90, 1);
+  position: relative;
+}
+
+.h4AccountBlockName {
+  display: block;
+  margin-inline: auto;
+  margin-top: 20px;
+}
+
+.editBtn {
+  background: none !important;
+  border: none !important;
+}
+
+.infoBlocksData {
+  display: flex;
+  justify-content: space-between;
+  width: 391px;
+  margin-inline: auto;
+  font-size: 20px;
+  margin-top: 15px;
+  border-bottom: 1px black solid;
+}
+
+.infoWidth {
+  width: 128px;
+}
+
+.infoWidthPassport {
+  width: 150px;
+}
+
+.questionPopOver {
+  position: absolute;
+  right: 40px;
+  top: 26px;
+  border-radius: 50% !important;
+  height: 30px;
+  width: 30px;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.questionIcon {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
