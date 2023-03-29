@@ -11,24 +11,29 @@ import { Helmet } from "react-helmet";
 
 function App() {
   return (
-    <BrowserRouter>
+    <div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>My Title</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <link
+          rel="canonical"
+          href="https://european-border-control.vercel.app/"
+        />
         <meta name="description" content="European Border Control" />
       </Helmet>
-      <Routes>
-        <Route element={<WelcomePage />} path="/" />
-        <Route element={<LoginPage />} path="/login" />
-        <Route element={<RegisterPage />} path="/register" />
-        <Route element={<MyAccount />} path="/myAccount/:userId" />
-        <Route element={<NewTravel />} path="/newTravel/:userId" />
-        <Route element={<TravelHistory />} path="/travelHistory/:userId" />
-        <Route element={<AdminPage />} path="/adminPage" />
-        <Route element={<Information />} path="/info/:userId" />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<WelcomePage />} path="/" />
+          <Route element={<LoginPage />} path="/login" />
+          <Route element={<RegisterPage />} path="/register" />
+          <Route element={<MyAccount />} path="/myAccount/:userId" />
+          <Route element={<NewTravel />} path="/newTravel/:userId" />
+          <Route element={<TravelHistory />} path="/travelHistory/:userId" />
+          <Route element={<AdminPage />} path="/adminPage" />
+          <Route element={<Information />} path="/info/:userId" />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
