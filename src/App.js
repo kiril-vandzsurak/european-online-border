@@ -14,7 +14,7 @@ function App() {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>My Title</title>
+        <title>European Border Control</title>
         <link
           rel="canonical"
           href="https://european-border-control.vercel.app/"
