@@ -499,7 +499,9 @@ const MyAccount = () => {
                       <div className="infoBlocksData">
                         <span>Passport photo</span>
                         <span className="infoWidthPassport">
-                          {editedUserPassportPhoto}
+                          <span style={{ fontSize: "19px" }}>
+                            Photo submitted!
+                          </span>
                         </span>
                       </div>
                     </div>

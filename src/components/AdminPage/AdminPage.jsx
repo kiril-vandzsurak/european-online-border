@@ -82,13 +82,6 @@ const AdminPage = () => {
     fetchAllTravels();
   }, []);
 
-  const byWalkTravels = travels.filter(
-    (travel) => travel.wayOfCrossing === "By Walk"
-  );
-  const byCarTravels = travels.filter(
-    (travel) => travel.wayOfCrossing === "By Car"
-  );
-
   return (
     <div>
       <Modal show={show} onHide={handleCloseEmpty}>
@@ -252,12 +245,6 @@ const AdminPage = () => {
                       </td>
                       <td style={{ textAlign: "center" }}>
                         {travel.user.nationality}
-                      </td>
-                      <td style={{ textAlign: "center" }}>
-                        <img
-                          src={travel.user.passportPhoto}
-                          alt="Passport photo"
-                        />
                       </td>
 
                       <td>
