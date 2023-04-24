@@ -108,10 +108,112 @@ video {
 
 .inputMarginsLogin {
   margin-top: 48px;
+  flex-direction: row !important;
 }
 
 .downTextLogin {
   display: block;
   width: 488px;
   opacity: 0.5;
+}
+
+.iconsStyle {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .labelNameLogin {
+    font-size: 26px;
+  }
+  .formLogin {
+    width: 600px;
+    height: 569px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .labelNameLogin {
+    font-size: 18px;
+  }
+
+  .iconsStyle {
+    display: block;
+    width: 30px;
+    height: 30px;
+  }
+
+  .inputLogin {
+    border: 1px black solid !important;
+    width: 314px !important;
+    height: 52px !important;
+    border-radius: 50px !important;
+  }
+
+  .loginBtn {
+    height: 55px;
+    width: 301px;
+  }
+
+  .downTextLogin {
+    display: block;
+    width: 314px;
+    opacity: 0.5;
+    font-size: 13px;
+  }
+
+  .formLogin {
+    width: 750px;
+    height: 559px;
+  }
+}
+
+@media (max-width: 576px) {
+  .labelNameLogin {
+    font-size: 20px;
+    margin-inline: 10px;
+    font-family: "Phudu", cursive;
+    color: white;
+  }
+  .iconsStyle {
+    display: none;
+  }
+
+  .formLogin {
+    width: 320px;
+    height: 553px;
+  }
+
+  .inputMarginsLogin {
+    flex-direction: column !important;
+  }
+
+  .inputLogin {
+    width: 269px !important;
+  }
+
+  .marginPasswordLogin {
+    margin-right: 0px;
+  }
+
+  .marginEmailLogin {
+    margin-right: 0px;
+  }
+
+  .inputMarginsLogin {
+    margin-top: 30px;
+  }
+
+  .loginBtn {
+    height: 53px;
+    width: 266px;
+  }
+
+  .downTextLogin {
+    display: block;
+    width: 211px;
+    opacity: 1.5;
+    font-size: 9px;
+  }
 }

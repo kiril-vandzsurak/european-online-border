@@ -59,11 +59,7 @@ const LoginPage = () => {
                 </Link>
                 <div>
                   <img
-                    style={{
-                      display: "block",
-                      width: "58px",
-                      height: "58px",
-                    }}
+                    className="iconsStyle"
                     src={window.location.origin + "/european-union.png"}
                     alt="img"
                   />
@@ -71,12 +67,7 @@ const LoginPage = () => {
                 <div className="labelNameLogin">EUROPEAN BORDER CONTROL</div>
                 <div>
                   <img
-                    style={{
-                      display: "block",
-                      width: "50px",
-                      height: "50px",
-                      marginTop: "3px",
-                    }}
+                    className="iconsStyle"
                     src={window.location.origin + "/biometry.png"}
                     alt="img"
                   />
@@ -93,7 +84,7 @@ const LoginPage = () => {
                 )}
                 <Form onSubmit={handleSubmit}>
                   <Form.Group
-                    className="mb-3 d-flex flex-row align-items-center inputMarginsLogin"
+                    className="mb-3 d-flex align-items-center inputMarginsLogin"
                     controlId="formBasicEmail"
                   >
                     <Form.Label className="marginEmailLogin">
@@ -108,7 +99,7 @@ const LoginPage = () => {
                   </Form.Group>
 
                   <Form.Group
-                    className="mb-3 d-flex flex-row align-items-center inputMarginsLogin"
+                    className="mb-3 d-flex align-items-center inputMarginsLogin"
                     controlId="formBasicPassword"
                   >
                     <Form.Label className="marginPasswordLogin">
