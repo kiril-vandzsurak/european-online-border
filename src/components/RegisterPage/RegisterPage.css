@@ -76,7 +76,7 @@
 
 .ladyRegister {
   width: 501px;
-  height: 736px;
+  height: 703px;
   position: absolute;
   top: 9px;
   right: 0;
@@ -123,4 +123,25 @@
   opacity: 0.5;
   margin-left: 245px;
   margin-top: 39px;
+}
+
+@media (max-width: 1310px) {
+  .ladyDissapear {
+    display: none;
+  }
+
+  .rowDirection {
+    display: flex;
+    flex-direction: row;
+    height: 111px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .h1Register {
+    margin-left: 0px;
+  }
+  .responsivness {
+    justify-content: center;
+  }
 }

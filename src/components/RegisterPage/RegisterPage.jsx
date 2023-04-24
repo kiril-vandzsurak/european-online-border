@@ -128,7 +128,7 @@ const RegisterPage = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
+            <Row className="responsivness">
               <h1 className="h1Register">Create your account</h1>
             </Row>
             <Row>
@@ -244,7 +244,7 @@ const RegisterPage = () => {
                 </p>
               </Col>
             </Row>
-            <div>
+            <div className="ladyDissapear">
               <img
                 className="ladyRegister"
                 src={window.location.origin + "/register-lady.png"}
